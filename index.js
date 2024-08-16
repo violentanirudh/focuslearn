@@ -1,4 +1,5 @@
 const express = require('express')
+const path = require('path')
 const app = express()
 
 // Routers
@@ -8,10 +9,10 @@ const ViewsRouter = require('./routes/views')
 // Middlewares
 
 app.set('view engine', 'ejs')
-app.set('views', './views')
+app.set('views', path.join(__dirname, '/views/'))
 
 app.use(express.urlencoded({ extended: false }))
-app.use('./public/', express.static('public'))
+app.use('public/', express.static('public'))
 
 // Routes
 

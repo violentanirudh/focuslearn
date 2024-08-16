@@ -16,3 +16,4 @@
 05. Tanmay  : Pushing Changes
 06. Anirudh : Routers and Controllers Setup
 07. Anirudh : Adding vercel.json
+08. Anirudh : Adding Path
