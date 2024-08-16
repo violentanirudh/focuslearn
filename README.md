@@ -25,3 +25,4 @@ $ npm run tailwind
 07. Anirudh : Adding vercel.json
 08. Anirudh : Adding Path
 09. Anirudh : Setting up TailwindCSS
+10. Anirudh : Basic UI Design
