@@ -5,7 +5,14 @@
 
 
 
+## Command
 
+```bash
+# To Run Development Server
+$ npm run dev
+# To Compile TailwindCSS (Only if working with UI)
+$ npm run tailwind
+```
 
 ## LOGS
 
@@ -17,3 +24,4 @@
 06. Anirudh : Routers and Controllers Setup
 07. Anirudh : Adding vercel.json
 08. Anirudh : Adding Path
+09. Anirudh : Setting up TailwindCSS
