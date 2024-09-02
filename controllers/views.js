@@ -1,4 +1,4 @@
-const User = require("./models/user");
+const User = require("../models/user");
 
 const renderHome = (req, res) => {
   return res.render("home");
