@@ -28,3 +28,4 @@ $ npm run tailwind
 10. Anirudh : Basic UI Design
 11. Anirudh : Authentication
 12. Anirudh : Serverless Functions
+13. Anirudh : Merge Conflicts

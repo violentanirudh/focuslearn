@@ -12,19 +12,19 @@
     <p>Master Your Skills, Fuel Your Passion, and Get Certified!</p>
     <%- include('partials/links') %>
 
-    <form class="my-6 space-y-4" action="/signup" method="post">
+    <form class="my-6 space-y-4" action="/auth/signup" method="post">
 
         <div>
             <label for="fullName" class="form-label">Full Name</label>
-            <input type="text" class="input" placeholder="John Doe">
+            <input type="text" name="fullName" class="input" placeholder="John Doe">
         </div>
         <div>
             <label>Email Address</label>
-            <input type="email" class="input" placeholder="johndoe@example.com">
+            <input type="email" name="email" class="input" placeholder="johndoe@example.com">
         </div>
         <div>
             <label>Password</label>
-            <input type="password" class="input" placeholder=".........">
+            <input type="password" name="password" class="input" placeholder=".........">
         </div>
         <button type="submit" class="btn btn-primary">Sign In</button>
 

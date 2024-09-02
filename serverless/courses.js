@@ -120,6 +120,8 @@ const playlist = async (id) => {
       });
     });
 
+    console.log(videos)
+
     console.log(titles.length);
 
     // console.log(titles)
@@ -129,24 +131,24 @@ const playlist = async (id) => {
     //     console.log(`./serverless/${key.toString()}/${id}.json`)
     // }
 
-    for (let key in details) {
-      let result = await model.generateContent(
-        generatePrompt(titles, details[key]),
-        {
-          // Set temperature and top_p here
-          temperature: 0.7, // Adjust as needed
-          top_p: 0.9, // Adjust as needed
-          max_tokens: 500000 // Adjust as needed
-        }
-      );
-      console.log("Generated " + key.toString());
-      fs.writeFileSync(
-        `./serverless/${key.toString()}/${id}.json`,
-        result.response.text()
-      );
-    }
+    // for (let key in details) {
+    //   let result = await model.generateContent(
+    //     generatePrompt(titles, details[key]),
+    //     {
+    //       // Set temperature and top_p here
+    //       temperature: 0.7, // Adjust as needed
+    //       top_p: 0.9, // Adjust as needed
+    //       max_tokens: 500000 // Adjust as needed
+    //     }
+    //   );
+    //   console.log("Generated " + key.toString());
+    //   fs.writeFileSync(
+    //     `./serverless/${key.toString()}/${id}.json`,
+    //     result.response.text()
+    //   );
+    // }
 
-    await new Promise((resolve) => setTimeout(resolve, 3000));
+    // await new Promise((resolve) => setTimeout(resolve, 3000));
   } catch (error) {
     console.log(error);
   }
