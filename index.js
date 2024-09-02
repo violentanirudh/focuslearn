@@ -3,15 +3,11 @@ const path = require("path");
 const app = express();
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
+require('dotenv').config()
 
-<<<<<<< HEAD
-// Routers
-
-=======
->>>>>>> 44bb1e23ac46d9ae2c5f421ed0fd9db0839e025c
 // Database
 mongoose
-  .connect("mongodb://127.0.0.1:27017/focuslearn")
+  .connect(process.env.MONGODB_URI)
   .then(() => console.log("MongoDB Connected"))
   .catch(() => console.log("MongoDB Failed"));
 
@@ -20,7 +16,7 @@ const ViewsRouter = require("./routes/views");
 const AuthRouter = require("./routes/auth");
 
 // Middlewares
-const {} = require("middleware/authntication");
+const { checkForAuthenticationCookie } = require("./middlewares/authentication");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
