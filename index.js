@@ -1,3 +1,4 @@
+HEAD;
 const express = require("express");
 const path = require("path");
 const app = express();
@@ -7,6 +8,18 @@ const mongoose = require("mongoose");
 // Routers
 
 const ViewsRouter = require("./routes/views");
+
+const express = require("express");
+
+// Database
+mongoose
+  .connect("mongodb://127.0.0.1:27017/focuslearn")
+  .then(() => console.log("MongoDB Connected"))
+  .catch(() => console.log("MongoDB Failed"));
+
+// Routers
+const ViewsRouter = require("./routes/views");
+const AuthRouter = require("./routes/auth");
 
 // Middlewares
 const {} = require("middleware/authntication");
@@ -21,6 +34,8 @@ app.use(checkForAuthenticationCookie("token"));
 // Routes
 
 app.use("/", ViewsRouter);
+app.use("/auth", AuthRouter);
+app.use(cookieParser());
 
 // Server
 

@@ -26,3 +26,5 @@ $ npm run tailwind
 08. Anirudh : Adding Path
 09. Anirudh : Setting up TailwindCSS
 10. Anirudh : Basic UI Design
+11. Anirudh : Authentication
+12. Anirudh : Serverless Functions
