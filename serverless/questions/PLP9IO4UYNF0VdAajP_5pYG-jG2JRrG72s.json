@@ -1,0 +1,123 @@
+{
+  "questions": [
+    {
+      "question": "What is the main purpose of HTML?",
+      "answer": "option1",
+      "option1": "To define the structure and content of a webpage",
+      "option2": "To style the appearance of a webpage",
+      "option3": "To add interactivity to a webpage"
+    },
+    {
+      "question": "Which tag is used to define a heading in HTML?",
+      "answer": "option1",
+      "option1": "<h1>",
+      "option2": "<p>",
+      "option3": "<div>"
+    },
+    {
+      "question": "What is the purpose of HTML attributes?",
+      "answer": "option1",
+      "option1": "To provide additional information about an element",
+      "option2": "To define the content of an element",
+      "option3": "To style the appearance of an element"
+    },
+    {
+      "question": "Which tag is used to create a paragraph in HTML?",
+      "answer": "option2",
+      "option1": "<h1>",
+      "option2": "<p>",
+      "option3": "<div>"
+    },
+    {
+      "question": "What is the purpose of CSS in HTML?",
+      "answer": "option1",
+      "option1": "To style the appearance of a webpage",
+      "option2": "To define the structure and content of a webpage",
+      "option3": "To add interactivity to a webpage"
+    },
+    {
+      "question": "How do you create a hyperlink in HTML?",
+      "answer": "option1",
+      "option1": "<a href=\"link\">",
+      "option2": "<link href=\"link\">",
+      "option3": "<img src=\"link\">"
+    },
+    {
+      "question": "What tag is used to embed an image in HTML?",
+      "answer": "option3",
+      "option1": "<a>",
+      "option2": "<table>",
+      "option3": "<img>"
+    },
+    {
+      "question": "What is the purpose of HTML tables?",
+      "answer": "option1",
+      "option1": "To display data in a structured format",
+      "option2": "To create a list of items",
+      "option3": "To add interactivity to a webpage"
+    },
+    {
+      "question": "How do you create an unordered list in HTML?",
+      "answer": "option1",
+      "option1": "<ul>",
+      "option2": "<ol>",
+      "option3": "<dl>"
+    },
+    {
+      "question": "What is the difference between block and inline elements in HTML?",
+      "answer": "option1",
+      "option1": "Block elements take up the full width of their container, while inline elements only take up the space needed for their content",
+      "option2": "Block elements are used for styling, while inline elements are used for structure",
+      "option3": "Block elements are used for content, while inline elements are used for interactivity"
+    },
+    {
+      "question": "How do you apply a class to an HTML element?",
+      "answer": "option1",
+      "option1": "Using the 'class' attribute",
+      "option2": "Using the 'id' attribute",
+      "option3": "Using the 'style' attribute"
+    },
+    {
+      "question": "What is the purpose of the 'id' attribute in HTML?",
+      "answer": "option2",
+      "option1": "To define the style of an element",
+      "option2": "To uniquely identify an element",
+      "option3": "To create a hyperlink to another page"
+    },
+    {
+      "question": "What is an iframe used for in HTML?",
+      "answer": "option1",
+      "option1": "To embed another webpage within the current webpage",
+      "option2": "To create a form for user input",
+      "option3": "To add a comment to the HTML code"
+    },
+    {
+      "question": "What is the role of JavaScript in HTML?",
+      "answer": "option3",
+      "option1": "To define the structure and content of a webpage",
+      "option2": "To style the appearance of a webpage",
+      "option3": "To add interactivity to a webpage"
+    },
+    {
+      "question": "What is the purpose of the '<head>' section in HTML?",
+      "answer": "option2",
+      "option1": "To define the main content of the webpage",
+      "option2": "To include metadata about the webpage",
+      "option3": "To add styling to the webpage"
+    },
+    {
+      "question": "What is the purpose of HTML forms?",
+      "answer": "option1",
+      "option1": "To collect user input",
+      "option2": "To display images on the webpage",
+      "option3": "To create a table of data"
+    },
+    {
+      "question": "What is the purpose of HTML comments?",
+      "answer": "option3",
+      "option1": "To define the structure of a webpage",
+      "option2": "To add styling to a webpage",
+      "option3": "To add notes or explanations to the HTML code that are not displayed on the webpage"
+    }
+  ]
+}

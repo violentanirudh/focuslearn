@@ -1,10 +1,17 @@
 const express = require('express')
 const path = require('path')
 const app = express()
+const mongoose = require('mongoose')
+
+// Database
+mongoose.connect('mongodb://127.0.0.1:27017/focuslearn')
+    .then(() => console.log('MongoDB Connected'))
+    .catch(() => console.log('MongoDB Failed'))
 
 // Routers
-
 const ViewsRouter = require('./routes/views')
+const AuthRouter = require('./routes/auth')
+
 
 // Middlewares
 
@@ -17,6 +24,7 @@ app.use('/public', express.static(path.join(__dirname, 'public')))
 // Routes
 
 app.use('/', ViewsRouter)
+app.use('/auth', AuthRouter)
 
 // Server
 
