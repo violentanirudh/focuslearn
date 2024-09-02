@@ -12,15 +12,15 @@
     <p>Master Your Skills, Fuel Your Passion, and Get Certified!</p>
     <%- include('partials/links') %>
 
-    <form class="my-6 space-y-4">
+    <form class="my-6 space-y-4" action="/signin" method="post">
 
         <div>
-            <label>Email Address</label>
-            <input type="email" class="input" placeholder="johndoe@example.com">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" class="input" placeholder="johndoe@example.com" name="email">
         </div>
         <div>
             <label>Password</label>
-            <input type="password" class="input" placeholder=".........">
+            <input type="password" class="input" placeholder="........." name="password">
         </div>
         <button class="btn">Sign In</button>
 
