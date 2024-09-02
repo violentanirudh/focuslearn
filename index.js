@@ -4,10 +4,6 @@ const app = express();
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 
-// Routers
-
-const ViewsRouter = require("./routes/views");
-
 // Database
 mongoose
   .connect("mongodb://127.0.0.1:27017/focuslearn")
