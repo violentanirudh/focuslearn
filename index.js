@@ -8,8 +8,6 @@ const mongoose = require("mongoose");
 
 const ViewsRouter = require("./routes/views");
 
-const express = require("express");
-
 // Database
 mongoose
   .connect("mongodb://127.0.0.1:27017/focuslearn")
