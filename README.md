@@ -30,5 +30,6 @@ $ npm run tailwind
 12. Anirudh : Serverless Functions
 13. Anirudh : Merge Conflicts
 14. Anirudh : Admin Routes
-15. Tanmay : Added signOut functionality
-16. Tanmay : Added basic verify email code with error, to be rectified
+15. Tanmay  : Added signOut functionality
+16. Tanmay  : Added basic verify email code with error, to be rectified
+17: Anirudh : Added Email Verification. Extracted Mailer logic in /services/mail
