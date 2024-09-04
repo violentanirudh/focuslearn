@@ -2,7 +2,7 @@ const nodemailer = require("nodemailer");
 
 const verifyEmail = async (req, res) => {
   const transporter = nodemailer.createTransport({
-    host: "http://hostingarena.co.in",
+    host: "hostingarena.co.in",
     port: 465,
     secure: true, // Use `true` for port 465, `false` for all other ports
     auth: {
@@ -15,7 +15,7 @@ const verifyEmail = async (req, res) => {
   async function main() {
     // send mail with defined transport object
     const info = await transporter.sendMail({
-      from: '"Tanmay" <tanmay@gmail.com>', // sender address
+      from: '"Tanmay" <verification@hostingarena.co.in>', // sender address
       to: "bar@example.com", // list of receivers
       subject: "Hello ", // Subject line
       text: "Testing nodemailer", // plain text body
