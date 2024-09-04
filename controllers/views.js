@@ -10,8 +10,13 @@ const renderSignUp = (req, res) => {
   return res.render("signup");
 };
 
+const renderAdminHome = (req, res) => {
+  return res.render("admin/home");
+}
+
 module.exports = {
   renderHome,
   renderSignIn,
   renderSignUp,
+  renderAdminHome
 };

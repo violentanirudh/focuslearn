@@ -29,3 +29,4 @@ $ npm run tailwind
 11. Anirudh : Authentication
 12. Anirudh : Serverless Functions
 13. Anirudh : Merge Conflicts
+14. Anirudh : Admin Routes

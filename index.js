@@ -14,6 +14,7 @@ mongoose
 // Routers
 const ViewsRouter = require("./routes/views");
 const AuthRouter = require("./routes/auth");
+const AdminRouter = require("./routes/admin");
 
 // Middlewares
 const { checkForAuthenticationCookie } = require("./middlewares/authentication");
@@ -29,6 +30,7 @@ app.use(checkForAuthenticationCookie("token"));
 
 app.use("/", ViewsRouter);
 app.use("/auth", AuthRouter);
+app.use("/admin", AdminRouter);
 app.use(cookieParser());
 
 // Server

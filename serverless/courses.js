@@ -9,150 +9,164 @@ let model = genAI.getGenerativeModel({
   model: "gemini-1.5-flash",
   generationConfig: {
     responseMimeType: "application/json",
+    responseSchema: {
+        "type": "object",
+        "properties": {
+          "course": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "overview": {
+                "type": "string"
+              },
+              "lectures": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string"
+                    },
+                    "notes": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "title",
+                    "notes"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "name",
+              "overview",
+              "lectures"
+            ]
+          }
+        },
+        "required": [
+          "course"
+        ]
+    }
   },
 });
 
-const details = {
-  notes: {
-    content:
-      "Each lecture should have a notes (same index as of lecture). Each string of notes will be markdown and will contain 200 words or less.",
-    schema: `{
-            "type": "object",
-            "properties": {
-                "notes": {
-                "type": "array",
-                "items": {
-                    "type": "string"
-                }
-                }
-            }
-        }`,
-  },
-  questions: {
-    content:
-      "Multiple Choice Question. Each title should have one Questions. Each question will have 3 options and one correct answer.",
-    schema: `{
-        "type": "object",
-        "properties": {
-            "questions": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                "question": {
-                    "type": "string"
-                },
-                "answer": {
-                    "type": "string",
-                    "enum": [
-                    "option1",
-                    "option2",
-                    "option3"
-                    ]
-                },
-                "option1": {
-                    "type": "string"
-                },
-                "option2": {
-                    "type": "string"
-                },
-                "option3": {
-                    "type": "string"
-                }
-                },
-                "required": [
-                "question",
-                "answer",
-                "option1",
-                "option2",
-                "option3"
-                ]
-            }
-            }
-        },
-        "required": [
-            "questions"
-        ]
-        }`,
-  },
-};
-
-const generatePrompt = (data, type) => {
+const generatePrompt = (data) => {
   return `
     Generate a JSON-formatted response based on the given Lecture titles.
-    The Response should contain an array of Objects. Input data provides you the list of titles.
 
     Input data:
-    ${data}   
+    ${data}
 
-    ${type.content}
-
-    Example OUTPUT JSON Schema (list):
-    ${type.schema}
-    `;
-};
+    Name : Generate a 40 character or less Course Name (Example: 'Introduction To Python' or 'Mastering Docker').
+    Overview : Generate a 200 character or less Course Overview.
+    Lectures : Generate a list of lectures with a title (10 words maximum, use punctuation) and notes (400 words maximum) for each lecture based on the given Input Data.
+    `
+}
 
 const playlist = async (id) => {
   try {
-    const response = await axios.get(
-      `https://www.googleapis.com/youtube/v3/playlistItems`,
-      {
-        params: {
-          part: "snippet",
-          playlistId: id,
-          maxResults: 150,
-          key: process.env.YOUTUBE_API_KEY,
-        },
+
+    let nextPageToken = null
+    const titles = []
+    const videoLength = []
+    const embed = []
+    let author = ""
+    let channel = ""
+    let duration = 0
+
+    do {
+      const response = await axios.get(
+        `https://www.googleapis.com/youtube/v3/playlistItems`,
+        {
+          params: {
+            part: "snippet",
+            playlistId: id,
+            key: process.env.YOUTUBE_API_KEY,
+            maxResults: 50,
+            pageToken: nextPageToken,
+          },
+        }
+      );
+
+        response.data.items.forEach((item) => {
+            titles.push(item.snippet.title);
+            embed.push(`https://www.youtube.com/embed/${item.snippet.resourceId.videoId}`);
+        });
+
+        const videoIds = response.data.items.map(item => item.snippet.resourceId.videoId).join(",")
+        const videoResponse = await axios.get(
+            `https://www.googleapis.com/youtube/v3/videos`,
+            {
+                params: {
+                    part: "contentDetails",
+                    id: videoIds,
+                    key: process.env.YOUTUBE_API_KEY,
+                },
+            }
+        );
+
+        const convertDurationToMinutes = (duration) => {
+            const match = duration.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
+            const hours = (parseInt(match[1]) || 0);
+            const minutes = (parseInt(match[2]) || 0);
+            const seconds = (parseInt(match[3]) || 0);
+            return (hours * 3600) + (minutes * 60) + seconds;
+        };
+
+        videoResponse.data.items.forEach((item) => {
+            videoLength.push(convertDurationToMinutes(item.contentDetails.duration));
+        });
+
+      if (!author && !channel) {
+        author = response.data.items[0].snippet.videoOwnerChannelTitle;
+        channel = `https://www.youtube.com/channel/${response.data.items[0].snippet.videoOwnerChannelId}`;
       }
+
+      nextPageToken = response.data.nextPageToken;
+    } while (nextPageToken);
+
+    console.log(titles.length)
+
+    duration = videoLength.reduce((a, b) => a + b, 0)
+
+    let result = await model.generateContent(
+        generatePrompt(titles),
+        {
+            temperature: 1.0,
+            top_p: 0.9,
+            max_tokens: 8000000,
+        }
     );
 
-    const videos = [];
-    const titles = [];
+    const generatedContent = JSON.parse(result.response.text());
+    const content = {
+    course: generatedContent.course,
+    author: author,
+    channel: channel,
+    duration: duration
+    };
 
-    response.data.items.forEach(async (item) => {
-      titles.push(item.snippet.title);
-
-      videos.push({
-        title: item.snippet.title,
-        thumbnailUrl: item.snippet.thumbnails.default.url,
-        videoId: item.snippet.resourceId.videoId,
-        embedUrl: `https://www.youtube.com/embed/${item.snippet.resourceId.videoId}`,
-      });
+    // Then add the embedUrl to each lecture
+    if (content.course && content.course.lectures) {
+    content.course.lectures.forEach((lecture, index) => {
+        lecture.embed = embed[index];
+        lecture.duration = videoLength[index]
     });
+    }
 
-    console.log(videos)
+    fs.writeFileSync(
+        `./serverless/content/${id}.json`,
+        JSON.stringify(content)
+    );
 
-    console.log(titles.length);
-
-    // console.log(titles)
-    // for (let key in details) {
-    //     console.log(details[key])
-    //     console.log('Generated ' + key.toString())
-    //     console.log(`./serverless/${key.toString()}/${id}.json`)
-    // }
-
-    // for (let key in details) {
-    //   let result = await model.generateContent(
-    //     generatePrompt(titles, details[key]),
-    //     {
-    //       // Set temperature and top_p here
-    //       temperature: 0.7, // Adjust as needed
-    //       top_p: 0.9, // Adjust as needed
-    //       max_tokens: 500000 // Adjust as needed
-    //     }
-    //   );
-    //   console.log("Generated " + key.toString());
-    //   fs.writeFileSync(
-    //     `./serverless/${key.toString()}/${id}.json`,
-    //     result.response.text()
-    //   );
-    // }
-
-    // await new Promise((resolve) => setTimeout(resolve, 3000));
-  } catch (error) {
-    console.log(error);
-  }
+    await new Promise((resolve) => setTimeout(resolve, 60000));
+    } catch (error) {
+        console.log(error);
+    }
 };
 
-playlist("PLP9IO4UYNF0VdAajP_5pYG-jG2JRrG72s");
-playlist("PLinedj3B30sDby4Al-i13hQJGQoRQDfPo");
+playlist("PLinedj3B30sDby4Al-i13hQJGQoRQDfPo")

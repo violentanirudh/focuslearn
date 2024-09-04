@@ -1,0 +1,299 @@
+{
+  "course": {
+    "lectures": [
+      {
+        "notes": "This lecture introduces Node.js, a JavaScript runtime environment, discussing its purpose, benefits, and use cases. It will cover fundamental concepts like asynchronous programming and event-driven architecture.",
+        "title": "What is NodeJS?",
+        "embed": "https://www.youtube.com/embed/ohIAiuHMKMI",
+        "duration": 465
+      },
+      {
+        "notes": "This lecture guides you through the installation process for Node.js, covering steps for various operating systems and setting up the environment for development.",
+        "title": "Node JS Installation",
+        "embed": "https://www.youtube.com/embed/N6PjgN9licA",
+        "duration": 362
+      },
+      {
+        "notes": "This hands-on lecture demonstrates the basics of Node.js with a simple \"Hello World\" example, showcasing how to execute code and interact with the console.",
+        "title": "Hello World NodeJS",
+        "embed": "https://www.youtube.com/embed/XhCs5cTYW_8",
+        "duration": 585
+      },
+      {
+        "notes": "This lecture delves into Node.js modules, explaining how to leverage external libraries and create reusable code components, enhancing your Node.js projects.",
+        "title": "Modules in NodeJS",
+        "embed": "https://www.youtube.com/embed/FSRo41TaHFU",
+        "duration": 925
+      },
+      {
+        "notes": "This lecture covers file system interactions in Node.js, providing techniques for reading, writing, and managing files, essential for building robust applications.",
+        "title": "File Handling in NodeJS",
+        "embed": "https://www.youtube.com/embed/YazJFb_i4A0",
+        "duration": 1097
+      },
+      {
+        "notes": "This lecture explains the underlying architecture and workings of Node.js, exploring event loops, non-blocking I/O, and the concurrency model.",
+        "title": "How NodeJS Works?",
+        "embed": "https://www.youtube.com/embed/y0aTs56DJWk",
+        "duration": 863
+      },
+      {
+        "notes": "This lecture teaches you how to build basic HTTP servers in Node.js, covering handling incoming requests, sending responses, and implementing simple routing.",
+        "title": "Building HTTP Server in NodeJS",
+        "embed": "https://www.youtube.com/embed/ZQsrcayZcSk",
+        "duration": 1076
+      },
+      {
+        "notes": "This lecture explores parsing URLs in Node.js, understanding how to extract components like protocol, hostname, path, and query parameters for processing web requests.",
+        "title": "Handling URL's in NodeJS",
+        "embed": "https://www.youtube.com/embed/Nt-AsZh5woE",
+        "duration": 1237
+      },
+      {
+        "notes": "This lecture focuses on the different HTTP methods (GET, POST, PUT, DELETE) used in web applications, explaining their purpose and how to implement them in Node.js.",
+        "title": "HTTP METHODS",
+        "embed": "https://www.youtube.com/embed/kREAjKyPbSI",
+        "duration": 818
+      },
+      {
+        "notes": "This lecture introduces Express.js, a popular web framework for Node.js, guiding you through the setup process and highlighting its benefits for building web applications.",
+        "title": "Getting Started with Express and NodeJS",
+        "embed": "https://www.youtube.com/embed/N2-FyBBxOZA",
+        "duration": 688
+      },
+      {
+        "notes": "This lecture discusses versioning in Node.js, explaining how to manage dependencies and handle updates to different versions of packages.",
+        "title": "How Versioning Works in NodeJS?",
+        "embed": "https://www.youtube.com/embed/ORmB_ABimjM",
+        "duration": 1270
+      },
+      {
+        "notes": "This lecture introduces RESTful APIs, explaining their principles, design patterns, and benefits for building web services.",
+        "title": "What is REST API?",
+        "embed": "https://www.youtube.com/embed/cJAyEOZQUQY",
+        "duration": 941
+      },
+      {
+        "notes": "This lecture provides a hands-on tutorial for creating REST APIs using Node.js and Express.js, covering routing, request handling, and data manipulation.",
+        "title": "Building REST API's using Node and Express.js",
+        "embed": "https://www.youtube.com/embed/uNCrMvkPUAE",
+        "duration": 1227
+      },
+      {
+        "notes": "This lecture introduces Postman, a popular tool for interacting with REST APIs, demonstrating how to send requests, inspect responses, and test API functionalities.",
+        "title": "Introduction to POSTMAN for REST API's",
+        "embed": "https://www.youtube.com/embed/7OzNVIxPLH0",
+        "duration": 889
+      },
+      {
+        "notes": "This lecture explores Express middleware, explaining how to intercept requests and responses to add functionalities like authentication, logging, or data validation.",
+        "title": "Express Middleware",
+        "embed": "https://www.youtube.com/embed/n2c0mf1sza4",
+        "duration": 1190
+      },
+      {
+        "notes": "This lecture covers HTTP headers in API communication, explaining their role in conveying information between client and server.",
+        "title": "What are HTTP Headers in API",
+        "embed": "https://www.youtube.com/embed/mhg3Vwsb88M",
+        "duration": 1058
+      },
+      {
+        "notes": "This lecture explains HTTP status codes, discussing their purpose, common codes (like 200, 404, 500), and how to use them in API responses.",
+        "title": "HTTP Status Codes",
+        "embed": "https://www.youtube.com/embed/fLGw2GK884s",
+        "duration": 936
+      },
+      {
+        "notes": "This lecture introduces MongoDB, a popular NoSQL database, outlining its features, benefits, and use cases in modern web development.",
+        "title": "Getting Started with MongoDB",
+        "embed": "https://www.youtube.com/embed/oH0VoYiA8_s",
+        "duration": 481
+      },
+      {
+        "notes": "This lecture demonstrates how to connect Node.js applications to MongoDB using the Mongoose ODM, enabling data storage and retrieval.",
+        "title": "Connecting NodeJS with MongoDB | Mongoose + Express",
+        "embed": "https://www.youtube.com/embed/xrglM8U0Zv8",
+        "duration": 1158
+      },
+      {
+        "notes": "This lecture introduces the Model-View-Controller (MVC) design pattern, explaining its principles and how it can be applied to structure Node.js applications for improved organization and maintainability.",
+        "title": "Model View Controller in NodeJS | MVC Pattern",
+        "embed": "https://www.youtube.com/embed/JLtXoru-ipo",
+        "duration": 1381
+      },
+      {
+        "notes": "This practical project teaches you how to build a custom URL shortener using Node.js and MongoDB, involving database interactions, API endpoints, and front-end integration.",
+        "title": "Create a Custom URL Shortener using Node.JS and MongoDB",
+        "embed": "https://www.youtube.com/embed/4WvX9dBjiJo",
+        "duration": 1390
+      },
+      {
+        "notes": "This lecture explores server-side rendering (SSR) using EJS templating engine with Node.js, explaining the benefits and techniques for generating HTML on the server.",
+        "title": "Server Side Rendering with EJS and Node.JS",
+        "embed": "https://www.youtube.com/embed/yy9cbu_e3Xg",
+        "duration": 1524
+      },
+      {
+        "notes": "This lecture guides you through creating a secure authentication system from scratch in Node.js, covering user registration, login, and session management.",
+        "title": "Building Node.js Authentication from Scratch",
+        "embed": "https://www.youtube.com/embed/OWeruyqhiTo",
+        "duration": 2349
+      },
+      {
+        "notes": "This lecture introduces JSON Web Tokens (JWT) for authentication in Node.js, explaining how to generate, verify, and manage JWTs for secure API access.",
+        "title": "JWT Authentication in NodeJS",
+        "embed": "https://www.youtube.com/embed/mGrVmEex6_g",
+        "duration": 870
+      },
+      {
+        "notes": "This lecture explains cookies in Node.js, discussing their role in web applications, how to set and read cookies, and best practices for secure cookie management.",
+        "title": "What are Cookies in NodeJS?",
+        "embed": "https://www.youtube.com/embed/kMErso06vHo",
+        "duration": 1835
+      },
+      {
+        "notes": "This lecture explores authorization in Node.js, covering how to restrict access to resources based on user roles and permissions, ensuring secure access control.",
+        "title": "Authorization in NodeJS",
+        "embed": "https://www.youtube.com/embed/1uxWtBFOrkk",
+        "duration": 1173
+      },
+      {
+        "notes": "This lecture teaches you how to create a Discord bot using Node.js, showcasing how to interact with the Discord API, handle messages, and implement custom functionalities.",
+        "title": "Creating Discord Bot in NodeJS",
+        "embed": "https://www.youtube.com/embed/5UOMuTWrh6Q",
+        "duration": 1305
+      },
+      {
+        "notes": "This lecture covers file uploads in Node.js using the Multer middleware, explaining how to handle multipart form data, store files, and manage file uploads in your web applications.",
+        "title": "Uploading Files with NodeJS and Multer",
+        "embed": "https://www.youtube.com/embed/WqJ0P8JnftI",
+        "duration": 851
+      },
+      {
+        "notes": "This lecture guides you through setting up the foundation for a Node.js blogging application using MongoDB, covering project structure, database setup, and basic model creation.",
+        "title": "Setting Up Project - NodeJS Blogging Application with MongoDB",
+        "embed": "https://www.youtube.com/embed/6z6CR29gtds",
+        "duration": 2376
+      },
+      {
+        "notes": "This lecture focuses on implementing user authentication for the blogging application, integrating user registration, login, and secure session management.",
+        "title": "Setting up Authentication  - NodeJS Blogging Application with MongoDB",
+        "embed": "https://www.youtube.com/embed/X1AGH8Byj9Y",
+        "duration": 2301
+      },
+      {
+        "notes": "This lecture completes the development of the Node.js blogging application, integrating all features, including user accounts, blog post creation, and front-end presentation using EJS templating.",
+        "title": "Complete Blog App - NodeJS, MongoDB and EJS",
+        "embed": "https://www.youtube.com/embed/vnWVrjsEeAM",
+        "duration": 1589
+      },
+      {
+        "notes": "This lecture demonstrates how to deploy a Node.js application on AWS (Amazon Web Services), covering steps for setting up an EC2 instance, configuring deployment, and managing the application.",
+        "title": "Deploy NodeJS Application on AWS - Amazon Web Services | NodeJS",
+        "embed": "https://www.youtube.com/embed/_U0pTlpyMGg",
+        "duration": 1191
+      },
+      {
+        "notes": "This lecture explores WebSockets in Node.js using Socket.IO, a library for real-time communication, showcasing how to implement features like chat applications or live updates.",
+        "title": "WebSocket in NodeJS | Socket.IO - Real Time Messaging",
+        "embed": "https://www.youtube.com/embed/UUddpbgPEJM",
+        "duration": 1947
+      },
+      {
+        "notes": "This lecture discusses Node.js streams, explaining their purpose for efficient data processing, how to create and manipulate streams, and their applications.",
+        "title": "NodeJS Streams",
+        "embed": "https://www.youtube.com/embed/64LJJhT6Ybo",
+        "duration": 926
+      },
+      {
+        "notes": "This lecture explores scaling Node.js applications using the cluster module, explaining how to leverage multiple CPU cores to improve performance and handle increased traffic.",
+        "title": "How to scale NodeJs applications using the cluster module.",
+        "embed": "https://www.youtube.com/embed/JoPZ9gEvpz8",
+        "duration": 758
+      },
+      {
+        "notes": "This lecture introduces Nginx, a popular web server, outlining its features, benefits, and common use cases in web development.",
+        "title": "What is Nginx?",
+        "embed": "https://www.youtube.com/embed/b_B1BEShfBc",
+        "duration": 705
+      },
+      {
+        "notes": "This lecture guides you through the installation and setup process for Nginx on different operating systems, configuring basic settings for web server operations.",
+        "title": "Install and Setup Nginx",
+        "embed": "https://www.youtube.com/embed/Qmld1te08Ns",
+        "duration": 796
+      },
+      {
+        "notes": "This lecture demonstrates how to serve static content (like HTML, CSS, images) using Nginx, explaining configuration options for efficient delivery of web assets.",
+        "title": "Serve Static Content with Nginx",
+        "embed": "https://www.youtube.com/embed/YkuhqIDUi2A",
+        "duration": 901
+      },
+      {
+        "notes": "This lecture provides a comprehensive guide to deploying a Node.js application with Nginx as a reverse proxy, securing the application with SSL certificates, and managing deployments.",
+        "title": "Full Node.js Deployment - NGINX, SSL With Lets Encrypt",
+        "embed": "https://www.youtube.com/embed/ofBFl4M4BFk",
+        "duration": 1885
+      },
+      {
+        "notes": "This lecture introduces the Serverless framework and its integration with Node.js, showcasing how to build and deploy serverless applications on cloud providers like AWS.",
+        "title": "Serverless Framework with NodeJS",
+        "embed": "https://www.youtube.com/embed/VvYADzRwJK8",
+        "duration": 1246
+      },
+      {
+        "notes": "This lecture explains the concept of serverless computing, comparing it to traditional monolithic applications, and discussing the advantages and limitations of serverless architectures.",
+        "title": "What is Serverless? | Serverless Vs Monolith | AWS Lambda",
+        "embed": "https://www.youtube.com/embed/AgOmeANl3ls",
+        "duration": 2171
+      },
+      {
+        "notes": "This lecture provides a crash course on GraphQL, a query language for APIs, explaining its benefits, structure, and key concepts for building efficient APIs.",
+        "title": "GraphQL Crash Course - GraphQL NodeJS",
+        "embed": "https://www.youtube.com/embed/WtkKwO1viI8",
+        "duration": 2551
+      },
+      {
+        "notes": "This lecture demonstrates building the backend architecture for a Threads app clone using GraphQL, showcasing how to define schemas, resolvers, and data fetching.",
+        "title": "Threads App GraphQL Clone | Backend Architecture",
+        "embed": "https://www.youtube.com/embed/FbDrEEhG5cM",
+        "duration": 1134
+      },
+      {
+        "notes": "This lecture guides you through setting up a GraphQL server using Node.js and necessary libraries, covering the initial configuration and basic functionalities.",
+        "title": "Setting up Graphql Server | Complete GraphQL Series",
+        "embed": "https://www.youtube.com/embed/g6YpoVYTd1s",
+        "duration": 1501
+      },
+      {
+        "notes": "This lecture demonstrates how to integrate Prisma ORM with GraphQL and PostgreSQL, showcasing how to define data models, perform database operations, and enhance your GraphQL server.",
+        "title": "Graphql Prisma Postgresql Setup | Complete GraphQL Series",
+        "embed": "https://www.youtube.com/embed/4jiTZGn34_c",
+        "duration": 1047
+      },
+      {
+        "notes": "This lecture focuses on refactoring GraphQL code for better organization, performance, and maintainability, providing techniques for optimizing your GraphQL applications.",
+        "title": "Refactoring GraphQL Code | Complete GraphQL Series",
+        "embed": "https://www.youtube.com/embed/MSJImC6cTkY",
+        "duration": 755
+      },
+      {
+        "notes": "This lecture covers implementing authentication in a GraphQL server using JWTs, demonstrating how to secure API access and authorize users based on their roles and permissions.",
+        "title": "Authentication with GraphQL Server | Complete GraphQL Series",
+        "embed": "https://www.youtube.com/embed/0XFoeaYnc20",
+        "duration": 1300
+      },
+      {
+        "notes": "This lecture delves deeper into JWT authentication in GraphQL, explaining how to use context to pass user information across resolvers and enforce access control.",
+        "title": "JWT Authentication and Context in GraphQL",
+        "embed": "https://www.youtube.com/embed/8atiBUsAOcI",
+        "duration": 817
+      }
+    ],
+    "name": "Mastering Node.js",
+    "overview": "This comprehensive Node.js course covers everything from the fundamentals to advanced concepts, empowering you to build robust, scalable, and modern web applications.  Learn how to use Node.js for everything from building simple web servers and APIs to crafting complex applications with databases, authentication, and real-time features."
+  },
+  "author": "Piyush Garg",
+  "channel": "https://www.youtube.com/channel/UCf9T51_FmMlfhiGpoes0yFA",
+  "duration": 57841
+}
