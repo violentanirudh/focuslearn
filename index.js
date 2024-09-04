@@ -3,7 +3,9 @@ const path = require("path");
 const app = express();
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
-require('dotenv').config()
+require("dotenv").config();
+
+const sendEmail = require("./controllers/verifymail");
 
 // Database
 mongoose
@@ -17,7 +19,9 @@ const AuthRouter = require("./routes/auth");
 const AdminRouter = require("./routes/admin");
 
 // Middlewares
-const { checkForAuthenticationCookie } = require("./middlewares/authentication");
+const {
+  checkForAuthenticationCookie,
+} = require("./middlewares/authentication");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));

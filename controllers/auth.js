@@ -20,12 +20,12 @@ const postSignIn = async (req, res) => {
   }
 };
 
-const signout = (req, res) => {
+const signOut = (req, res) => {
   res.clearCookie("token").redirect("/");
 };
 
 module.exports = {
   postSignUp,
   postSignIn,
-  signout,
+  signOut,
 };

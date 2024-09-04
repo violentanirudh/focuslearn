@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const { postSignIn, postSignUp, signout } = require("../controllers/auth");
+const { postSignIn, postSignUp, signOut } = require("../controllers/auth");
+const verifyEmail = require("../controllers/verifymail");
 
 router.post("/signin", postSignIn);
 router.post("/signup", postSignUp);
-router.post("/signout", signout);
-// router.post('/verify', () => {})
+router.get("/signout", signOut);
+router.get("/verify", verifyEmail);
 // router.post('/reset', () => {})
 
 module.exports = router;
