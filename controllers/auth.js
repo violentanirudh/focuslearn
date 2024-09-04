@@ -1,5 +1,7 @@
 const User = require("../models/user");
 
+// VALIDATION IS REQUIRED
+
 const postSignUp = async (req, res) => {
   const { fullName, email, password } = req.body;
   await User.create({
@@ -20,6 +22,12 @@ const postSignIn = async (req, res) => {
   }
 };
 
+const verifyUser = async (req, res) => {
+  const { token } = req.query;
+  await User.findOneAndUpdate({ token }, { verified: true });
+  return res.redirect("/signin");
+}
+
 const signOut = (req, res) => {
   res.clearCookie("token").redirect("/");
 };
@@ -27,5 +35,6 @@ const signOut = (req, res) => {
 module.exports = {
   postSignUp,
   postSignIn,
+  verifyUser,
   signOut,
 };

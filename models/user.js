@@ -1,6 +1,7 @@
 const { createHmac, randomBytes } = require("crypto");
 const { Schema, model } = require("mongoose");
 const { createTokenForUser } = require("../services/authentication");
+const { sendMail } = require("../services/mailer");
 
 const userSchema = new Schema(
   {
@@ -20,9 +21,12 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    profileImageURL: {
+    token: {
       type: String,
-      default: "/public/default1.jpg",
+    },
+    verified: {
+      type: Boolean,
+      default: false,
     },
     role: {
       type: String,
@@ -38,16 +42,24 @@ userSchema.pre("save", function (next) {
 
   if (!user.isModified("password")) return;
 
-  const salt = randomBytes(16).toString();
+  const salt = randomBytes(16).toString('hex');
   const hashedPassword = createHmac("sha256", salt)
     .update(user.password)
     .digest("hex");
 
   this.salt = salt;
   this.password = hashedPassword;
+  this.token =  randomBytes(32).toString('hex')
 
   next();
 });
+
+userSchema.post("save", async function () {
+  const user = this;
+  const subject = "Verification Email";
+  const html = `<a href="${process.env.DOMAIN}/auth/verify?token=${user.token}">Click here to verify your email</a>`;
+  await sendMail("verification", user.email, subject, html);
+})
 
 userSchema.static(
   "matchPasswordAndGenerateToken",

@@ -5,8 +5,6 @@ const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-const sendEmail = require("./controllers/verifymail");
-
 // Database
 mongoose
   .connect(process.env.MONGODB_URI)
