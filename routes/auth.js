@@ -5,12 +5,12 @@ const {
   postSignUp,
   verifyUser,
   signOut,
-  postCourse,
+  generatePlaylistId,
 } = require("../controllers/auth");
 
 router.post("/signin", postSignIn);
 router.post("/signup", postSignUp);
 router.get("/signout", signOut);
 router.get("/verify", verifyUser);
-router.post("/importCourse", postCourse);
+router.post("/importCourse", generatePlaylistId);
 module.exports = router;

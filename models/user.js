@@ -82,16 +82,6 @@ userSchema.static(
   }
 );
 
-const courseSchema = new Schema({
-  playlistLink: {
-    type: "string",
-  },
-});
-
 const User = model("user", userSchema);
-const Course = model("course", courseSchema);
 
-module.exports = {
-  User,
-  Course,
-};
+module.exports = User;
