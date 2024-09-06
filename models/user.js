@@ -42,14 +42,14 @@ userSchema.pre("save", function (next) {
 
   if (!user.isModified("password")) return;
 
-  const salt = randomBytes(16).toString('hex');
+  const salt = randomBytes(16).toString("hex");
   const hashedPassword = createHmac("sha256", salt)
     .update(user.password)
     .digest("hex");
 
   this.salt = salt;
   this.password = hashedPassword;
-  this.token =  randomBytes(32).toString('hex')
+  this.token = randomBytes(32).toString("hex");
 
   next();
 });
@@ -59,7 +59,7 @@ userSchema.post("save", async function () {
   const subject = "Verification Email";
   const html = `<a href="${process.env.DOMAIN}/auth/verify?token=${user.token}">Click here to verify your email</a>`;
   await sendMail("verification", user.email, subject, html);
-})
+});
 
 userSchema.static(
   "matchPasswordAndGenerateToken",
@@ -82,6 +82,16 @@ userSchema.static(
   }
 );
 
-const User = model("user", userSchema);
+const courseSchema = new Schema({
+  playlistLink: {
+    type: "string",
+  },
+});
 
-module.exports = User;
+const User = model("user", userSchema);
+const Course = model("course", courseSchema);
+
+module.exports = {
+  User,
+  Course,
+};

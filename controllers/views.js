@@ -12,11 +12,16 @@ const renderSignUp = (req, res) => {
 
 const renderAdminHome = (req, res) => {
   return res.render("admin/home");
-}
+};
+
+const renderImportCourse = (req, res) => {
+  return res.render("importCourse");
+};
 
 module.exports = {
   renderHome,
   renderSignIn,
   renderSignUp,
-  renderAdminHome
+  renderAdminHome,
+  renderImportCourse,
 };

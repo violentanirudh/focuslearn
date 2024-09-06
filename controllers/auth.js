@@ -1,4 +1,4 @@
-const User = require("../models/user");
+const { User, Course } = require("../models/user");
 
 // VALIDATION IS REQUIRED
 
@@ -26,10 +26,18 @@ const verifyUser = async (req, res) => {
   const { token } = req.query;
   await User.findOneAndUpdate({ token }, { verified: true });
   return res.redirect("/signin");
-}
+};
 
 const signOut = (req, res) => {
   res.clearCookie("user").redirect("/");
+};
+
+const postCourse = async (req, res) => {
+  const { playlistLink } = req.body;
+  await Course.create({
+    playlistLink,
+  });
+  return res.redirect("/");
 };
 
 module.exports = {
@@ -37,4 +45,5 @@ module.exports = {
   postSignIn,
   verifyUser,
   signOut,
+  postCourse,
 };

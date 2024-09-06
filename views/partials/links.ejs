@@ -7,6 +7,7 @@
             <a href="/signup" class="link">Sign Up</a>
         <% } else { %>
             <p class="link">Welcome <%= locals.user.fullName %></p>
+            <a href="/importCourse" class="link">Import Course</a>
             <a href="/auth/signout" class="link">Sign Out</a>
         <% } %>
     </div>

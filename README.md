@@ -32,5 +32,6 @@ $ npm run tailwind
 14. Anirudh : Admin Routes
 15. Tanmay  : Added signOut functionality
 16. Tanmay  : Added basic verify email code with error, to be rectified
-17: Anirudh : Added Email Verification. Extracted Mailer logic in /services/mail
-18: Anirudh : Modify Auth and SignOut. Built User Authorization for admin panel.
+17. Anirudh : Added Email Verification. Extracted Mailer logic in /services/mail
+18. Anirudh : Modify Auth and SignOut. Built User Authorization for admin panel.
+19. Tanmay : Added functionality to import playlist
