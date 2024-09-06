@@ -18,7 +18,8 @@ const AdminRouter = require("./routes/admin");
 
 // Middlewares
 const {
-  checkForAuthenticationCookie,
+  checkAuthentication,
+  checkAuthorization,
 } = require("./middlewares/authentication");
 
 app.set("view engine", "ejs");
@@ -26,14 +27,14 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use(express.urlencoded({ extended: false }));
 app.use("/public", express.static(path.join(__dirname, "public")));
-app.use(checkForAuthenticationCookie("token"));
+app.use(cookieParser());
+app.use(checkAuthentication("token"));
 
 // Routes
 
 app.use("/", ViewsRouter);
 app.use("/auth", AuthRouter);
-app.use("/admin", AdminRouter);
-app.use(cookieParser());
+app.use("/admin", checkAuthorization(["ADMIN"]), AdminRouter);
 
 // Server
 

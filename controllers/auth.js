@@ -16,7 +16,7 @@ const postSignIn = async (req, res) => {
   const { email, password } = req.body;
   try {
     const token = await User.matchPasswordAndGenerateToken(email, password);
-    return res.cookie("token", token).redirect("/");
+    return res.cookie("user", token).redirect("/");
   } catch (err) {
     return res.redirect("/signin");
   }
@@ -29,7 +29,7 @@ const verifyUser = async (req, res) => {
 }
 
 const signOut = (req, res) => {
-  res.clearCookie("token").redirect("/");
+  res.clearCookie("user").redirect("/");
 };
 
 module.exports = {

@@ -1,6 +1,14 @@
-<div class="my-4 space-x-4">
+<div class="my-4 space-x-4 flex">
     <a href="/" class="link">Home</a>
-    <a href="/signin" class="link">Sign In</a>
-    <a href="/signup" class="link">Sign Up</a>
-    <a href="/auth/signout" class="link">Sign Out</a>
+    
+    <div class="flex items-center gap-4">
+        <% if (typeof (locals.user) == 'undefined') { %>
+            <a href="/signin" class="link">Sign In</a>
+            <a href="/signup" class="link">Sign Up</a>
+        <% } else { %>
+            <p class="link">Welcome <%= locals.user.fullName %></p>
+            <a href="/auth/signout" class="link">Sign Out</a>
+        <% } %>
+    </div>
+    
 </div>
