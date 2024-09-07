@@ -14,6 +14,7 @@ mongoose
 // Routers
 const ViewsRouter = require("./routes/views");
 const AuthRouter = require("./routes/auth");
+const ProtectedRouter = require("./routes/protected");
 const AdminRouter = require("./routes/admin");
 
 // Middlewares
@@ -34,6 +35,7 @@ app.use(checkAuthentication("token"));
 
 app.use("/", ViewsRouter);
 app.use("/auth", AuthRouter);
+app.use("/", checkAuthorization(['USER', 'ADMIN']), ProtectedRouter)
 app.use("/admin", checkAuthorization(["ADMIN"]), AdminRouter);
 
 // Server

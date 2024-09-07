@@ -1,6 +1,5 @@
 const User = require("../models/user");
 const Request = require("../models/requests");
-const shortid = require("shortid");
 
 // VALIDATION IS REQUIRED
 
@@ -34,25 +33,9 @@ const signOut = (req, res) => {
   res.clearCookie("user").redirect("/");
 };
 
-async function generatePlaylistId(req, res) {
-  const body = req.body;
-  if (!body.course) return res.status(400).json({ error: "URL is required" });
-  const playListID = shortid();
-
-  await Request.create({
-    playlistLink: req.body.course,
-    requestedBy: req.user._id,
-    playlistId: playListID,
-  });
-  return res.render("home", {
-    Id: playListID,
-  });
-}
-
 module.exports = {
   postSignUp,
   postSignIn,
   verifyUser,
   signOut,
-  generatePlaylistId,
 };

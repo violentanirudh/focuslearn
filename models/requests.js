@@ -3,14 +3,6 @@ const mongoose = require("mongoose");
 
 const requestSchema = new Schema(
   {
-    playlistLink: {
-      type: String,
-      required: true,
-    },
-    status: {
-      type: String,
-      default: "default",
-    },
     requestedBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "user",
@@ -19,6 +11,10 @@ const requestSchema = new Schema(
       type: String,
       required: true,
       unique: true,
+    },
+    status: {
+      type: String,
+      default: "pending",
     },
   },
   { timestamps: true }

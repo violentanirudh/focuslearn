@@ -14,8 +14,8 @@ const renderAdminHome = (req, res) => {
   return res.render("admin/home");
 };
 
-const renderImportCourse = (req, res) => {
-  return res.render("importCourse");
+const renderImport = (req, res) => {
+  return res.render("import");
 };
 
 module.exports = {
@@ -23,5 +23,5 @@ module.exports = {
   renderSignIn,
   renderSignUp,
   renderAdminHome,
-  renderImportCourse,
+  renderImport,
 };

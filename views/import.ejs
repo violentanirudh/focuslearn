@@ -11,6 +11,17 @@
     <h1>FocusLearn</h1>
     <p>Master Your Skills, Fuel Your Passion, and Get Certified!</p>
     <%- include('partials/links') %>
+
+    <h2 class="font-semibold">Import Course</h2>
+    <form method="post" action="/import" class="mt-4 w-full flex items-end gap-2">
+
+        <div>
+            <label for="email" class="form-label">YouTube Playlist URL</label>
+            <input type="url" name="course" class="input" placeholder="https://youtube.com/playlist">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
     
 </body>
 </html>
