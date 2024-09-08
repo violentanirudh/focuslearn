@@ -1,11 +1,12 @@
 const { Schema, model } = require("mongoose");
 const mongoose = require("mongoose");
+const User = require("./user");
 
 const requestSchema = new Schema(
   {
     requestedBy: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "user",
+      ref: "User",
     },
     playlistId: {
       type: String,
@@ -20,6 +21,6 @@ const requestSchema = new Schema(
   { timestamps: true }
 );
 
-const Request = model("request", requestSchema);
+const Request = model("Request", requestSchema);
 
 module.exports = Request;
