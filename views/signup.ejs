@@ -12,6 +12,13 @@
     <p>Master Your Skills, Fuel Your Passion, and Get Certified!</p>
     <%- include('partials/links') %>
 
+    <% if (errors && errors.length > 0) { %>
+        <ul>
+          <% errors.forEach(function(error) { %>
+            <li><%= error %></li>
+          <% }) %>
+        </ul>
+      <% } %>
     <form class="my-6 space-y-4" action="/auth/signup" method="post">
 
         <div>
@@ -25,6 +32,10 @@
         <div>
             <label>Password</label>
             <input type="password" name="password" class="input" placeholder=".........">
+        </div>
+        <div>
+            <label>Confirm Password</label>
+            <input type="password" name="confirmPassword" class="input" placeholder=".........">
         </div>
         <button type="submit" class="btn btn-primary">Sign In</button>
 

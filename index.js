@@ -31,11 +31,16 @@ app.use("/public", express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
 app.use(checkAuthentication("token"));
 
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something broke!");
+});
+
 // Routes
 
 app.use("/", ViewsRouter);
 app.use("/auth", AuthRouter);
-app.use("/", checkAuthorization(['USER', 'ADMIN']), ProtectedRouter)
+app.use("/", checkAuthorization(["USER", "ADMIN"]), ProtectedRouter);
 app.use("/admin", checkAuthorization(["ADMIN"]), AdminRouter);
 
 // Server

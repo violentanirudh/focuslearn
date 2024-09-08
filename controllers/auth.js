@@ -1,16 +1,30 @@
 const User = require("../models/user");
 const Request = require("../models/requests");
+const { validationResult } = require("express-validator");
 
 // VALIDATION IS REQUIRED
 
 const postSignUp = async (req, res) => {
+  const errors = req.validationErrors || [];
+
+  if (errors.length > 0) {
+    // Re-render the form with errors and user input
+    res.render("signup", {
+      errors: errors,
+      name: req.body.name,
+      email: req.body.email,
+    });
+  } else {
+    res.redirect("/signup-success");
+  }
   const { fullName, email, password } = req.body;
   await User.create({
     fullName,
     email,
     password,
   });
-  return res.redirect("/signin");
+
+  res.redirect("/signup?success=true");
 };
 
 const postSignIn = async (req, res) => {
