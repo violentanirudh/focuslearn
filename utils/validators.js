@@ -1,7 +1,6 @@
-// utils/validators.js
 const { body, validationResult } = require("express-validator");
 
-// Validation rules for sign-in
+// Validation and sanitization rules for sign-in
 const signInValidationRules = () => {
   return [
     body("email")
@@ -10,7 +9,8 @@ const signInValidationRules = () => {
       .isLength({ max: 50 })
       .withMessage("Email must be at most 50 characters long.")
       .notEmpty()
-      .withMessage("Email is required."),
+      .withMessage("Email is required.")
+      .normalizeEmail(), // Sanitizes the email address
     body("password")
       .isLength({ min: 8 })
       .withMessage("Password must be at least 8 characters long.")
@@ -31,6 +31,7 @@ const signInValidationRules = () => {
   ];
 };
 
+// Validation and sanitization rules for sign-up
 const signUpValidationRules = () => {
   return [
     body("email")
@@ -39,7 +40,8 @@ const signUpValidationRules = () => {
       .isLength({ max: 50 })
       .withMessage("Email must be at most 50 characters long.")
       .notEmpty()
-      .withMessage("Email is required."),
+      .withMessage("Email is required.")
+      .normalizeEmail(), // Sanitizes the email address
 
     body("fullname")
       .isLength({ min: 3 })
@@ -49,8 +51,8 @@ const signUpValidationRules = () => {
       .notEmpty()
       .withMessage("Username is required.")
       .isAlphanumeric()
-      .withMessage("Name can only contain letters and numbers."),
-
+      .withMessage("Name can only contain letters and numbers.")
+      .trim(), // Sanitizes by trimming whitespace from the start and end
     body("password")
       .isLength({ min: 8 })
       .withMessage("Password must be at least 8 characters long.")
@@ -68,7 +70,6 @@ const signUpValidationRules = () => {
       )
       .notEmpty()
       .withMessage("Password is required."),
-
     body("confirmPassword")
       .exists()
       .withMessage("Confirm Password is required.")

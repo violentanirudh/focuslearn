@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FocusLearn | Sign In</title>
     <link rel="stylesheet" href="/public/css/styles.css">
+
 </head>
 <body class="bg-zinc-50 text-zinc-800 p-10">
     
@@ -12,13 +13,6 @@
     <p>Master Your Skills, Fuel Your Passion, and Get Certified!</p>
     <%- include('partials/links') %>
 
-    <% if (errors && errors.length > 0) { %>
-        <ul>
-          <% errors.forEach(function(error) { %>
-            <li><%= error %></li>
-          <% }) %>
-        </ul>
-      <% } %>
     <form class="my-6 space-y-4" action="/auth/signup" method="post">
 
         <div>

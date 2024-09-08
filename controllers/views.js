@@ -7,7 +7,7 @@ const renderSignIn = (req, res) => {
 };
 
 const renderSignUp = (req, res) => {
-  res.render("signup", { errors: [], name: "", email: "" });
+  res.render("signup");
 };
 
 const renderAdminHome = (req, res) => {

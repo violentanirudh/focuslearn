@@ -37,3 +37,4 @@ $ npm run tailwind
 19. Tanmay  : Added functionality to import playlist
 20. Anirudh : Modifying Import Playlist and enabling authorization.
 21. Tanmay : Added validator for sign-in and sign-up page, there exist an error
+22. Tanmay : Added Sanitization along with Validator
