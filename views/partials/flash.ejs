@@ -1,0 +1,24 @@
+<% if (flash && flash.length > 0) { %>
+    <div class="space-y-4">
+        <% flash.forEach(function(message) { %>
+            <div class="px-4 py-3 rounded flex items-center gap-2
+                <% if (message.type === 'error') { %>
+                    text-red-700 bg-red-100
+                <% } else if (message.type === 'success') { %>
+                    text-green-700 bg-green-200
+                <% } else if (message.type === 'info') { %>
+                    text-blue-700 bg-blue-100
+                <% } %>
+            ">
+                <% if (message.type === 'error') { %>
+                    <i data-feather="alert-circle" class="h-4 w-4"></i>                     
+                <% } else if (message.type === 'success') { %>
+                    <i data-feather="check" class="h-4 w-4"></i>                     
+                <% } else if (message.type === 'info') { %>
+                    <i data-feather="info" class="h-4 w-4"></i>                     
+                <% } %>
+                <%= message.text %>
+            </div>
+        <% }); %>
+    </div>
+<% } %>

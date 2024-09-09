@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FocusLearn | Sign In</title>
     <link rel="stylesheet" href="/public/css/styles.css">
-
+    <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body class="bg-zinc-50 text-zinc-800 p-10">
     
     <h1>FocusLearn</h1>
     <p>Master Your Skills, Fuel Your Passion, and Get Certified!</p>
     <%- include('partials/links') %>
+    <%- include('partials/flash') %>
 
     <form class="my-6 space-y-4" action="/auth/signup" method="post">
 
@@ -34,6 +35,10 @@
         <button type="submit" class="btn btn-primary">Sign In</button>
 
     </form>
+
+    <script>
+        feather.replace();
+    </script>
 
 </body>
 </html>

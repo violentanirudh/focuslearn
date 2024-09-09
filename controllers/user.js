@@ -1,5 +1,5 @@
 const axios = require('axios')
-const Requests = require('../models/requests')
+const Request = require('../models/request')
 
 async function handleImport(req, res) {
     const { course } = req.body;
@@ -18,7 +18,7 @@ async function handleImport(req, res) {
         });
             
         if (response.data.items.length > 0) {
-            await Requests.create({
+            await Request.create({
                 playlistId: list,
                 requestedBy: req.user._id,
             });

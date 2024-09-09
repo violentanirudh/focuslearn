@@ -36,5 +36,6 @@ $ npm run tailwind
 18. Anirudh : Modify Auth and SignOut. Built User Authorization for admin panel.
 19. Tanmay  : Added functionality to import playlist
 20. Anirudh : Modifying Import Playlist and enabling authorization.
-21. Tanmay : Added validator for sign-in and sign-up page, there exist an error
-22. Tanmay : Added Sanitization along with Validator
+21. Tanmay  : Added validator for sign-in and sign-up page, there exist an error
+22. Tanmay  : Added Sanitization along with Validator
+23. Anirudh : Added Flash (Alerts) for errors

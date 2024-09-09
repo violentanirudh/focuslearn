@@ -10,7 +10,7 @@ const {
   signInValidationRules,
   signUpValidationRules,
   validate,
-} = require("../utils/validators");
+} = require("../services/validators");
 
 router.post("/signin", signInValidationRules(), validate, postSignIn);
 router.post("/signup", signUpValidationRules(), validate, postSignUp);

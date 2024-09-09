@@ -3,6 +3,9 @@ const path = require("path");
 const app = express();
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
+const session = require("express-session");
+const flash = require("connect-flash");
+
 require("dotenv").config();
 
 // Database
@@ -26,6 +29,12 @@ const {
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
+app.use(session({
+  secret: 'somethingsecret',
+  resave: false,
+  saveUninitialized: true
+}))
+app.use(flash())
 app.use(express.urlencoded({ extended: false }));
 app.use("/public", express.static(path.join(__dirname, "public")));
 app.use(cookieParser());

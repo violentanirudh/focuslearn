@@ -11,23 +11,23 @@ const signInValidationRules = () => {
       .notEmpty()
       .withMessage("Email is required.")
       .normalizeEmail(), // Sanitizes the email address
-    body("password")
-      .isLength({ min: 8 })
-      .withMessage("Password must be at least 8 characters long.")
-      .isLength({ max: 128 })
-      .withMessage("Password must be at most 128 characters long.")
-      .matches(/[A-Z]/)
-      .withMessage("Password must contain at least one uppercase letter.")
-      .matches(/[a-z]/)
-      .withMessage("Password must contain at least one lowercase letter.")
-      .matches(/[0-9]/)
-      .withMessage("Password must contain at least one number.")
-      .matches(/[@$!%*?&#]/)
-      .withMessage(
-        "Password must contain at least one special character (e.g., !, @, #, $, %)."
-      )
-      .notEmpty()
-      .withMessage("Password is required."),
+    // body("password")
+    //   .isLength({ min: 8 })
+    //   .withMessage("Password must be at least 8 characters long.")
+    //   .isLength({ max: 128 })
+    //   .withMessage("Password must be at most 128 characters long.")
+    //   .matches(/[A-Z]/)
+    //   .withMessage("Password must contain at least one uppercase letter.")
+    //   .matches(/[a-z]/)
+    //   .withMessage("Password must contain at least one lowercase letter.")
+    //   .matches(/[0-9]/)
+    //   .withMessage("Password must contain at least one number.")
+    //   .matches(/[@$!%*?&#]/)
+    //   .withMessage(
+    //     "Password must contain at least one special character (e.g., !, @, #, $, %)."
+    //   )
+    //   .notEmpty()
+    //   .withMessage("Password is required."),
   ];
 };
 
@@ -43,7 +43,7 @@ const signUpValidationRules = () => {
       .withMessage("Email is required.")
       .normalizeEmail(), // Sanitizes the email address
 
-    body("fullname")
+    body("fullName")
       .isLength({ min: 3 })
       .withMessage("Name must be at least 3 characters long.")
       .isLength({ max: 50 })
@@ -53,6 +53,7 @@ const signUpValidationRules = () => {
       .isAlphanumeric()
       .withMessage("Name can only contain letters and numbers.")
       .trim(), // Sanitizes by trimming whitespace from the start and end
+      
     body("password")
       .isLength({ min: 8 })
       .withMessage("Password must be at least 8 characters long.")
@@ -82,7 +83,8 @@ const signUpValidationRules = () => {
 const validate = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
+    req.failure = true
+    req.flash('flash', { type: 'info', text: errors.array()[0].msg });
   }
   next();
 };
