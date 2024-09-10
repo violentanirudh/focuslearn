@@ -29,13 +29,13 @@
 //                     "title": {
 //                       "type": "string"
 //                     },
-//                     "notes": {
+//                     "description": {
 //                       "type": "string"
 //                     }
 //                   },
 //                   "required": [
 //                     "title",
-//                     "notes"
+//                     "description"
 //                   ]
 //                 }
 //               }
@@ -63,7 +63,7 @@
 
 //     Name : Generate a 40 character or less Course Name (Example: 'Introduction To Python' or 'Mastering Docker').
 //     Overview : Generate a 200 character or less Course Overview.
-//     Lectures : Generate a list of lectures with a title (10 words maximum, use punctuation) and notes (400 words maximum) for each lecture based on the given Input Data.
+//     Lectures : Generate a list of lectures with a title (10 words maximum, use punctuation) and description (400 words maximum) for each lecture based on the given Input Data.
 //     `
 // }
 
@@ -174,6 +174,7 @@
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const axios = require("axios");
 const fs = require("fs");
+const path = require("path");
 require("dotenv").config();
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
@@ -183,46 +184,62 @@ const model = genAI.getGenerativeModel({
   generationConfig: {
     responseMimeType: "application/json",
     responseSchema: {
-        "type": "object",
-        "properties": {
-          "course": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "type": "string"
-              },
-              "overview": {
-                "type": "string"
-              },
-              "lectures": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "title": {
-                      "type": "string"
-                    },
-                    "notes": {
-                      "type": "string"
-                    }
+      "type": "object",
+      "properties": {
+        "course": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "overview": {
+              "type": "string"
+            },
+            "lectures": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
                   },
-                  "required": [
-                    "title",
-                    "notes"
-                  ]
-                }
+                  "description": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "title",
+                  "description"
+                ]
               }
             },
-            "required": [
-              "name",
-              "overview",
-              "lectures"
-            ]
-          }
-        },
-        "required": [
-          "course"
-        ]
+            "level": {
+              "type": "string",
+              "enum": [
+                "beginner",
+                "intermediate",
+                "advance"
+              ]
+            },
+            "category": {
+              "type": "string",
+              "enum": [
+                "programming",
+                "mathematics",
+                "productivity"
+              ]
+            }
+          },
+          "required": [
+            "name",
+            "overview",
+            "lectures"
+          ]
+        }
+      },
+      "required": [
+        "course"
+      ]
     }
   },
 });
@@ -237,7 +254,9 @@ const generatePrompt = (data) => {
 
     Name : Generate a 40 character or less Course Name (Example: 'Introduction To Python' or 'Mastering Docker').
     Overview : Generate a 200 character or less Course Overview.
-    Lectures : Generate a list of lectures with a title (10 words maximum, use punctuation) and notes (400 words maximum) for each lecture based on the given Input Data.
+    Lectures : Generate a list of lectures with a title (10 words maximum, use punctuation) and description (400 words maximum) for each lecture based on the given Input Data.
+    Level : Choose from 'beginner', 'intermediate', 'advance' based on titles provided.
+    Category : Choose from 'programming', 'mathematics', 'productivity' based on titles provided.
     `;
 };
 
@@ -338,12 +357,25 @@ const processPlaylist = async (id) => {
         lecture.duration = videoLength[index];
       });
     }
+    
+    const file = path.join(__dirname, '../public/courses', `${id}.json`);
+    fs.writeFileSync(file, JSON.stringify(content))
 
-    fs.writeFileSync(`./serverless/content/${id}.json`, JSON.stringify(content))
+    return { 
+      channel, duration,
+      instructor: content.author,
+      lectures: videoLength.length, 
+      title: content.course.name, 
+      overview: content.course.overview,
+      category: content.course.category,
+      level: content.course.level
+    };
+
   } catch (error) {
     console.log(error);
   }
 };
 
-const playlistId = "PLinedj3B30sDby4Al-i13hQJGQoRQDfPo";
-processPlaylist(playlistId);
+module.exports = {
+  processPlaylist
+}

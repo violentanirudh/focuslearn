@@ -5,9 +5,9 @@
 
     <%- include('./partials/sidebar') %>
 
-    <div id="main" class="bg-gray-100 text-gray-800 p-6 font-sans w-full">
+    <div id="main" class="bg-gray-100 text-gray-800 p-6 font-sans max-w-4xl mx-auto space-y-8">
 
-      <div class="mb-6">
+      <div class="">
         <div class="flex items-center mb-2">
           <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
           <h2 class="font-semibold text-gray-800">Dashboard</h2>
@@ -16,7 +16,7 @@
         <p class="text-sm text-gray-600">Summary of FocusLearn</p>
       </div>
       
-      <div class="grid grid-cols-4 gap-4 mb-6">
+      <div class="grid grid-cols-4 gap-4">
         <div class="bg-white p-4 rounded-lg shadow">
           <h3 class="text-sm font-medium text-gray-500 mb-2">Active Users</h3>
           <p class="text-3xl font-bold">405</p>
@@ -34,10 +34,8 @@
           <p class="text-3xl font-bold">98.5%</p>
         </div>
       </div>
-      
-      <div class="w-full flex justify-between gap-6">
-        
-        <div class="bg-white shadow-md rounded-lg w-3/5 overflow-hidden">
+             
+      <div class="bg-white shadow-md rounded-lg w-full overflow-hidden">
           <div class="px-6 py-4 border-b border-gray-200">
             <h2 class="text-xl font-semibold text-gray-800">Course Requests</h2>
           </div>
@@ -63,7 +61,7 @@
                       </span>
                     </td>
                     <td class="py-4 text-right">
-                      <button class="p-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-colors duration-200 mr-2">
+                      <button class="p-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-colors duration-200 mr-2" onclick="window.location = `/admin/request/<%= element._id %>`">
                         <i data-feather="eye" class="w-4 h-4"></i>
                       </button>
                       <button class="p-2 rounded bg-green-600 text-white hover:bg-green-700 transition-colors duration-200 mr-2">
@@ -78,9 +76,10 @@
               </tbody>
             </table>
           </div>
-        </div>
+      </div>
 
-        <div class="bg-white shadow-md rounded-lg overflow-hidden w-2/5">
+      <div class="w-full flex justify-between gap-6">
+        <div class="bg-white shadow-md rounded-lg overflow-hidden w-3/5">
           <div class="px-6 py-4 border-b border-gray-200">
             <h2 class="text-xl font-semibold text-gray-800">Recent Activities</h2>
           </div>
@@ -96,9 +95,9 @@
               <% } %>
             </ul>
           </div>
-        </div>
-
       </div>
+
+    </div>
  
   <script>
     feather.replace();

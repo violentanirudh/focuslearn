@@ -2,6 +2,7 @@ const { createHmac, randomBytes } = require("crypto");
 const { Schema, model } = require("mongoose");
 const { createTokenForUser } = require("../services/authentication");
 const { sendMail } = require("../services/mailer");
+const Course = require("./course");
 
 const userSchema = new Schema(
   {
@@ -33,6 +34,9 @@ const userSchema = new Schema(
       enum: ["USER", "ADMIN"],
       default: "USER",
     },
+    courses: {
+      type: [{ type: Schema.Types.ObjectId, ref: "Course" }]
+    }
   },
   { timestamps: true }
 );

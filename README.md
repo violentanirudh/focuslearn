@@ -39,3 +39,4 @@ $ npm run tailwind
 21. Tanmay  : Added validator for sign-in and sign-up page, there exist an error
 22. Tanmay  : Added Sanitization along with Validator
 23. Anirudh : Added Flash (Alerts) for errors
+24. Anirudh : Added Courses Generator
