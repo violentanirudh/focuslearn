@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Side Navbar</title>
+  <script src="https://fonts.google.com/specimen/Quicksand"></script>
+  <script src="https://hostingarena-co-in.github.io/haicons/haicons/icons.css"></script>
+  <!-- Tailwind CSS CDN link -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Font Awesome CDN for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+    
+    * {
+      font-family: 'Space Grotesk';
+    }
+
+    /* Sidebar styles */
+    .sidebar {
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 1000;
+    }
+
+    .sidebar-open {
+      transform: translateX(0);
+    }
+
+    /* Button styles */
+    .sidebar-button {
+      transition: transform 0.3s ease;
+    }
+    
+    .button-open {
+      transform: rotate(90deg);
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+
+  <!-- Button to toggle the sidebar -->
+  <button id="sidebarToggle" class="p-4 bg-blue-500 text-white fixed top-4 left-4 rounded-full shadow-lg focus:outline-none z-50">
+    <i id="sidebarIcon" class="fas fa-bars"></i>
+  </button>
+
+  <!-- Sidebar container -->
+  <div id="sidebar" class="sidebar bg-white h-screen p-6 flex flex-col justify-between shadow-lg fixed top-0 left-0 w-64">
+    <!-- Brand Logo or Title -->
+    <div class="flex items-center space-x-4 mb-6">
+      <svg class="h-8 w-8" aria-label="Menu" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+      <span class="text-2xl font-bold">FocusLearn</span>
+    </div>
+    <!-- Navigation links -->
+    <div>
+      <a href="/home" class="flex items-center py-3 px-4 mb-2 hover:bg-blue-300 hover:shadow-xl focus:bg-blue-400 rounded-lg transition duration-300">
+        <i class="fas fa-home mr-3"></i> Home
+      </a>
+      <a href="#" class="flex items-center py-3 px-4 mb-2 hover:bg-indigo-300 hover:shadow-xl focus:bg-indigo-400 rounded-lg transition duration-300">
+        <i class="fas fa-user mr-3"></i> My Account
+      </a>
+      <a href="#" class="flex items-center py-3 px-4 mb-2 hover:bg-green-400 hover:shadow-xl focus:bg-green-500 rounded-lg transition duration-300">
+        <i class="fa-solid fa-square-poll-vertical mr-3"></i> Portfolio
+      </a>
+      <a href="#" class="flex items-center py-3 px-4 mb-2 hover:bg-red-400 hover:shadow-xl focus:bg-red-500 rounded-lg transition duration-300">
+        <i class="fas fa-book mr-3"></i> My Courses
+      </a>
+      <a href="#" class="flex items-center py-3 px-4 mb-2 hover:bg-yellow-300 hover:shadow-xl focus:bg-yellow-400 rounded-lg transition duration-300">
+        <i class="fa-solid fa-circle-check mr-3"></i> Quiz
+      </a>
+    </div>
+    <!-- Logout link -->
+    <a href="/signout" class="flex items-center py-3 px-4 text-white bg-black hover:shadow-xl rounded-lg transition duration-300">
+      <i class="fas fa-sign-out-alt mr-3"></i> Logout
+    </a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const sidebar = document.getElementById('sidebar');
+      const sidebarToggle = document.getElementById('sidebarToggle');
+      const sidebarIcon = document.getElementById('sidebarIcon');
+
+      sidebarToggle.addEventListener('click', function() {
+        sidebar.classList.toggle('sidebar-open');
+        sidebarIcon.classList.toggle('fa-bars');
+        sidebarIcon.classList.toggle('fa-times');
+      });
+    });
+  </script>
+</body>
+</html>

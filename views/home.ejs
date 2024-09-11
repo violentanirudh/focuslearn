@@ -3,54 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FocusLearn</title>
-    <link rel="stylesheet" href="/public/css/styles.css">
-    <script src="https://unpkg.com/feather-icons"></script>
+    <title>Homepage</title>
+
+    <script src="https://fonts.google.com/specimen/Quicksand"></script>
+    <script src="https://hostingarena-co-in.github.io/haicons/haicons/icons.css"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body class="bg-zinc-50 text-zinc-800 p-10">
-    
-    <h1>FocusLearn</h1>
-    <p>Master Your Skills, Fuel Your Passion, and Get Certified!</p>
-    <%- include('partials/links') %>
-    
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
 
-    <div class="space-y-2 my-10">
+    * {
+        font-family: 'Space Grotesk';
+    }
+</style>
+<body class="bg-gray-100">
 
-        <div class="flex gap-4">
-
-            <button class="border-2 border-black bg-rose-300 px-6 py-3 transition duration-100 hover:ring-4 hover:ring-rose-200">Rose</button>
-            <button class="border-2 border-black bg-lime-300 px-6 py-3 transition duration-100 hover:ring-4 hover:ring-lime-200">Lime</button>
-            <button class="border-2 border-black bg-indigo-300 px-6 py-3 transition duration-100 hover:ring-4 hover:ring-indigo-200">Indigo</button>
-            <button class="border-2 border-black bg-gray-300 px-6 py-3 transition duration-100 hover:ring-4 hover:ring-gray-200">Gray</button>
-            <button class="border-2 border-black bg-amber-300 px-6 py-3  transition duration-100 hover:ring-4 hover:ring-amber-200">Amber</button>
-            <button class="border-2 border-black bg-green-400 px-6 py-3  transition duration-100 hover:ring-4 hover:ring-green-200">Green</button>
-        
+    <!-- Navbar -->
+    <nav class="bg-white shadow p-4">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="text-gray-800 font-bold text-xl">FocusLearn</div>
+            <div class="hidden md:flex space-x-4">
+                <a href="/views/course.ejs" class="text-gray-600 hover:text-gray-800">My Courses</a>
+                <a href="Portfolio.ejs" class="text-gray-600 hover:text-gray-800">Profile</a>
+                <a href="/views/myAccount.ejs" class="text-gray-600 hover:text-gray-800">My Account</a>
+                <a href="/views/signOut.ejs" class="text-gray-600 hover:text-gray-800">Log Out</a>
+            </div>
+            <div class="md:hidden">
+                <button class="text-gray-800 focus:outline-none" onclick="toggleMenu()">☰</button>
+            </div>
         </div>
-
-    </div>
-
-    <div class="space-y-2 my-10">
-
-        <div class="flex gap-4">
-
-            <label class="flex justify-between items-center bg-white px-2 border-2 border-black focus-within:ring-4 focus-within:ring-red-200">
-                <i data-feather="user" class="w-4 h-4"></i>
-                <input type="text" class="p-2 outline-none" placeholder="Invalid">
-            </label>
-
-            <label class="flex justify-between items-center bg-white px-2 border-2 border-black focus-within:ring-4 focus-within:ring-green-200">
-                <i data-feather="user" class="w-4 h-4"></i>
-                <input type="text" class="p-2 outline-none" placeholder="Valid">
-            </label>
-
+        <div class="md:hidden" id="mobile-menu" style="display: none;">
+            <a href="/views/course.ejs" class="flex items-center block text-gray-600 hover:bg-indigo-300 hover:text-gray-800 px-4 py-2 rounded-lg transition duration-300">
+                <i class="fas fa-book mr-3"></i> My courses
+              </a>
+            <a href="#" class="flex items-center block text-gray-600 hover:bg-blue-300 hover:text-gray-800 px-4 py-2 rounded-lg transition duration-300">
+                <i class="fa-solid fa-briefcase mr-3"></i>  Portfolio
+            </a>
+            <a href="/views/myAccount.ejs" class="flex items-center block text-gray-600 hover:bg-green-400 hover:text-gray-800 px-4 py-2 rounded-lg transition duration-300">
+                <i class="fas fa-user mr-3"></i> My Account
+            </a>
+            <a href="/views/signOut.ejs" class="flex items-center block text-gray-600 hover:bg-red-400 hover:text-gray-800 px-4 py-2 rounded-lg transition duration-300">
+                <i class="fas fa-sign-out-alt mr-3"></i> Logout
+            </a>
         </div>
+    </nav>
 
+    <!-- Main Content -->
+    <div class="container mx-auto p-9">
+
+        <main class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Left Column (Continue Learning & Recommended Courses) -->
+            <div class="col-span-2">
+                <!-- Continue Learning Section -->
+                <h2 class="text-xl font-semibold mb-4 text-blue-600">Continue Learning</h2>
+                <div class="bg-white shadow p-4 rounded-lg mb-6 border-2 border-gray-600">
+                    <h3 class="font-semibold mb-2 text-gray-800">Course Card</h3>
+                    <p class="text-sm text-gray-600 mb-2">Details related to course</p>
+                    
+                </div>
+
+                <!-- Recommended Courses Section -->
+                <h2 class="text-xl font-semibold mb-4 text-blue-600">Recommended Courses</h2>
+                <div class="space-y-4">
+                    <div class="bg-white shadow p-4 rounded-lg border-2 border-gray-600">
+                        <h3 class="font-semibold mb-2 text-gray-800">Course Card</h3>
+                        <p class="text-sm text-gray-600">Details related to course</p>
+                    </div>
+                    <div class="bg-white shadow p-4 rounded-lg border-2 border-gray-600">
+                        <h3 class="font-semibold mb-2 text-gray-800">Course Card</h3>
+                        <p class="text-sm text-gray-600">Details related to course</p>
+                    </div>
+                    <div class="bg-white shadow p-4 rounded-lg border-2 border-gray-600">
+                        <h3 class="font-semibold mb-2 text-gray-800">Course Card</h3>
+                        <p class="text-sm text-gray-600">Details related to course</p>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+
+            <!-- Right Column (Stats & Graphs) -->
+            <div>
+                <!-- Stats Section -->
+                <div class="bg-white shadow p-4 rounded-lg w-full mb-6 flex items-center justify-between border-2 border-gray-600">
+                    <div class="text-center ">
+                        <p class="text-2xl font-bold text-gray-800">No of</p>
+                        <p class="text-sm text-gray-600">Days</p>
+                    </div>
+                </div>
+
+                <!-- Graph Section -->
+                <div class="bg-white shadow w-full p-6 rounded-lg mb-6 border-2 border-gray-600">
+                    <p class="font-semibold mb-2 text-gray-800">Graph</p>
+                </div>
+
+                <!-- Badges Section -->
+                <div class="bg-white shadow w-full p-6 rounded-lg border-2 border-gray-600">
+                    <p class="font-semibold mb-2 text-gray-800">Badges</p>
+                    <div class="flex space-x-2">
+                       
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
-
-    <%- include('./partials/feedback') %>
 
     <script>
-        feather.replace();
+        function toggleMenu() {
+            var menu = document.getElementById("mobile-menu");
+            if (menu.style.display === "none") {
+                menu.style.display = "block";
+            } else {
+                menu.style.display = "none";
+            }
+        }
     </script>
 
 </body>

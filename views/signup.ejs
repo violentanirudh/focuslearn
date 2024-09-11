@@ -3,42 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FocusLearn | Sign In</title>
-    <link rel="stylesheet" href="/public/css/styles.css">
-    <script src="https://unpkg.com/feather-icons"></script>
+    <title>Sign Up</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-zinc-50 text-zinc-800 p-10">
-    
-    <h1>FocusLearn</h1>
-    <p>Master Your Skills, Fuel Your Passion, and Get Certified!</p>
-    <%- include('partials/links') %>
-    <%- include('partials/flash') %>
-
-    <form class="my-6 space-y-4" action="/auth/signup" method="post">
-
-        <div>
-            <label for="fullName" class="form-label">Full Name</label>
-            <input type="text" name="fullName" class="input" placeholder="John Doe">
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-2xl w-96 border-2 border-gray-600">
+        
+        <h2 class="text-2xl font-bold mb-6 text-center">Sign Up</h2>
+        
+        <!-- <button id="googleSignUp" class="w-full bg-white border border-gray-500 text-gray-700 py-2 px-4 rounded-md flex items-center justify-center mb-4 hover:bg-gray-100 transition duration-300">
+            <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            Sign up with Google
+        </button> -->
+        
+        <div class="flex items-center my-4">
+            <hr class="flex-1 border-gray-300">
+            <!-- <span class="px-3 text-gray-500 text-sm">or</span> -->
+            <hr class="flex-1 border-gray-300">
         </div>
-        <div>
-            <label>Email Address</label>
-            <input type="email" name="email" class="input" placeholder="johndoe@example.com">
-        </div>
-        <div>
-            <label>Password</label>
-            <input type="password" name="password" class="input" placeholder=".........">
-        </div>
-        <div>
-            <label>Confirm Password</label>
-            <input type="password" name="confirmPassword" class="input" placeholder=".........">
-        </div>
-        <button type="submit" class="btn btn-primary">Sign In</button>
-
-    </form>
+        
+        <form id="emailSignUpForm">
+          <div class="mb-4">
+                <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>
+                <input type="name" id="name" name="name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                <input type="email" id="email" name="email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+            <div class="mb-6">
+                <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                <input type="password" id="password" name="password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+            <button type="submit" id="emailSignUp" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">Sign Up</button>
+        </form>
+        
+        <p class="mt-4 text-sm text-center text-gray-600">
+            Already have an account? <a href="/signin" class="text-blue-500 hover:underline">Log in</a>
+        </p>
+    </div>
 
     <script>
-        feather.replace();
-    </script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const googleSignUpButton = document.getElementById('googleSignUp');
+            const emailSignUpForm = document.getElementById('emailSignUpForm');
 
+            googleSignUpButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('Google Sign Up button clicked');
+                
+            });
+
+            emailSignUpForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                
+                console.log('Email Sign Up form submitted');
+                console.log('Email:', email);
+                console.log('Password:', password);
+                
+            });
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FocusLearn</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://fonts.google.com/specimen/Quicksand"></script>
+    <script src="https://hostingarena-co-in.github.io/haicons/haicons/icons.css"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+* {
+  font-family: 'Space Grotesk'
+}
+</style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4F46E5',
+            secondary: '#10B981',
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 text-gray-800">
+  <!-- Navbar -->
+  <nav class="bg-white">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-4">
+        <svg class="h-8 w-8 " aria-label="Menu" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <span class="text-2xl font-bold ">FocusLearn</span>
+      </div>
+      <div class="flex items-center space-x-4">
+        <svg class="h-6 w-6 text-gray-900" aria-label="Notifications" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+        </svg>
+        <div class="flex items-center space-x-2">
+          <span class="font-semibold text-gray-900">Alex Nove</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Video Player and Description -->
+      <div class="lg:w-2/3">
+        <div class="bg-white border-2 border-gray-800 rounded-lg overflow-hidden shadow-none transition-transform duration-300  ">
+          <div class="aspect-w-16 aspect-h-9 bg-gray-800 flex items-center justify-center group cursor-pointer">
+            <svg class="h-20 w-20 text-white opacity-75 transition-transform duration-300 transform group-hover:scale-110" aria-label="Play video" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <div class="p-6">
+            <h2 class="text-3xl font-bold mb-4 text-gray-800">Introduction to UX Design</h2>
+            <p class="text-gray-600 leading-relaxed">
+              Dive into the world of UX design with this comprehensive introduction. Learn the fundamentals, including user research, wireframing, and prototyping. This course will equip you with the skills to create user-centered digital experiences that truly resonate with your audience.
+            </p>
+            <div class="mt-6 flex items-center space-x-4">
+              <div class="flex items-center">
+                <i class="fas fa-user-graduate text-primary mr-2"></i>
+                <span>10,234 students</span>
+              </div>
+              <div class="flex items-center">
+                <i class="fas fa-star text-yellow-400 mr-2"></i>
+                <span>4.8 (2,345 reviews)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lectures List -->
+      <div class="lg:w-1/3">
+        <div class="bg-white border-2 border-gray-800 rounded-lg p-6">
+          <h3 class="text-2xl font-bold mb-6 text-gray-800">Course Contents</h3>
+          <ul class="space-y-4">
+            <% const lectures = [
+              { title: 'Introduction to UX Design', duration: '45:00' },
+              { title: 'User Research Techniques', duration: '1:15:00' },
+              { title: 'Wireframing Essentials', duration: '55:00' },
+              { title: 'Prototyping Your Designs', duration: '1:30:00' },
+              { title: 'User Testing and Iteration', duration: '1:00:00' }
+            ]; %>
+            <% lectures.forEach((lecture, index) => { %>
+              <li class="flex items-center justify-between p-3 rounded-lg transition-colors duration-200 hover:bg-gray-100">
+                <div class="flex items-center space-x-3">
+                  <span class="flex items-center justify-center w-8 h-8 bg-primary text-white rounded-full font-bold"><%= index + 1 %></span>
+                  <span class="font-medium"><%= lecture.title %></span>
+                </div>
+                <span class="text-gray-500"><%= lecture.duration %></span>
+              </li>
+            <% }) %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -6,8 +6,7 @@ const { validationResult } = require("express-validator");
 const postSignUp = async (req, res) => {
   const { fullName, email, password } = req.body;
 
-  if (req.failure)
-    return res.redirect('/signup')
+  if (req.failure) return res.redirect("/signup");
 
   try {
     await User.create({
@@ -16,19 +15,21 @@ const postSignUp = async (req, res) => {
       password,
     });
   } catch (err) {
-    req.flash('flash', { type: 'info', text: 'Email Already Registered!' });
+    req.flash("flash", { type: "info", text: "Email Already Registered!" });
     return res.redirect("/signup");
   }
 
-  req.flash('flash', { type: 'success', text: 'Please verify your email address!' });
+  req.flash("flash", {
+    type: "success",
+    text: "Please verify your email address!",
+  });
   res.redirect("/signup");
 };
 
 const postSignIn = async (req, res) => {
   const { email, password } = req.body;
 
-  if (req.failure)
-    return res.redirect('/signin')
+  if (req.failure) return res.redirect("/signin");
 
   try {
     const token = await User.matchPasswordAndGenerateToken(email, password);
