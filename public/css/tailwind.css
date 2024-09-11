@@ -9,6 +9,9 @@
 @tailwind utilities;
 
 @layer base {
+  body {
+    @apply bg-gray-100 text-gray-800 subpixel-antialiased	leading-relaxed;
+  }
   h1 {
     @apply text-3xl font-bold text-gray-800;
   }

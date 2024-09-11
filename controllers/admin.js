@@ -1,7 +1,6 @@
 const Request = require('../models/request');
 const { generateCourse } = require('../services/courseBuilder');
 
-
 handleAdminRequest = async (req, res) => {
 
     const id = req.params.id;

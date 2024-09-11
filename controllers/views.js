@@ -21,6 +21,20 @@ const renderImport = (req, res) => {
   return res.render("import");
 };
 
+const renderPreview = async (req, res) => {
+  const id = req.params.id;
+  let course = null;
+
+  try {
+    course = await Course.findOne({ playlistId: id });
+  } catch (error) {
+    req.flash("error", "Invalid Course Request");
+    return res.redirect("/dashboard");
+  }
+
+  return res.render("preview", { course });
+}
+
 const renderCourse = async (req, res) => {
   const id = req.params.id;
   let course = null;
@@ -103,6 +117,11 @@ const renderAdminRequest = async (req, res) => {
   return res.render("admin/request", { playlist });
 }
 
+const renderAdminCoursesList = async (req, res) => {
+  const courses = await Course.find({});
+  return res.render("admin/courses", { courses });
+}
+
 const renderAdminCourse = async (req, res) => {
   const id = req.params.id;
   let course = null;
@@ -122,8 +141,10 @@ module.exports = {
   renderSignIn,
   renderSignUp,
   renderImport,
+  renderPreview,
   renderCourse,
   renderAdminHome,
   renderAdminCourse,
-  renderAdminRequest
+  renderAdminRequest,
+  renderAdminCoursesList
 };

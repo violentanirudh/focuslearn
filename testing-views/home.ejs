@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusLearn</title>
+    <link rel="stylesheet" href="/public/css/styles.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body class="bg-zinc-50 text-zinc-800 p-10 max-w-screen-xl mx-auto">
+    
+    <h1>FocusLearn</h1>
+    <p>Master Your Skills, Fuel Your Passion, and Get Certified!</p>
+    <%- include('partials/links') %>
+    
+    <!-- Horizontal Course Card Component -->
+    <div class="course-card bg-white border-2 border-black p-4 w-1/2 flex space-x-4">
+    <!-- Course Content -->
+        <div class="w-full flex flex-col justify-between">
+        <!-- Course Title -->
+        <h3 class="text-xl font-bold">Introduction to Web Development</h3>
+
+        <!-- Course Description -->
+        <p class="text-sm my-2">Learn the basics of HTML, CSS, and JavaScript in this comprehensive course. Perfect for beginners looking to start their web development journey.</p>
+
+        <!-- Course Meta -->
+        <div class="flex justify-between items-center text-sm mb-4">
+            <span class="flex items-center gap-1">
+                <i data-feather="clock" class="w-4 h-4"></i>
+                8 weeks
+            </span>
+            <span class="flex items-center gap-1">
+                <i data-feather="user" class="w-4 h-4"></i>
+                John Doe
+            </span>
+            <span class="flex items-center gap-1">
+                <i data-feather="star" class="w-4 h-4"></i>
+                4.8 (120 reviews)
+            </span>
+        </div>
+
+        <!-- Enroll Button -->
+        <button class="w-full border-2 border-black bg-indigo-300 px-4 py-2 font-bold transition duration-100 hover:ring-4 hover:ring-indigo-200 flex items-center justify-center gap-2">
+            <i data-feather="log-in" class="w-4 h-4"></i>
+            Enroll Now
+        </button>
+    </div>
+</div>
+
+    <%- include('./partials/feedback') %>
+
+    <script>
+        feather.replace();
+    </script>
+
+</body>
+</html>
+
+<!-- <div class="space-y-2 my-10">
+
+    <div class="flex gap-4">
+
+        <button class="border-2 font border-black bg-rose-300 px-6 py-3 transition duration-100 hover:ring-4 hover:ring-rose-200">Rose</button>
+        <button class="border-2 font border-black bg-lime-300 px-6 py-3 transition duration-100 hover:ring-4 hover:ring-lime-200">Lime</button>
+        <button class="border-2 font border-black bg-indigo-300 px-6 py-3 transition duration-100 hover:ring-4 hover:ring-indigo-200">Indigo</button>
+        <button class="border-2 font border-black bg-gray-300 px-6 py-3 transition duration-100 hover:ring-4 hover:ring-gray-200">Gray</button>
+        <button class="border-2 font border-black bg-amber-300 px-6 py-3  transition duration-100 hover:ring-4 hover:ring-amber-200">Amber</button>
+        <button class="border-2 font border-black bg-green-400 px-6 py-3  transition duration-100 hover:ring-4 hover:ring-green-200">Green</button>
+    
+    </div>
+
+</div>
+
+<div class="space-y-2 my-10">
+
+    <div class="flex gap-4">
+
+        <label class="flex justify-between items-center bg-white px-2 border-2 border-black focus-within:ring-4 focus-within:ring-red-200">
+            <i data-feather="user" class="w-4 h-4"></i>
+            <input type="text" class="p-2 outline-none" placeholder="Invalid">
+        </label>
+
+        <label class="flex justify-between items-center bg-white px-2 border-2 border-black focus-within:ring-4 focus-within:ring-green-200">
+            <i data-feather="user" class="w-4 h-4"></i>
+            <input type="text" class="p-2 outline-none" placeholder="Valid">
+        </label>
+
+    </div>
+
+</div> -->

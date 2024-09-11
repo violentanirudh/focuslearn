@@ -1,0 +1,43 @@
+<!-- FEEDBACK FORM -->
+
+<button id="feedback-button" class="fixed bottom-10 right-10 gap-2 bg-white border-2 px-4 py-2 border-black font-medium">
+    <span id="feedback-open" class="flex items-center gap-2">
+        <i data-feather="alert-circle" class="w-4 h-4"></i>
+        Feedback
+    </span>
+    <span id="feedback-close" class="hidden items-center gap-2">
+        <i data-feather="x" class="w-4 h-4"></i>
+        Close
+    </span>
+</button>
+
+<form id="feedback-form" action="" class="fixed bottom-24 right-10 w-72 bg-white border-black border-2 p-4 space-y-4 hidden">
+    <h2>
+        Feedback Form
+        <p>Help Us Become Better</p>
+    </h2>
+    
+    <label class="flex items-start justify-between bg-white p-2 border-2 border-black focus-within:ring-4 focus-within:ring-indigo-200">
+        <i data-feather="message-square" class="w-5 h-5"></i>
+        <textarea type="text" class="px-2 outline-none w-full resize-none h-20" placeholder="Please provide your feedback."></textarea>
+    </label>
+    <button class="border-2 border-black bg-indigo-300 px-6 py-3 transition duration-100 hover:ring-4 hover:ring-indigo-200">Submit</button>
+</form>
+
+<script>
+    const feedbackButton = document.querySelector('#feedback-button');
+    const feedbackForm = document.querySelector('#feedback-form');
+
+    feedbackButton.addEventListener('click', () => {
+        feedbackForm.classList.toggle('hidden');
+        if (feedbackForm.classList.contains('hidden')) {
+            feedbackButton.querySelector('#feedback-open').classList.remove('hidden');
+            feedbackButton.querySelector('#feedback-close').classList.remove('flex');
+            feedbackButton.querySelector('#feedback-close').classList.add('hidden');
+        } else {
+            feedbackButton.querySelector('#feedback-open').classList.add('hidden');
+            feedbackButton.querySelector('#feedback-close').classList.remove('hidden');
+            feedbackButton.querySelector('#feedback-close').classList.add('flex');
+        }
+    });
+</script>

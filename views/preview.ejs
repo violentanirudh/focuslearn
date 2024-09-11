@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusLearn</title>
+    <link rel="stylesheet" href="/public/css/styles.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body class="bg-zinc-50 text-zinc-800 p-10">
+    
+    <h1>FocusLearn</h1>
+    <p>Master Your Skills, Fuel Your Passion, and Get Certified!</p>
+    <%- include('partials/links') %>
+    
+    <div>
+        <h2><%= course.title %></h2>
+        <p><%= course.overview %></p>
+        <div class="flex gap-4 flex-wrap">
+            <span class="flex justify-center items-center gap-2">
+                <i data-feather="target" class="w-4 h-4"></i>
+                <span><%= course.level %></span>
+            </span>
+            <span class="flex justify-center items-center gap-2">
+                <i data-feather="clock" class="w-4 h-4"></i>
+                <span><%= parseInt(course.duration / 3600) %> hours</span>
+            </span>
+            <span class="flex justify-center items-center gap-2">
+                <i data-feather="airplay" class="w-4 h-4"></i>
+                <span><%= course.lectures %> Lectures</span>
+            </span>
+        </div>
+
+        <div id="lectures" class="w-1/2"></div>
+    </div>
+
+    <%- include('./partials/feedback') %>
+
+    <script>
+
+        async function fetchCourseDetails() {
+            try {
+                const response = await fetch('http://localhost:3000/public/courses/<%= course.playlistId %>.json');
+                courseData = await response.json();
+
+                const lecturesElement = document.querySelector('#lectures');
+                lecturesElement.innerHTML = `
+                    <ul class="border-2 border-black">
+                        ${courseData.course.lectures.map((lecture, index) => `
+                            <li class="flex items-center justify-between p-2 ${index !== courseData.course.lectures.length - 1 ? 'border-b-2 border-black' : ''} bg-white cursor-pointer hover:bg-gray-100" onclick="changeLecture(${index})">
+                                <div class="flex items-center w-2/3">
+                                    <span class="text-gray-400 mr-3">
+                                        <i data-feather="play-circle" class="h-6 w-6 stroke-1"></i>
+                                    </span>
+                                    <span class="text-gray-800 truncate">${lecture.title}</span>
+                                </div>
+                                <span class="text-sm font-medium text-gray-600">${Math.floor(lecture.duration / 60)} min</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                `;
+
+            } catch (err) {
+                console.error(err);
+                const lecturesElement = document.querySelector('#lectures');
+                lecturesElement.innerHTML = `
+                    <div class="text-center text-red-600">
+                        <p>Failed to load lectures. Please try again later.</p>
+                    </div>
+                `;
+            }
+            feather.replace();
+        }
+
+        fetchCourseDetails();
+
+    </script>
+
+</body>
+</html>

@@ -1,5 +1,7 @@
 const axios = require('axios')
 const Request = require('../models/request')
+const Feedback = require('../models/feedback')
+
 
 async function handleImport(req, res) {
     const { course } = req.body;
@@ -32,6 +34,31 @@ async function handleImport(req, res) {
     }
 }
 
+const handleFeedback = async (req, res) => {
+    const { feedback } = req.body;
+    if (!feedback.trim()) return res.status(400).json({ error: "Feedback is required" });
+
+    if (req.user === undefined) {
+        return res.status(401).json({ error: "Unauthorized" });
+    }
+
+    if (feedback.length > 400) {
+        return res.status(400).json({ error: "Feedback is too long" });
+    }
+
+    try {
+        await Feedback.create({
+            user: req.user._id,
+            feedback,
+        });
+        return res.status(201).json({ message: "Feedback submitted" });
+    } catch (error) {
+        console.log(error.message)
+        return res.status(500).json({ error: "Internal server error" });
+    }
+}
+
 module.exports = {
-    handleImport
+    handleImport,
+    handleFeedback
 }
