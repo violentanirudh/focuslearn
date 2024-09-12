@@ -1,4 +1,5 @@
 const Request = require('../models/request');
+const Course = require('../models/course');
 const { generateCourse } = require('../services/courseBuilder');
 
 handleAdminRequest = async (req, res) => {
@@ -26,10 +27,26 @@ handleAdminRequest = async (req, res) => {
 
 }
 
-handleAdminCourseCreate = async (req, res) => {
+handleAdminCourseActions = async (req, res) => {
     
-    if (req.body.content) {
-        
+    try {
+        if (req.body.content !== undefined) {
+            const playlistId = req.params.id;
+            const course = await Course.findOne({ playlistId })
+            if (course) {
+                await generateCourse(course.playlistId);
+                return res.redirect('/admin/course/' + playlistId);
+            }
+        }
+
+        if (req.body.delete !== undefined) {
+            const playlistId = req.params.id;
+            await Course.findOneAndDelete({ playlistId: playlistId });
+            req.flash('error', 'Course Deleted');
+        }
+    } catch (error) {
+        req.flash('error', 'Invalid Request');
+        console.log(error.message);
     }
 
     return res.redirect('/admin/dashboard');
@@ -37,5 +54,6 @@ handleAdminCourseCreate = async (req, res) => {
 
 
 module.exports = {
-    handleAdminRequest
+    handleAdminRequest,
+    handleAdminCourseActions
 }

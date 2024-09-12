@@ -39,14 +39,14 @@ const renderCourse = async (req, res) => {
   const id = req.params.id;
   let course = null;
 
-  // try {
-  //   course = await Course.findOne({ playlistId: id });
-  // } catch (error) {
-  //   req.flash("error", "Invalid Course Request");
-  //   return res.redirect("/dashboard");
-  // }
+  try {
+    course = await Course.findOne({ playlistId: id });
+  } catch (error) {
+    req.flash("error", "Invalid Course Request");
+    return res.redirect("/dashboard");
+  }
 
-  return res.render("course", { courseId: id });
+  return res.render("course", { course });
 }
 
 // ADMIN DASHBOARD VIEWS
@@ -136,6 +136,12 @@ const renderAdminCourse = async (req, res) => {
   return res.render("admin/course", { course });
 }
 
+const renderAdminUsers = async (req, res) => {
+  const users = await User.find({});
+  return res.render("admin/users", { users });
+}
+
+
 module.exports = {
   renderHome,
   renderSignIn,
@@ -146,5 +152,6 @@ module.exports = {
   renderAdminHome,
   renderAdminCourse,
   renderAdminRequest,
-  renderAdminCoursesList
+  renderAdminCoursesList,
+  renderAdminUsers,
 };

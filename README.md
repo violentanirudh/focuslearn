@@ -40,4 +40,5 @@ $ npm run tailwind
 22. Tanmay  : Added Sanitization along with Validator
 23. Anirudh : Added Flash (Alerts) for errors
 24. Anirudh : Added Courses Generator
-25. Tanmay: Tried integrating frontend 
+25. Tanmay  : Tried integrating frontend 
+26. Anirudh : Admin Panel : Added Courses 

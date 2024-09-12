@@ -9,55 +9,55 @@
     <nav class="flex-1 px-4 py-2 mt-8 text-white">
         <ul class="space-y-2">
             <li>
-                <a href="#" class="flex items-center space-x-3 p-2 rounded-lg bg-indigo-600 text-white">
+                <a id="dashboard" href="/admin/dashboard" class="flex items-center space-x-3 p-2 rounded-lg hover:bg-indigo-100/10">
                     <i data-feather="home" class="w-5 h-5"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
             <li>
-                <a href="#" class="flex items-center space-x-3 p-2 rounded-lg hover:bg-indigo-100/10">
+                <a id="courses" href="/admin/courses" class="flex items-center space-x-3 p-2 rounded-lg hover:bg-indigo-100/10">
                     <i data-feather="airplay" class="w-5 h-5"></i>
                     <span>Courses</span>
                 </a>
             </li>
             <li>
-                <a href="#" class="flex items-center space-x-3 p-2 rounded-lg hover:bg-indigo-100/10">
+                <a id="users" href="/admin/users" class="flex items-center space-x-3 p-2 rounded-lg hover:bg-indigo-100/10">
                     <i data-feather="users" class="w-5 h-5"></i>
                     <span>Users</span>
                 </a>
             </li>
             <li>
-                <a href="#" class="flex items-center space-x-3 p-2 rounded-lg hover:bg-indigo-100/10">
+                <a id="purchases" href="/admin/purchases" class="flex items-center space-x-3 p-2 rounded-lg hover:bg-indigo-100/10">
                     <i data-feather="pocket" class="w-5 h-5"></i>
                     <span>Purchases</span>
                 </a>
             </li>
             <li>
-                <a href="#" class="flex items-center space-x-3 p-2 rounded-lg hover:bg-indigo-100/10">
+                <a id="notifications" href="/admin/notifications" class="flex items-center space-x-3 p-2 rounded-lg hover:bg-indigo-100/10">
                     <i data-feather="bell" class="w-5 h-5"></i>
                     <span>Notifications</span>
                 </a>
             </li>
             <li>
-                <a href="#" class="flex items-center space-x-3 p-2 rounded-lg hover:bg-indigo-100/10">
+                <a id="analytics" href="/admin/analytics" class="flex items-center space-x-3 p-2 rounded-lg hover:bg-indigo-100/10">
                     <i data-feather="bar-chart-2" class="w-5 h-5"></i>
                     <span>Analytics</span>
                 </a>
             </li>
             <li>
-                <a href="#" class="flex items-center space-x-3 p-2 rounded-lg hover:bg-indigo-100/10">
+                <a id="admins" href="/admin/admins" class="flex items-center space-x-3 p-2 rounded-lg hover:bg-indigo-100/10">
                     <i data-feather="shield" class="w-5 h-5"></i>
                     <span>Admins</span>
                 </a>
             </li>
             <li>
-                <a href="#" class="flex items-center space-x-3 p-2 rounded-lg hover:bg-indigo-100/10">
+                <a id="feedback" href="/admin/feedback" class="flex items-center space-x-3 p-2 rounded-lg hover:bg-indigo-100/10">
                     <i data-feather="info" class="w-5 h-5"></i>
                     <span>Feedback</span>
                 </a>
             </li>
             <li>
-                <a href="#" class="flex items-center space-x-3 p-2 rounded-lg hover:bg-indigo-100/10">
+                <a id="settings" href="/admin/settings" class="flex items-center space-x-3 p-2 rounded-lg hover:bg-indigo-100/10">
                     <i data-feather="settings" class="w-5 h-5"></i>
                     <span>Settings</span>
                 </a>
@@ -72,3 +72,16 @@
         </a>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const currentPath = window.location.pathname;
+        const navLinks = document.querySelectorAll('nav a');
+
+        navLinks.forEach(link => {
+            if (link.getAttribute('href') === currentPath) {
+                link.classList.add('bg-indigo-600');
+            }
+        });
+    });
+</script>

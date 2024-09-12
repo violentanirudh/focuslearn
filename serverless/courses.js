@@ -175,6 +175,7 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 const axios = require("axios");
 const fs = require("fs");
 const path = require("path");
+const { generateQuiz } = require("./quiz");
 require("dotenv").config();
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
@@ -254,7 +255,7 @@ const generatePrompt = (data) => {
 
     Name : Generate a 40 character or less Course Name (Example: 'Introduction To Python' or 'Mastering Docker').
     Overview : Generate a 200 character or less Course Overview.
-    Lectures : Generate a list of lectures with a title (10 words maximum, use punctuation) and description (400 words maximum) for each lecture based on the given Input Data.
+    Lectures : Generate a list of lectures with a title (Keep the title same from the list provided) and description (400 words maximum) for each lecture based on the given Input Data.
     Level : Choose from 'beginner', 'intermediate', 'advance' based on titles provided.
     Category : Choose from 'programming', 'mathematics', 'productivity' based on titles provided.
     `;
@@ -357,9 +358,12 @@ const processPlaylist = async (id) => {
         lecture.duration = videoLength[index];
       });
     }
-    
-    const file = path.join(__dirname, '../public/courses', `${id}.json`);
-    fs.writeFileSync(file, JSON.stringify(content))
+
+    const file = path.join(__dirname, '../public/courses/content', `${id}.json`);
+    fs.writeFileSync(file, JSON.stringify(content), { flag: 'w' });
+
+    const quiz = generateQuiz(titles, id);
+    fs.writeFileSync(path.join(__dirname, '../public/courses/quizzes', `${id}.json`), JSON.stringify(quiz), { flag: 'w' });
 
     return { 
       channel, duration,

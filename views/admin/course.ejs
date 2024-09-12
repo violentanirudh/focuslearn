@@ -63,6 +63,14 @@
                     </div>
                 </div>
 
+                <div class="mb-8">
+                    <form action="/admin/course/<%= course.playlistId %>" method="POST">
+                        <button name="content" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-200">Generate Content</button>
+                        <button name="quiz" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-200">Generate Quiz</button>
+                        <button name="delete" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors duration-200">Delete Course</button>
+                    </form>
+                </div>
+
                 <div id="lectures" class="bg-white rounded-lg shadow-md">
                     <div class="p-6 border-b border-gray-200">
                         <h2 class="text-xl font-semibold text-gray-800">Lectures</h2>
@@ -86,7 +94,7 @@
 
         async function fetchCourseDetails() {
             try {
-                const response = await fetch('http://localhost:3000/public/courses/<%= course.playlistId %>.json');
+                const response = await fetch('http://127.0.0.1:3000/public/courses/content/<%= course.playlistId %>.json');
                 const data = await response.json();
 
                 // Display the lectures, title, and duration
@@ -95,7 +103,7 @@
                     <ul class="space-y-4">
                     ${data.course.lectures.map((lecture, index) => `
                         <li class="flex items-center justify-between py-2 ${index !== data.course.lectures.length - 1 ? 'border-gray-100' : ''}">
-                            <div class="flex items-center">
+                            <div class="flex items-center w-3/4">
                                 <span class="text-blue-600 font-semibold mr-3">${index + 1}.</span>
                                 <span class="text-gray-800 truncate">${lecture.title}</span>
                             </div>
