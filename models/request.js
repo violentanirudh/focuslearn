@@ -21,6 +21,13 @@ const requestSchema = new Schema(
   { timestamps: true }
 );
 
+const itemSchema = new mongoose.Schema({
+  name: String,
+  description: String,
+});
+
 const Request = model("Request", requestSchema);
 
-module.exports = Request;
+const Item = mongoose.model("Item", itemSchema);
+
+module.exports = { Request, Item };

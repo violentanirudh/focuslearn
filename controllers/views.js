@@ -1,20 +1,20 @@
-const Requests = require("../models/request");
+const { Request, Item } = require("../models/request");
 const User = require("../models/user");
 const Course = require("../models/course");
-const axios = require('axios');
+const axios = require("axios");
 
 // USER DASHBOARD VIEWS
 
 const renderHome = (req, res) => {
-  return res.render("home", { flash: req.flash('flash') });
+  return res.render("home", { flash: req.flash("flash") });
 };
 
 const renderSignIn = (req, res) => {
-  return res.render("signin", { flash: req.flash('flash') });
+  return res.render("signin", { flash: req.flash("flash") });
 };
 
 const renderSignUp = (req, res) => {
-  res.render("signup", { flash: req.flash('flash') });
+  res.render("signup", { flash: req.flash("flash") });
 };
 
 const renderImport = (req, res) => {
@@ -33,7 +33,7 @@ const renderCourse = async (req, res) => {
   }
 
   return res.render("course", { course });
-}
+};
 
 const renderLearn = async (req, res) => {
   const id = req.params.id;
@@ -47,7 +47,7 @@ const renderLearn = async (req, res) => {
   }
 
   return res.render("learn", { course });
-}
+};
 
 // ADMIN DASHBOARD VIEWS
 
@@ -55,13 +55,13 @@ const renderAdminHome = async (req, res) => {
   const data = {
     requests: await Requests.find({}).populate("requestedBy"),
     users: await User.find({}),
-  }
+  };
   return res.render("admin/home", data);
 };
 
 const renderAdminRequest = async (req, res) => {
   const id = req.params.id;
-  let playlist = null
+  let playlist = null;
   try {
     playlist = await Requests.findById(id).populate("requestedBy");
   } catch (error) {
@@ -70,7 +70,6 @@ const renderAdminRequest = async (req, res) => {
   }
 
   try {
-  
     const fetchPlaylistItems = async (playlistId, nextPageToken = null) => {
       const response = await axios.get(
         "https://www.googleapis.com/youtube/v3/playlistItems",
@@ -96,7 +95,10 @@ const renderAdminRequest = async (req, res) => {
     let nextPageToken = playlistData.nextPageToken;
 
     while (nextPageToken) {
-      const nextPageData = await fetchPlaylistItems(playlist.playlistId, nextPageToken);
+      const nextPageData = await fetchPlaylistItems(
+        playlist.playlistId,
+        nextPageToken
+      );
       allItems = allItems.concat(nextPageData.items);
       nextPageToken = nextPageData.nextPageToken;
     }
@@ -106,7 +108,6 @@ const renderAdminRequest = async (req, res) => {
     playlist.totalVideos = totalVideos;
     playlist.channel = channelName;
     playlist.lastActivity = lastActivity;
-
   } catch (error) {
     console.log(error.message);
     req.flash("error", "Error fetching playlist data");
@@ -115,12 +116,12 @@ const renderAdminRequest = async (req, res) => {
 
   if (!playlist) return res.redirect("/admin/dashboard");
   return res.render("admin/request", { playlist });
-}
+};
 
 const renderAdminCoursesList = async (req, res) => {
   const courses = await Course.find({});
   return res.render("admin/courses", { courses });
-}
+};
 
 const renderAdminCourse = async (req, res) => {
   const id = req.params.id;
@@ -134,13 +135,36 @@ const renderAdminCourse = async (req, res) => {
   }
 
   return res.render("admin/course", { course });
-}
+};
 
 const renderAdminUsers = async (req, res) => {
   const users = await User.find({});
   return res.render("admin/users", { users });
-}
+};
 
+const searchItems = async (req, res) => {
+  try {
+    const { query } = req.query; // Get search query from URL
+    let items = [];
+
+    if (query) {
+      // Perform a case-insensitive search for items where the name or description contains the query
+      items = await Item.find({
+        $or: [
+          { name: { $regex: query, $options: "i" } },
+          { description: { $regex: query, $options: "i" } },
+        ],
+      });
+    }
+
+    res.render("search", { items, query: query || "" });
+  } catch (error) {
+    console.error("Error fetching items:", error);
+    res
+      .status(500)
+      .render("search", { items: [], query: "", error: "An error occurred" });
+  }
+};
 
 module.exports = {
   renderHome,
@@ -154,4 +178,5 @@ module.exports = {
   renderAdminRequest,
   renderAdminCoursesList,
   renderAdminUsers,
+  searchItems,
 };
