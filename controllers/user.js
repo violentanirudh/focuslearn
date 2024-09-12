@@ -9,7 +9,8 @@ async function handleImport(req, res) {
 
     try {
 
-        const urlParams = new URLSearchParams(course);
+        const url = new URL(course);
+        const urlParams = new URLSearchParams(url.search);
         const list = urlParams.get('list');
 
         const response = await axios.get("https://www.googleapis.com/youtube/v3/playlistItems", {
