@@ -43,3 +43,4 @@ $ npm run tailwind
 25. Tanmay  : Tried integrating frontend
 26. Anirudh : Admin Panel : Added Courses
 27. Tanmay : Added search logic
+28. Tanmay : Added search template

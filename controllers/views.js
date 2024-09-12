@@ -1,4 +1,4 @@
-const { Request, Item } = require("../models/request");
+const Request = require("../models/request");
 const User = require("../models/user");
 const Course = require("../models/course");
 const axios = require("axios");
@@ -142,27 +142,25 @@ const renderAdminUsers = async (req, res) => {
   return res.render("admin/users", { users });
 };
 
-const searchItems = async (req, res) => {
+const searchCourses = async (req, res) => {
   try {
     const { query } = req.query; // Get search query from URL
-    let items = [];
+    let courses = [];
 
     if (query) {
-      // Perform a case-insensitive search for items where the name or description contains the query
-      items = await Item.find({
-        $or: [
-          { name: { $regex: query, $options: "i" } },
-          { description: { $regex: query, $options: "i" } },
-        ],
+      // Perform a case-insensitive search for courses where the name contains the query
+      courses = await Course.find({
+        name: { $regex: query, $options: "i" },
       });
     }
 
-    res.render("search", { items, query: query || "" });
+    // Render the search page with results and query
+    res.render("search", { courses, query: query || "" });
   } catch (error) {
-    console.error("Error fetching items:", error);
+    console.error("Error fetching courses:", error);
     res
       .status(500)
-      .render("search", { items: [], query: "", error: "An error occurred" });
+      .render("search", { courses: [], query: "", error: "An error occurred" });
   }
 };
 
@@ -178,5 +176,5 @@ module.exports = {
   renderAdminRequest,
   renderAdminCoursesList,
   renderAdminUsers,
-  searchItems,
+  searchCourses,
 };
