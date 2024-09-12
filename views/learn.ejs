@@ -1,40 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('./partials/head') %>
-<body class="bg-zinc-50 text-gray-800 max-w-screen-lg mx-auto my-6">
+<body class="bg-zinc-100 text-gray-800 max-w-screen-lg mx-auto py-10">
   
   <!-- <%- include('./partials/links') %> -->
-
-  <div id="lectures" class="lg:w-1/3 bg-white rounded-lg shadow-lg p-6 overflow-y-scroll top-8 self-start hidden">
-    <h3 class="text-2xl font-bold mb-4 text-gray-800">Course Content</h3>
-    <div id="lectures-content" class="space-y-4">
-      <!-- Lectures will be dynamically inserted here -->
+  <div class="fixed inset-0 flex justify-center items-center p-10 grow" id="lectures">
+    <div class="bg-white rounded-lg h-full self-start shadow-lg max-w-screen-lg w-full flex flex-col py-6">
+      <div class="flex px-6 justify-between">
+        <h2>Course Content</h2>
+        <button class="" onclick="document.getElementById('lectures').classList.toggle('hidden')">
+          <i data-feather="x"></i>
+        </button>
+      </div>
+      
+      <!-- Course overview -->
+      <p class="px-6 mb-4"><%= course.overview %></p>
+      
+      <!-- Lectures content with top and bottom inset shadow -->
+      <div id="lectures-content" class="flex-1 w-full overflow-y-scroll" style="box-shadow: inset 0 10px 8px -8px rgba(0, 0, 0, 0.1), inset 0 -10px 8px -8px rgba(0, 0, 0, 0.1);">
+        <!-- Lectures will be dynamically inserted here -->
+      </div>
+      
+      <!-- Bottom navigation buttons (Previous and Next) -->
+      <div class="flex justify-end mt-4 px-6 gap-4">
+        <button class="py-2 px-6 font-medium border-2 border-black bg-white rounded">Previous</button>
+        <button class="py-2 px-6 font-medium border-2 border-black bg-white rounded">Next</button>
+      </div>
     </div>
   </div>
-</div>
-
+  
+  
   <!-- Main Content -->
-  <div class="space-y-4 mt-8">
+  <div class="space-y-8">
       <!-- Video Player and Description -->
-    <div class="flex justify-end gap-4 items-center">
+    <div class="flex justify-between gap-4 items-center">
 
-      <button class="p-2 border-2 border-black shadow-md" onclick="document.getElementById('lectures').classList.toggle('hidden')">
-        <i data-feather="menu"></i>
-      </button>
+      <h2>FocusLearn</h2>
 
-      <div class="bg-white flex border-2 divide-x-2 border-black divide-black">
-        <button class="p-2"><i data-feather="chevron-left"></i></button>
-        <button class="p-2 px-4 font-medium">Lectures</button>
-        <button class="p-2"><i data-feather="chevron-right"></i></button>
+      <div class="flex gap-4">
+
+        <button class="py-2 px-6 font-medium border-2 border-black bg-white rounded">
+          Notes
+        </button>
+
+        <div class="bg-white flex border-2 divide-x-2 border-black divide-black rounded">
+          <button class="p-2"><i data-feather="chevron-left"></i></button>
+          <button class="p-2 px-4 font-medium" onclick="document.getElementById('lectures').classList.toggle('hidden')">Lectures</button>
+          <button class="p-2"><i data-feather="chevron-right"></i></button>
+        </div>
+
       </div>
 
     </div>
 
-    <iframe id="lecture-video" class="w-full h-full aspect-video rounded-lg shadow-xl" 
+    <iframe id="lecture-video" class="w-full h-full aspect-video rounded-lg shadow-xl block" 
       frameborder="0" 
       allow="autoplay; encrypted-media"
       allowfullscreen>
     </iframe>
+
+    <p class="text-xl font-medium text-slate-800 text-center truncate" id="lecture-title"></p>
 
   </div>
 
@@ -52,20 +77,21 @@
 
         const lecturesElement = document.querySelector('#lectures-content');
         lecturesElement.innerHTML = `
-          <ul class="space-y-4">
+          <ul class="font-medium py-2">
             ${courseData.course.lectures.map((lecture, index) => `
-              <li class="flex items-center justify-between py-2 ${index !== courseData.course.lectures.length - 1 ? 'border-b border-gray-200' : ''} cursor-pointer hover:bg-gray-100" onclick="changeLecture(${index})">
+              <li class="flex items-center justify-between px-4 py-2 cursor-pointer hover:bg-gray-100" onclick="changeLecture(${index})">
                 <div class="flex items-center w-2/3">
-                  <span class="text-gray-400 mr-3">
-                    <i data-feather="play-circle" class="h-6 w-6 stroke-1"></i>
+                  <span class="text-slate-400 mr-3">
+                    <i data-feather="play-circle" class="h-6 w-6"></i>
                   </span>
-                  <span class="text-gray-800 truncate">${lecture.title}</span>
+                  <span class="truncate">${String(index + 1).padStart(2, '0')}. ${lecture.title}</span>
                 </div>
-                <span class="text-sm font-medium text-gray-600">${Math.floor(lecture.duration / 60)} min</span>
+                <span class="text-sm">${Math.floor(lecture.duration / 60)} min</span>
               </li>
             `).join('')}
           </ul>
         `;
+
 
         // Set the first lecture as current
         changeLecture(0);
@@ -86,16 +112,19 @@
 
     function changeLecture(index) {
       currentLecture = courseData.course.lectures[index];
+      document.getElementById('lectures').classList.toggle('hidden')
       updateLectureContent();
     }
 
     function updateLectureContent() {
       if (currentLecture) {
-        document.getElementById('lecture-video').src = currentLecture.embed + '?autoplay=0&amp;mute=0&amp;controls=1&amp;origin=https%3A%2F%2Facegrade.in&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;iv_load_policy=3&amp;modestbranding=1&amp;enablejsapi=1&amp;widgetid=1';
+        const url = currentLecture.embed.replace('https://www.youtube.com/', 'https://www.youtube-nocookie.com/');
+        console.log(url)
+        document.getElementById('lecture-video').src = url +  '?autoplay=0&mute=0&controls=1&playsinline=1&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1&widgetid=1';
         document.getElementById('lecture-title').textContent = currentLecture.title;
-        document.getElementById('lecture-description').textContent = currentLecture.description;
       }
     }
+
 
     fetchCourseDetails();
   </script>
