@@ -21,20 +21,6 @@ const renderImport = (req, res) => {
   return res.render("import");
 };
 
-const renderPreview = async (req, res) => {
-  const id = req.params.id;
-  let course = null;
-
-  try {
-    course = await Course.findOne({ playlistId: id });
-  } catch (error) {
-    req.flash("error", "Invalid Course Request");
-    return res.redirect("/dashboard");
-  }
-
-  return res.render("preview", { course });
-}
-
 const renderCourse = async (req, res) => {
   const id = req.params.id;
   let course = null;
@@ -47,6 +33,20 @@ const renderCourse = async (req, res) => {
   }
 
   return res.render("course", { course });
+}
+
+const renderLearn = async (req, res) => {
+  const id = req.params.id;
+  let course = null;
+
+  try {
+    course = await Course.findOne({ playlistId: id });
+  } catch (error) {
+    req.flash("error", "Invalid Course Request");
+    return res.redirect("/dashboard");
+  }
+
+  return res.render("learn", { course });
 }
 
 // ADMIN DASHBOARD VIEWS
@@ -147,8 +147,8 @@ module.exports = {
   renderSignIn,
   renderSignUp,
   renderImport,
-  renderPreview,
   renderCourse,
+  renderLearn,
   renderAdminHome,
   renderAdminCourse,
   renderAdminRequest,

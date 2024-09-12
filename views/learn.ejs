@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head') %>
+<body class="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 text-gray-800">
+  <!-- Navbar -->
+  <nav class="bg-white shadow">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-4">
+        <svg class="h-8 w-8 text-gray-800" aria-label="Menu" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <span class="text-2xl font-bold text-gray-800">FocusLearn</span>
+      </div>
+      <div class="flex items-center space-x-4">
+        <svg class="h-6 w-6 text-gray-600" aria-label="Notifications" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+        </svg>
+        <div class="flex items-center space-x-2">
+          <span class="font-semibold text-gray-800">Alex Nove</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="max-w-screen-xl mx-auto px-4 py-8">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Video Player and Description -->
+      <div class="lg:w-2/3 sticky top-8 self-start">
+        <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+          <div class="aspect-w-16 aspect-h-9">
+            <iframe id="lecture-video" class="w-full h-full aspect-video" 
+              src="https://www.youtube-nocookie.com/embed/VIDEO_ID?rel=0" 
+              frameborder="0" 
+              allow="autoplay; encrypted-media" 
+              allowfullscreen>
+            </iframe>
+
+          </div>
+          <div class="p-6">
+            <h2 id="lecture-title" class="text-3xl font-bold mb-4 text-gray-800"></h2>
+            <p id="lecture-description" class="text-gray-600 leading-relaxed"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lectures List -->
+      <div id="lectures" class="lg:w-1/3 bg-white rounded-lg shadow-lg p-6 overflow-y-scroll top-8 self-start">
+        <h3 class="text-2xl font-bold mb-4 text-gray-800">Course Content</h3>
+        <div id="lectures-content" class="space-y-4">
+          <!-- Lectures will be dynamically inserted here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
+  <script>
+    feather.replace();
+
+    let currentLecture = null;
+    let courseData = null;
+
+    async function fetchCourseDetails() {
+      try {
+        const response = await fetch('http://localhost:3000/public/courses/<%= courseId %>.json');
+        courseData = await response.json();
+
+        const lecturesElement = document.querySelector('#lectures-content');
+        lecturesElement.innerHTML = `
+          <ul class="space-y-4">
+            ${courseData.course.lectures.map((lecture, index) => `
+              <li class="flex items-center justify-between py-2 ${index !== courseData.course.lectures.length - 1 ? 'border-b border-gray-200' : ''} cursor-pointer hover:bg-gray-100" onclick="changeLecture(${index})">
+                <div class="flex items-center w-2/3">
+                  <span class="text-gray-400 mr-3">
+                    <i data-feather="play-circle" class="h-6 w-6 stroke-1"></i>
+                  </span>
+                  <span class="text-gray-800 truncate">${lecture.title}</span>
+                </div>
+                <span class="text-sm font-medium text-gray-600">${Math.floor(lecture.duration / 60)} min</span>
+              </li>
+            `).join('')}
+          </ul>
+        `;
+
+        // Set the first lecture as current
+        changeLecture(0);
+
+      } catch (err) {
+        console.error(err);
+        const lecturesElement = document.querySelector('#lectures-content');
+        lecturesElement.innerHTML = `
+          <div class="text-center text-red-600">
+            <p>Failed to load lectures. Please try again later.</p>
+          </div>
+        `;
+      }
+
+      feather.replace();
+
+    }
+
+    function changeLecture(index) {
+      currentLecture = courseData.course.lectures[index];
+      updateLectureContent();
+    }
+
+    function updateLectureContent() {
+      if (currentLecture) {
+        document.getElementById('lecture-video').src = currentLecture.embed;
+        document.getElementById('lecture-title').textContent = currentLecture.title;
+        document.getElementById('lecture-description').textContent = currentLecture.description;
+      }
+    }
+
+    fetchCourseDetails();
+  </script>
+</body>
+</html>

@@ -5,12 +5,12 @@ const {
   renderHome,
   renderSignIn,
   renderSignUp,
-  renderPreview
+  renderCourse
 } = require("../controllers/views");
 
 router.get("/", renderHome);
 router.get("/signin", renderSignIn);
 router.get("/signup", renderSignUp);
-router.get("/preview/:id", renderPreview);
+router.get("/preview/:id", renderCourse);
 
 module.exports = router;
