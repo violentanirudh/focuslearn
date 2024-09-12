@@ -30,4 +30,4 @@ const Request = model("Request", requestSchema);
 
 const Item = mongoose.model("Item", itemSchema);
 
-module.exports = { Request, Item };
+module.exports = Request;
