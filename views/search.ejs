@@ -19,14 +19,21 @@
             margin-bottom: 20px;
         }
         .search-bar input[type="text"] {
-            width: 80%;
+            width: 60%;
             padding: 10px;
             font-size: 16px;
+        }
+        .search-bar select {
+            width: 20%;
+            padding: 10px;
+            font-size: 16px;
+            margin-left: 10px;
         }
         .search-bar button {
             padding: 10px;
             font-size: 16px;
             cursor: pointer;
+            margin-left: 10px;
         }
         .results {
             margin-top: 20px;
@@ -45,6 +52,12 @@
         <h1>Search Courses</h1>
         <form class="search-bar" method="get" action="/api/search">
             <input type="text" name="query" placeholder="Search for courses..." value="<%= query %>">
+            <select name="level">
+                <option value="">All Levels</option>
+                <option value="beginner" <%= level === 'beginner' ? 'selected' : '' %>>Beginner</option>
+                <option value="intermediate" <%= level === 'intermediate' ? 'selected' : '' %>>Intermediate</option>
+                <option value="advanced" <%= level === 'advanced' ? 'selected' : '' %>>Advanced</option>
+            </select>
             <button type="submit">Search</button>
         </form>
 
@@ -53,6 +66,7 @@
                 <% courses.forEach(course => { %>
                     <div class="result-item">
                         <h2><%= course.name %></h2>
+                        <p>Level: <%= course.level %></p>
                     </div>
                 <% }); %>
             <% } else if (query) { %>

@@ -154,8 +154,12 @@ const searchCourses = async (req, res) => {
       });
     }
 
+    if (level) {
+      filter.level = level;
+    }
+
     // Render the search page with results and query
-    res.render("search", { courses, query: query || "" });
+    res.render("search", { courses, query: query || "", level: level || "" });
   } catch (error) {
     console.error("Error fetching courses:", error);
     res

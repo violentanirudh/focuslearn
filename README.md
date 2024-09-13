@@ -44,3 +44,4 @@ $ npm run tailwind
 26. Anirudh : Admin Panel : Added Courses
 27. Tanmay : Added search logic
 28. Tanmay : Added search template
+29. Tanmay : Added filter for search
