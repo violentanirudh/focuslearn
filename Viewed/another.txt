@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lecture Video</title>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script>
+    let player;
+    let videoDuration = 0;
+    let viewedFlag = false;
+
+    // This function gets called when the YouTube iframe API is ready
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('lecture-video', {
+        height: '390',
+        width: '640',
+        videoId: 'VIDEO_ID_HERE', // Replace with the YouTube video ID
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+    // Called when the player is ready
+    function onPlayerReady(event) {
+      videoDuration = player.getDuration(); // Get the video duration in seconds
+    }
+
+    // Called when the state of the video changes (e.g., playing, paused)
+    function onPlayerStateChange(event) {
+      if (event.data == YT.PlayerState.PLAYING) {
+        // Check periodically how much of the video has been played
+        const interval = setInterval(() => {
+          const currentTime = player.getCurrentTime(); // Get current playback time
+          const watchedPercentage = (currentTime / videoDuration) * 100;
+
+          // If 90% or more has been watched, set the viewed flag to true
+          if (watchedPercentage >= 90 && !viewedFlag) {
+            viewedFlag = true;
+            markVideoAsViewed(); // Call the function to mark video as viewed
+            clearInterval(interval); // Stop checking
+          }
+        }, 1000); // Check every second
+      }
+    }
+
+    // Function to mark the video as viewed (send to backend)
+    function markVideoAsViewed() {
+      fetch('/api/mark-viewed', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ videoId: 'VIDEO_ID_HERE', viewed: true })
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Video marked as viewed:', data);
+      })
+      .catch(error => {
+        console.error('Error marking video as viewed:', error);
+      });
+    }
+  </script>
+</head>
+<body>
+  <h1>Lecture Video</h1>
+  <div id="lecture-video"></div> <!-- YouTube player will load here -->
+</body>
+</html>
+
+
+
+
+
+
+
+// index.js (or in your routes file)
+const express = require('express');
+const mongoose = require('mongoose');
+const app = express();
+
+app.use(express.json());
+
+// Example MongoDB schema for a lecture
+const lectureSchema = new mongoose.Schema({
+  videoId: String, // YouTube video ID
+  title: String,
+  viewed: { type: Boolean, default: false } // viewed flag
+});
+
+const Lecture = mongoose.model('Lecture', lectureSchema);
+
+// API to mark the video as viewed
+app.post('/api/mark-viewed', async (req, res) => {
+  const { videoId, viewed } = req.body;
+
+  try {
+    // Find the lecture by YouTube video ID and update the viewed flag
+    const lecture = await Lecture.findOneAndUpdate(
+      { videoId },
+      { viewed },
+      { new: true, upsert: true } // Create if not exists
+    );
+    res.json({ message: 'Lecture viewed status updated', lecture });
+  } catch (error) {
+    res.status(500).json({ message: 'Error updating lecture', error });
+  }
+});
+
+// MongoDB connection (example URI)
+mongoose.connect('mongodb://localhost:27017/educationDB', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});

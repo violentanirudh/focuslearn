@@ -1,6 +1,6 @@
 const Request = require("../models/request");
 const User = require("../models/user");
-const Course = require("../models/course");
+// const Course = require("../models/course");
 const axios = require("axios");
 
 // USER DASHBOARD VIEWS
@@ -63,7 +63,7 @@ const renderAdminRequest = async (req, res) => {
   const id = req.params.id;
   let playlist = null;
   try {
-    playlist = await Requests.findById(id).populate("requestedBy");
+    playlist = await Request.findById(id).populate("requestedBy");
   } catch (error) {
     req.flash("error", "Invalid Course Request");
     return res.redirect("/admin/dashboard");
@@ -156,7 +156,12 @@ const searchCourses = async (req, res) => {
       console.log("Found courses:", courses); // Log the search result
     }
 
-    res.render("search", { courses, query: query || "" });
+    if (level) {
+      filter.level = level;
+    }
+
+    // Render the search page with results and query
+    res.render("search", { courses, query: query || "", level: level || "" });
   } catch (error) {
     console.error("Error fetching courses:", error);
     res

@@ -1,0 +1,82 @@
+// Assuming you're using the YouTube IFrame API
+let player;
+let videoId = 'YOUR_VIDEO_ID'; // Replace with actual video ID
+let videoDuration;
+let viewThreshold = 0.9; // 90% threshold
+let isViewed = false;
+let watchTime = 0;
+
+// Load YouTube IFrame API
+function loadYouTubeAPI() {
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+}
+
+// Function called when YouTube API is ready
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+        height: '360',
+        width: '640',
+        videoId: videoId,
+        events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+        }
+    });
+}
+
+// When player is ready, get video duration
+function onPlayerReady(event) {
+    videoDuration = player.getDuration();
+}
+
+// Track player state changes
+function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.PLAYING) {
+        startTracking();
+    } else {
+        stopTracking();
+    }
+}
+
+let trackingInterval;
+
+// Start tracking watch time
+function startTracking() {
+    trackingInterval = setInterval(() => {
+        watchTime++;
+        checkViewStatus();
+    }, 1000); // Check every second
+}
+
+// Stop tracking watch time
+function stopTracking() {
+    clearInterval(trackingInterval);
+}
+
+// Check if video has been viewed
+function checkViewStatus() {
+    if (watchTime >= videoDuration * viewThreshold && !isViewed) {
+        isViewed = true;
+        console.log("Video has been viewed!");
+        // Here you can trigger any action you want when the video is considered viewed
+        // For example, you could send an AJAX request to your server to update the user's progress
+        updateViewStatus();
+    }
+}
+
+// Update view status on your server
+function updateViewStatus() {
+    // Implement your server communication here
+    // For example:
+    // fetch('/api/update-view-status', {
+    //     method: 'POST',
+    //     body: JSON.stringify({ videoId: videoId, isViewed: true }),
+    //     headers: { 'Content-Type': 'application/json' }
+    // });
+}
+
+// Call this function to load the YouTube API when your page loads
+loadYouTubeAPI();

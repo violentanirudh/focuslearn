@@ -1,0 +1,232 @@
+// File: package.json
+{
+  "name": "lecture-view-tracker",
+  "version": "1.0.0",
+  "description": "An educational website that tracks lecture views",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.12.3",
+    "dotenv": "^8.2.0"
+  }
+}
+
+// File: .env
+PORT=3000
+MONGODB_URI=mongodb://localhost:27017/lecture_tracker
+
+// File: index.js
+require('dotenv').config();
+const express = require('express');
+const mongoose = require('mongoose');
+const routes = require('./routes');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true
+});
+
+app.use(express.json());
+app.use(express.static('public'));
+app.use('/api', routes);
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+
+// File: models/Lecture.js
+const mongoose = require('mongoose');
+
+const LectureSchema = new mongoose.Schema({
+  videoId: { type: String, required: true, unique: true },
+  title: { type: String, required: true },
+  duration: { type: Number, required: true }
+});
+
+module.exports = mongoose.model('Lecture', LectureSchema);
+
+// File: models/UserProgress.js
+const mongoose = require('mongoose');
+
+const UserProgressSchema = new mongoose.Schema({
+  userId: { type: String, required: true },
+  lectureId: { type: mongoose.Schema.Types.ObjectId, ref: 'Lecture', required: true },
+  watchTime: { type: Number, default: 0 },
+  isViewed: { type: Boolean, default: false }
+});
+
+module.exports = mongoose.model('UserProgress', UserProgressSchema);
+
+// File: routes/index.js
+const express = require('express');
+const router = express.Router();
+const lectureController = require('../controllers/lectureController');
+const progressController = require('../controllers/progressController');
+const authMiddleware = require('../middleware/authMiddleware');
+
+router.post('/lectures', lectureController.createLecture);
+router.get('/lectures', lectureController.getAllLectures);
+router.post('/progress', authMiddleware, progressController.updateProgress);
+router.get('/progress/:lectureId', authMiddleware, progressController.getProgress);
+
+module.exports = router;
+
+// File: controllers/lectureController.js
+const Lecture = require('../models/Lecture');
+
+exports.createLecture = async (req, res) => {
+  try {
+    const lecture = new Lecture(req.body);
+    await lecture.save();
+    res.status(201).json(lecture);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+exports.getAllLectures = async (req, res) => {
+  try {
+    const lectures = await Lecture.find();
+    res.json(lectures);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// File: controllers/progressController.js
+const UserProgress = require('../models/UserProgress');
+const Lecture = require('../models/Lecture');
+
+exports.updateProgress = async (req, res) => {
+  try {
+    const { lectureId, watchTime } = req.body;
+    const userId = req.user.id; // Assuming user ID is set by authMiddleware
+
+    const lecture = await Lecture.findById(lectureId);
+    if (!lecture) {
+      return res.status(404).json({ error: 'Lecture not found' });
+    }
+
+    let progress = await UserProgress.findOne({ userId, lectureId });
+    if (!progress) {
+      progress = new UserProgress({ userId, lectureId, watchTime });
+    } else {
+      progress.watchTime = watchTime;
+    }
+
+    progress.isViewed = watchTime >= lecture.duration * 0.9;
+    await progress.save();
+
+    res.json(progress);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+exports.getProgress = async (req, res) => {
+  try {
+    const { lectureId } = req.params;
+    const userId = req.user.id; // Assuming user ID is set by authMiddleware
+
+    const progress = await UserProgress.findOne({ userId, lectureId });
+    if (!progress) {
+      return res.status(404).json({ error: 'Progress not found' });
+    }
+
+    res.json(progress);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// File: middleware/authMiddleware.js
+// This is a placeholder for authentication. In a real application, you'd implement proper authentication.
+module.exports = (req, res, next) => {
+  // For demonstration purposes, we're setting a mock user ID.
+  // In a real application, you'd verify the user's token and set the actual user ID.
+  req.user = { id: 'mock-user-id' };
+  next();
+};
+
+// File: public/index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture View Tracker</title>
+</head>
+<body>
+    <div id="player"></div>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="/js/videoTracker.js"></script>
+</body>
+</html>
+
+// File: public/js/videoTracker.js
+let player;
+let videoId = 'YOUR_VIDEO_ID'; // Replace with actual video ID
+let videoDuration;
+let viewThreshold = 0.9; // 90% threshold
+let isViewed = false;
+let watchTime = 0;
+
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+        height: '360',
+        width: '640',
+        videoId: videoId,
+        events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+        }
+    });
+}
+
+function onPlayerReady(event) {
+    videoDuration = player.getDuration();
+}
+
+function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.PLAYING) {
+        startTracking();
+    } else {
+        stopTracking();
+    }
+}
+
+let trackingInterval;
+
+function startTracking() {
+    trackingInterval = setInterval(() => {
+        watchTime++;
+        checkViewStatus();
+        updateProgress();
+    }, 1000);
+}
+
+function stopTracking() {
+    clearInterval(trackingInterval);
+}
+
+function checkViewStatus() {
+    if (watchTime >= videoDuration * viewThreshold && !isViewed) {
+        isViewed = true;
+        console.log("Video has been viewed!");
+    }
+}
+
+function updateProgress() {
+    fetch('/api/progress', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ lectureId: videoId, watchTime: watchTime })
+    });
+}
