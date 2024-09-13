@@ -1,6 +1,7 @@
 const Request = require("../models/request");
 const User = require("../models/user");
 // const Course = require("../models/course");
+const { Course, Progress } = require("../models/course");
 const axios = require("axios");
 
 // USER DASHBOARD VIEWS
@@ -47,6 +48,57 @@ const renderLearn = async (req, res) => {
   }
 
   return res.render("learn", { course });
+};
+
+const updateProgress = async (req, res) => {
+  try {
+    const { courseId, lectureIndex, watchTime } = req.body;
+    const studentId = req.user.id; // Assuming user ID is set by authMiddleware
+
+    const course = await Course.findOne({ courseId });
+    if (!course) {
+      return res.status(404).json({ error: "Course not found" });
+    }
+
+    if (lectureIndex >= course.lectureCount) {
+      return res.status(400).json({ error: "Invalid lecture index" });
+    }
+
+    let progress = await StudentProgress.findOne({ courseId, studentId });
+    if (!progress) {
+      progress = new StudentProgress({
+        courseId,
+        studentId,
+        lectureStatus: new Array(course.lectureCount).fill(false),
+      });
+    }
+
+    const lectureDuration = course.lectureDurations[lectureIndex];
+    if (watchTime >= lectureDuration * 0.9) {
+      progress.lectureStatus[lectureIndex] = true;
+    }
+
+    await progress.save();
+    res.json(progress);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+const getProgress = async (req, res) => {
+  try {
+    const { courseId } = req.params;
+    const studentId = req.user.id; // Assuming user ID is set by authMiddleware
+
+    const progress = await StudentProgress.findOne({ courseId, studentId });
+    if (!progress) {
+      return res.status(404).json({ error: "Progress not found" });
+    }
+
+    res.json(progress);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 };
 
 // ADMIN DASHBOARD VIEWS
@@ -170,7 +222,6 @@ const searchCourses = async (req, res) => {
   }
 };
 
-
 module.exports = {
   renderHome,
   renderSignIn,
@@ -184,4 +235,6 @@ module.exports = {
   renderAdminCoursesList,
   renderAdminUsers,
   searchCourses,
+  updateProgress,
+  getProgress,
 };
