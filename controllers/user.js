@@ -1,7 +1,7 @@
 const axios = require('axios')
 const Request = require('../models/request')
 const Feedback = require('../models/feedback')
-
+const User = require('../models/user')
 
 async function handleImport(req, res) {
     const { course } = req.body;
@@ -59,7 +59,38 @@ const handleFeedback = async (req, res) => {
     }
 }
 
+const handleCourseEnroll = async (req, res) => {
+    const { courseId } = req.body;
+    if (!courseId) {
+        req.flash('error', 'Course ID is required');
+        return res.redirect('/');
+    }
+
+    if (req.user === undefined) {
+        req.flash('error', 'Unauthorized');
+        return res.redirect('/');
+    }
+
+    try {
+        const user = await User.findById(req.user._id);
+        if (user.courses.includes(courseId)) {
+            req.flash('error', 'Course already enrolled');
+            return res.redirect('/');
+        }
+
+        user.courses.push(courseId);
+        await user.save();
+        req.flash('success', 'Course enrolled');
+        return res.redirect(`/course/${courseId}`);
+    } catch (error) {
+        console.log(error.message);
+        req.flash('error', 'Internal server error');
+        return res.redirect('/');
+    }
+}
+
 module.exports = {
     handleImport,
-    handleFeedback
+    handleFeedback,
+    handleCourseEnroll
 }

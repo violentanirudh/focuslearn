@@ -12,7 +12,7 @@ const {
 router.get("/", renderHome);
 router.get("/signin", renderSignIn);
 router.get("/signup", renderSignUp);
-router.get("/preview/:id", renderCourse);
+router.get("/course/:id", renderCourse);
 router.get("/search", searchCourses);
 
 module.exports = router;

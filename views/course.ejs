@@ -33,6 +33,10 @@
 
         <div id="lectures" class="w-1/2"></div>
     </div>
+    
+    <form action="/enroll/<%- course.playlistId %>" method="POST">
+        <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Enroll</button>
+    </form>
 
     <%- include('./partials/feedback') %>
 

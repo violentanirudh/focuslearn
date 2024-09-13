@@ -1,6 +1,6 @@
 const Request = require("../models/request");
 const User = require("../models/user");
-// const Course = require("../models/course");
+const Course = require("../models/course");
 const axios = require("axios");
 
 // USER DASHBOARD VIEWS
@@ -28,8 +28,7 @@ const renderCourse = async (req, res) => {
   try {
     course = await Course.findOne({ playlistId: id });
   } catch (error) {
-    req.flash("error", "Invalid Course Request");
-    return res.redirect("/dashboard");
+    return res.status(404).redirect("/notfound")
   }
 
   return res.render("course", { course });
