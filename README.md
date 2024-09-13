@@ -45,3 +45,4 @@ $ npm run tailwind
 27. Tanmay : Added search logic
 28. Tanmay : Added search template
 29. Tanmay : Added filter for search
+30. Tanmay : Created Viewed folder which contains logic for the viewed function, viewed and detailed is part of one thing and another is another logic

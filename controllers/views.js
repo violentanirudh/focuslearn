@@ -1,6 +1,6 @@
 const Request = require("../models/request");
 const User = require("../models/user");
-const Course = require("../models/course");
+// const Course = require("../models/course");
 const axios = require("axios");
 
 // USER DASHBOARD VIEWS
@@ -53,7 +53,7 @@ const renderLearn = async (req, res) => {
 
 const renderAdminHome = async (req, res) => {
   const data = {
-    requests: await Requests.find({}).populate("requestedBy"),
+    requests: await Request.find({}).populate("requestedBy"),
     users: await User.find({}),
   };
   return res.render("admin/home", data);
@@ -63,7 +63,7 @@ const renderAdminRequest = async (req, res) => {
   const id = req.params.id;
   let playlist = null;
   try {
-    playlist = await Requests.findById(id).populate("requestedBy");
+    playlist = await Request.findById(id).populate("requestedBy");
   } catch (error) {
     req.flash("error", "Invalid Course Request");
     return res.redirect("/admin/dashboard");
