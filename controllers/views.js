@@ -53,7 +53,7 @@ const renderLearn = async (req, res) => {
 
 const renderAdminHome = async (req, res) => {
   const data = {
-    requests: await Requests.find({}).populate("requestedBy"),
+    requests: await Request.find({}).populate("requestedBy"),
     users: await User.find({}),
   };
   return res.render("admin/home", data);
@@ -148,13 +148,14 @@ const searchCourses = async (req, res) => {
     let courses = [];
 
     if (query) {
-      // Perform a case-insensitive search for courses where the name contains the query
+      console.log("Search query:", query); // Log query
+
       courses = await Course.find({
-        name: { $regex: query, $options: "i" },
+        title: { $regex: query, $options: "i" },
       });
+      console.log("Found courses:", courses); // Log the search result
     }
 
-    // Render the search page with results and query
     res.render("search", { courses, query: query || "" });
   } catch (error) {
     console.error("Error fetching courses:", error);
@@ -163,6 +164,7 @@ const searchCourses = async (req, res) => {
       .render("search", { courses: [], query: "", error: "An error occurred" });
   }
 };
+
 
 module.exports = {
   renderHome,

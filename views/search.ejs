@@ -43,7 +43,7 @@
 <body>
     <div class="search-container">
         <h1>Search Courses</h1>
-        <form class="search-bar" method="get" action="/api/search">
+        <form class="search-bar" method="get" action="/search">
             <input type="text" name="query" placeholder="Search for courses..." value="<%= query %>">
             <button type="submit">Search</button>
         </form>
@@ -52,7 +52,7 @@
             <% if (courses.length > 0) { %>
                 <% courses.forEach(course => { %>
                     <div class="result-item">
-                        <h2><%= course.name %></h2>
+                        <h2><%= course.title %></h2>
                     </div>
                 <% }); %>
             <% } else if (query) { %>
