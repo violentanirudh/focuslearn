@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('./partials/head') %>
-<body class="bg-gray-100 text-zinc-800 py-10 max-w-screen-xl mx-auto">
+<body class="bg-[url('/public/background.png')] bg-cover bg-no-repeat bg-scroll text-white py-10 px-2 max-w-screen-xl mx-auto">
     
     <%- include('partials/navigation') %>
-    <%- include('partials/feedback') %>
 
-    <div class="space-y-8">
+    <div class="flex flex-col gap-4 mt-10">
+
+        <h2 class="flex items-center mb-2 text-white">
+            <i data-feather="hash" class="mr-2"></i>
+            Continue Learning
+        </h2>
 
         <% for (const element in [1,2,3]) { %>
             <%- include('partials/card') %>
@@ -16,7 +20,6 @@
 
     <%- include('partials/footer') %>
     
-
     <script>
         feather.replace();
     </script>
