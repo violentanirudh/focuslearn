@@ -6,6 +6,10 @@ const axios = require("axios");
 // USER DASHBOARD VIEWS
 
 const renderHome = (req, res) => {
+  //  Get courses form user
+  //  Get the users course progress
+  //  Compute the results 
+  //  Render the home page with the results
   return res.render("home", { flash: req.flash("flash") });
 };
 
