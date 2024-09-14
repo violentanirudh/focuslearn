@@ -1,1 +1,613 @@
-{"course":{"lectures":[{"description":"This lecture introduces the fundamental concepts of programming and provides an overview of the Python programming language. We'll cover key elements such as variables, data types, and basic operations, laying the groundwork for future lessons.","title":"Introduction to Programming & Python | Python Tutorial - Day #1","embed":"https://www.youtube.com/embed/7wnove7K-ZQ","duration":710},{"description":"Dive deeper into the world of Python programming with this lecture. We'll explore various interesting Python programs, showcasing the versatility and power of this language. Learn how to write code for tasks like generating random numbers, working with strings, and more.","title":"Some Amazing Python Programs - The Power of Python | Python Tutorial - Day #2","embed":"https://www.youtube.com/embed/Tto8TS-fJQU","duration":518},{"description":"This lecture delves into the concept of modules in Python, which are reusable blocks of code that extend the functionality of your programs. Discover the importance of pip, the package installer for Python, and learn how to use it to install and manage modules.","title":"Modules and Pip | Python Tutorial - Day #3","embed":"https://www.youtube.com/embed/xwKO_y2gHxQ","duration":761},{"description":"Get your hands dirty and write your very first Python program! We'll guide you through the process of setting up a simple program, from writing the code to running it and observing the output. This practical exercise solidifies your understanding of basic Python concepts.","title":"Our First Python Program | Python Tutorial - Day #4","embed":"https://www.youtube.com/embed/7IWOYhfAcVg","duration":444},{"description":"Learn to add clarity and organization to your Python code through the use of comments. We'll explore how to use comments effectively to explain your code, make it easier to understand, and improve its maintainability. We'll also discuss escape sequences and the 'print' statement, essential tools for interacting with the user.","title":"Comments, Escape Sequences & Print Statement | Python Tutorial - Day #5","embed":"https://www.youtube.com/embed/qxPMmW93eDs","duration":1122},{"description":"This lecture introduces the concept of variables in Python, which act as containers to store data. Learn about different data types, such as integers, floats, strings, and booleans, and how to work with them in your Python programs.","title":"Variables and Data Types | Python Tutorial - Day #6","embed":"https://www.youtube.com/embed/ORCuz7s5cCY","duration":1005},{"description":"Put your newfound Python skills to the test by building a basic calculator. This hands-on exercise allows you to apply concepts like user input, arithmetic operations, and conditional statements to create a functional calculator program.","title":"Exercise 1: Calculator using Python | Python Tutorial - Day #7","embed":"https://www.youtube.com/embed/FLVqcxnJP_E","duration":410},{"description":"This lecture provides a step-by-step solution to the calculator exercise, breaking down the code and explaining each part in detail. You'll learn how to implement the functionality of a calculator using Python programming concepts.","title":"Exercise 1: Calculator using Python (Solution) | Python Tutorial - Day #8","embed":"https://www.youtube.com/embed/dohaSBCKCr0","duration":622},{"description":"Explore the concept of type casting in Python, which allows you to convert data from one type to another. Understand how to change data types like integers to floats or strings to numbers, and the implications of these conversions.","title":"Typecasting in Python | Python Tutorial - Day #9","embed":"https://www.youtube.com/embed/Pu5bqySSSS0","duration":565},{"description":"This lecture covers how to take user input in Python, making your programs interactive and allowing them to respond to user actions. Learn how to use the 'input()' function to prompt users for data and then use that data in your programs.","title":"Taking User Input in Python | Python Tutorial - Day #10","embed":"https://www.youtube.com/embed/WvG-R-xXouA","duration":616},{"description":"Dive into the world of strings in Python, a data type used to represent text. Learn how to create, manipulate, and work with strings, including operations like concatenation, slicing, and finding substrings.","title":"Strings in Python | Python Tutorial - Day #11","embed":"https://www.youtube.com/embed/kMNFQYArrLg","duration":695},{"description":"Expand your understanding of strings in Python by learning about string slicing and common string operations. Explore how to extract parts of strings, perform comparisons, and manipulate their contents.","title":"Strings Slicing and Operations on Strings in Python | Python Tutorial - Day #12","embed":"https://www.youtube.com/embed/8jW7lpT8HW8","duration":708},{"description":"This lecture focuses on the various built-in methods available for strings in Python. Discover a wide range of string methods that can be used to modify, analyze, and manipulate strings in efficient ways.","title":"String Methods in Python | Python Tutorial - Day #13","embed":"https://www.youtube.com/embed/0INvoK_T0cE","duration":1352},{"description":"Introduce decision-making into your Python programs with conditional statements. Learn how to use 'if', 'else', and 'elif' to execute different blocks of code based on specific conditions. This lecture enables you to write programs that respond to different situations.","title":"If Else Conditional Statements in Python | Python Tutorial - Day #14","embed":"https://www.youtube.com/embed/ceiuLR2ysas","duration":1167},{"description":"Put your understanding of conditional statements into practice with this exercise. You'll build a program that greets the user with a personalized message based on the time of day. This exercise reinforces your grasp of conditional logic in Python.","title":"Exercise 2: Good Morning Sir | Python Tutorial - Day #15","embed":"https://www.youtube.com/embed/d7ng_aV4qdI","duration":319},{"description":"This lecture introduces the 'match-case' statement, a powerful feature in Python for pattern matching. Learn how to use 'match-case' to simplify conditional logic and handle multiple patterns in a concise and efficient way.","title":"Match Case Statements in Python | Python Tutorial - Day #16","embed":"https://www.youtube.com/embed/bthQCK1QAmQ","duration":491},{"description":"Learn how to use 'for' loops in Python to iterate over sequences of data. Explore the different ways to use for loops, including iterating over lists, strings, and other data structures, to perform repetitive actions.","title":"For Loops in Python | Python Tutorial - Day #17","embed":"https://www.youtube.com/embed/fIYVzKp0q5w","duration":781},{"description":"Expand your loop repertoire with 'while' loops in Python. Discover how to use while loops to repeat code blocks until a specific condition is met. Learn how to control loop execution and avoid infinite loops.","title":"While Loops in Python | Python Tutorial - Day #18","embed":"https://www.youtube.com/embed/-tCFyIyKVx0","duration":850},{"description":"Master control flow within loops using the 'break' and 'continue' keywords. Explore how to break out of loops prematurely and skip certain iterations based on specific conditions. Learn to use these keywords effectively to customize loop behavior.","title":"break and continue in Python | Python Tutorial - Day #19","embed":"https://www.youtube.com/embed/RkwJnjdrm70","duration":734},{"description":"Learn about functions in Python, which are reusable blocks of code that perform specific tasks. Discover how to define functions, pass arguments, and return values. This lecture sets the foundation for modular and organized programming.","title":"Functions in Python | Python Tutorial - Day #20","embed":"https://www.youtube.com/embed/dyvxxJSGUsE","duration":978},{"description":"Explore the concept of function arguments in Python. Learn how to pass data to functions, including positional arguments, keyword arguments, and default arguments. Understand how to handle different types of arguments effectively.","title":"Function Arguments in Python | Python Tutorial - Day #21","embed":"https://www.youtube.com/embed/0d6b6fFuCkE","duration":830},{"description":"Dive into the world of lists in Python, which are ordered collections of items. Learn how to create, access, modify, and manipulate lists, including methods like appending, inserting, and removing elements.","title":"Introduction to Lists in Python | Python Tutorial - Day #22","embed":"https://www.youtube.com/embed/eF6nK5bSlmg","duration":1207},{"description":"This lecture delves into various methods associated with lists in Python. Discover powerful methods for sorting, reversing, extending, and manipulating lists efficiently, enhancing your ability to work with collections of data.","title":"List Methods in Python | Python Tutorial - Day #23","embed":"https://www.youtube.com/embed/scWc3F8LbOo","duration":572},{"description":"Learn about tuples in Python, which are immutable sequences of items. Understand the differences between tuples and lists, and explore the benefits of using tuples when data needs to remain unchanged.","title":"Tuples in Python | Python Tutorial - Day #24","embed":"https://www.youtube.com/embed/PipsOUDKrVk","duration":495},{"description":"This lecture focuses on operations you can perform on tuples in Python. Learn how to access, concatenate, and unpack tuples. Explore the limitations of working with tuples due to their immutable nature.","title":"Operations on Tuples in Python | Python Tutorial - Day #25","embed":"https://www.youtube.com/embed/XblLSduioJI","duration":419},{"description":"This lecture provides the solution to the previous exercise, the calculator program, and gives shoutouts to participants who have been actively contributing. Learn from the solution code and get inspired by the community engagement.","title":"Exercise 2: Solution & Shoutouts | Python Tutorial - Day #26","embed":"https://www.youtube.com/embed/IZBKXWrbqBM","duration":462},{"description":"This lecture challenges you to create a 'Kaun Banega Crorepati' (KBC) game in Python. This exercise involves using your knowledge of user input, conditional statements, and loops to create a fun and interactive quiz game.","title":"Exercise 3: Kaun Banega Crorepati (KBC) | Python Tutorial - Day #27","embed":"https://www.youtube.com/embed/Vs1Z7K70Mvw","duration":167},{"description":"Discover the power of f-strings in Python, a modern way to format strings. Learn how to embed variables and expressions directly within strings using f-strings, making string formatting cleaner and more efficient.","title":"f-strings in Python | Python Tutorial - Day #28","embed":"https://www.youtube.com/embed/ixmxgUf8yIg","duration":532},{"description":"Explore the concept of docstrings in Python, which are multiline strings used to document your code. Learn how to write effective docstrings to explain the purpose, parameters, and return values of functions and classes.","title":"Docstrings in Python | Python Tutorial - Day #29","embed":"https://www.youtube.com/embed/SJzsNd7SM0g","duration":512},{"description":"This lecture introduces the concept of recursion in Python. Learn how to write functions that call themselves, creating recursive solutions for problems that can be broken down into smaller, similar subproblems.","title":"Recursion in Python | Python Tutorial - Day #30","embed":"https://www.youtube.com/embed/XYwJKFB8DUk","duration":601},{"description":"Learn about sets in Python, which are unordered collections of unique elements. Discover how to create, modify, and perform operations on sets, including intersection, union, and difference.","title":"Sets in Python | Python Tutorial - Day #31","embed":"https://www.youtube.com/embed/l3kCO8cVA6o","duration":472},{"description":"This lecture focuses on the various methods associated with sets in Python. Explore powerful methods for adding, removing, and manipulating elements within sets, enhancing your ability to work with collections of unique values.","title":"Set Methods in Python | Python Tutorial - Day #32","embed":"https://www.youtube.com/embed/HOrutCnp2zo","duration":958},{"description":"Discover dictionaries in Python, which are unordered collections of key-value pairs. Learn how to create, access, modify, and delete items in dictionaries, providing a versatile way to store and retrieve data.","title":"Dictionaries in Python | Python Tutorial - Day #33","embed":"https://www.youtube.com/embed/j2G68uQtOwM","duration":620},{"description":"This lecture delves into the methods available for dictionaries in Python. Explore methods for accessing keys, values, and items, along with methods for updating, clearing, and merging dictionaries.","title":"Dictionary Methods in Python | Python Tutorial - Day #34","embed":"https://www.youtube.com/embed/LmbFwaLjT9k","duration":507},{"description":"This lecture introduces the use of 'else' with 'for' loops in Python. Learn how to execute code if the loop completes without encountering a 'break' statement. Explore the use of this construct for conditional actions after loop iteration.","title":"for Loop with else in Python | Python Tutorial - Day #35","embed":"https://www.youtube.com/embed/qUkcIgErZzc","duration":393},{"description":"This lecture covers exception handling in Python, a mechanism for dealing with errors that occur during program execution. Learn how to use 'try', 'except', and 'else' blocks to handle exceptions gracefully and prevent program crashes.","title":"Exception Handling in Python | Python Tutorial - Day #36","embed":"https://www.youtube.com/embed/4LKo6dlku7M","duration":653},{"description":"Explore the 'finally' keyword in Python, which allows you to execute code regardless of whether an exception is raised or not. Understand how to use 'finally' to ensure that certain actions are always performed, even in case of errors.","title":"Finally keyword in Python | Python Tutorial - Day #37","embed":"https://www.youtube.com/embed/r_iuC-IDpPM","duration":485},{"description":"Learn how to raise custom exceptions in Python, allowing you to define your own error types and handle them specifically. Explore the process of creating custom exceptions and using them to signal specific errors within your code.","title":"Raising custom errors in Python | Python Tutorial - Day #38","embed":"https://www.youtube.com/embed/Phr4CNppYoM","duration":642},{"description":"This lecture provides the solution to the KBC game exercise, along with shoutouts to participants for their contributions. Learn from the solution code and gain insights into different approaches to solving the exercise.","title":"Kaun Banega Crorepati: Exercise 3 - Solution & Shoutouts | Python Tutorial - Day #39","embed":"https://www.youtube.com/embed/nyfeYAxP-EM","duration":1396},{"description":"This lecture challenges you to create a program that translates text into a secret code language. This exercise involves using your knowledge of string manipulation, loops, and dictionaries to implement a simple encryption and decryption system.","title":"Exercise 4: Secret Code Language | Python Tutorial - Day #40","embed":"https://www.youtube.com/embed/pOWJ6WgVRIU","duration":365},{"description":"Learn about shorthand 'if-else' statements in Python, a concise way to write conditional expressions. Explore the use of the ternary operator to simplify conditional logic and make your code more readable.","title":"Short hand if else statements | Python Tutorial - Day #41","embed":"https://www.youtube.com/embed/Qqx_zNmQVGI","duration":463},{"description":"Discover the 'enumerate' function in Python, a powerful tool for iterating over sequences while keeping track of the index of each element. Explore its use for tasks like displaying numbered lists or accessing elements by their positions.","title":"Enumerate Function in Python | Python Tutorial - Day #42","embed":"https://www.youtube.com/embed/kGnYc_h1geM","duration":457},{"description":"This lecture introduces the concept of virtual environments in Python, a crucial tool for managing dependencies and creating isolated environments for your projects. Learn how to create, activate, and manage virtual environments to avoid conflicts between different projects.","title":"Virtual Environment in Python | Python Tutorial - Day #43","embed":"https://www.youtube.com/embed/nt6LlFTWOkg","duration":1298},{"description":"This lecture delves into the mechanics of how the 'import' statement works in Python. Understand the search path for modules, the concept of packages, and the different ways to import modules and functions into your code.","title":"How import works in Python | Python Tutorial - Day #44","embed":"https://www.youtube.com/embed/Pr7UOr35NcI","duration":762},{"description":"Explore the use of the '__name__' variable and its role in running Python scripts. Learn how to use the 'if __name__ == \"__main__\"' block to control the execution of code within a script, separating it from functions and classes.","title":"if __name__ == \"__main__\" in Python | Python Tutorial - Day #45","embed":"https://www.youtube.com/embed/y_CX2Rvitk8","duration":564},{"description":"This lecture introduces the 'os' module in Python, a powerful tool for interacting with the operating system. Learn how to use 'os' to perform tasks like creating and deleting files, changing directories, and interacting with the file system.","title":"os Module in Python | Python Tutorial - Day #46","embed":"https://www.youtube.com/embed/dkVYSsL90Oo","duration":924},{"description":"This lecture provides the solution to the Secret Code Language exercise, along with shoutouts to participants who have been actively contributing. Learn from the solution code and get inspired by the community engagement.","title":"Exercise 4: Solutions and Shoutouts | Python Tutorial - Day #47","embed":"https://www.youtube.com/embed/4lSQfOJKn7U","duration":1171},{"description":"This lecture explores the differences between local and global variables in Python. Understand the scope of variables and how they are accessed within different parts of a program. Learn how to define and access variables effectively in various contexts.","title":"Local vs Global Variables in Python| Python Tutorial - Day #48","embed":"https://www.youtube.com/embed/RaG6GgcDt54","duration":637},{"description":"This lecture introduces file I/O operations in Python, allowing you to read from and write to files. Explore methods like 'open()', 'read()', 'write()', and 'close()', and learn how to work with files in Python.","title":"File IO in Python | Python Tutorial - Day #49","embed":"https://www.youtube.com/embed/eDBPlcWYses","duration":773},{"description":"This lecture delves deeper into file I/O methods in Python, focusing on functions like 'read()', 'readlines()', and 'writelines()'. Learn how to read and write data from and to files in various formats and manage file operations effectively.","title":"read(), readlines() and other methods | Python Tutorial - Day #50","embed":"https://www.youtube.com/embed/l1FsnQxET9U","duration":647},{"description":"Explore additional file I/O functions in Python, including 'seek()', 'tell()', and 'truncate()'. Learn how to navigate within files, determine file positions, and modify file contents based on specific requirements.","title":"seek(), tell() and other functions | Python Tutorial - Day #51","embed":"https://www.youtube.com/embed/PByYX-2l5Us","duration":467},{"description":"Discover lambda functions in Python, also known as anonymous functions. Learn how to create concise, single-line functions without the need for formal definition. Explore the use of lambda functions for simplifying code and enhancing readability.","title":"Lambda functions in Python | Python Tutorial - Day #52","embed":"https://www.youtube.com/embed/UfFWf-PXUqE","duration":558},{"description":"This lecture covers three powerful functional programming tools in Python: 'map()', 'filter()', and 'reduce()'. Learn how to apply these functions to transform, filter, and aggregate data in efficient and expressive ways.","title":"Map, Filter and Reduce in Python | Python Tutorial - Day #53","embed":"https://www.youtube.com/embed/OErhjT4f5Cs","duration":781},{"description":"This lecture explores the difference between the 'is' and '==' operators in Python. Understand how each operator compares objects, and learn when to use 'is' to check for object identity and '==' to compare values.","title":"is' vs '==' in Python | Python Tutorial - Day #54","embed":"https://www.youtube.com/embed/TOemdfX_0xc","duration":481},{"description":"This lecture challenges you to create a 'Snake Water Gun' game in Python, a classic game of chance. This exercise involves using your knowledge of user input, conditional statements, and random number generation to create a fun and interactive game.","title":"Exercise 5 - Snake Water Gun | Python Tutorial - Day #55","embed":"https://www.youtube.com/embed/dDsh7FT6-0I","duration":355},{"description":"This lecture introduces the fundamental concepts of Object-Oriented Programming (OOP) in Python, a paradigm that allows you to structure code using objects and classes. Learn the basics of OOP and its benefits for building robust and modular programs.","title":"Introduction to OOPs in Python | Python Tutorial - Day #56","embed":"https://www.youtube.com/embed/HQnoYzxOHMw","duration":954},{"description":"This lecture dives into the core concepts of classes and objects in Python. Learn how to define classes, create instances of those classes (objects), and use objects to encapsulate data and behavior.","title":"Classes and Objects in Python | Python Tutorial - Day #57","embed":"https://www.youtube.com/embed/a7baAGCBA9U","duration":572},{"description":"Explore the concept of constructors in Python, special methods used to initialize objects when they are created. Learn how to define constructors and use them to set initial values for object attributes.","title":"Constructors in Python | Python Tutorial - Day #58","embed":"https://www.youtube.com/embed/12HRkYld22c","duration":677},{"description":"This lecture introduces decorators in Python, a powerful way to modify the behavior of functions without directly altering their code. Learn how to define and apply decorators, extending the functionality of functions in a flexible and concise way.","title":"Decorators in Python | Python Tutorial - Day #59","embed":"https://www.youtube.com/embed/PTBZ674EsvI","duration":785},{"description":"This lecture explores the concept of getters and setters in Python, which are used to control access to object attributes. Learn how to define getters and setters to enforce data validation, encapsulate access to attributes, and maintain data integrity.","title":"Getters and Setters in Python | Python Tutorial - Day #60","embed":"https://www.youtube.com/embed/2gbCT8h9uyk","duration":637},{"description":"This lecture covers inheritance in Python, a key OOP concept that allows you to create new classes based on existing ones. Learn how to inherit attributes and methods from parent classes and extend their functionality, promoting code reusability.","title":"Inheritance in Python | Python Tutorial - Day #61","embed":"https://www.youtube.com/embed/-KsfUaQEY9Y","duration":454},{"description":"Explore the concept of access modifiers in Python, which control the visibility of attributes and methods within a class. Learn about public, protected, and private access modifiers and how they affect attribute and method accessibility.","title":"Access Modifiers in Python | Python Tutorial - Day #62","embed":"https://www.youtube.com/embed/43FK20rWvKQ","duration":703},{"description":"This lecture provides the solution to the Snake Water Gun game exercise, along with shoutouts to participants for their contributions. Learn from the solution code and gain insights into different approaches to solving the exercise.","title":"Snake Water Gun Game in Python - Exercise 5 - Solution | Python Tutorial - Day #63","embed":"https://www.youtube.com/embed/GkfBpm6MN9A","duration":928},{"description":"This lecture challenges you to build a Library Management System in Python. This exercise involves applying your OOP knowledge to create classes for books, members, and the library itself, managing operations like borrowing and returning books.","title":"Exercise 6 - Library Management System in Python | Python Tutorial - Day #64","embed":"https://www.youtube.com/embed/mlDZTSH2FFc","duration":195},{"description":"Discover static methods in Python, which are class-level methods that are not associated with specific instances. Learn how to define and use static methods to perform actions that are independent of individual objects.","title":"Static Methods in Python | Python Tutorial - Day #65","embed":"https://www.youtube.com/embed/GcSVYNSsJxo","duration":457},{"description":"This lecture explores the difference between instance variables and class variables in Python. Understand how these variables are defined, accessed, and modified within classes. Learn to differentiate between attributes that belong to individual objects and those shared by all objects of a class.","title":"Instance variables vs Class variables in Python | Python Tutorial - Day #66","embed":"https://www.youtube.com/embed/tQdaeiF4j38","duration":877},{"description":"This lecture provides the solution to the Library Management System exercise, showcasing a complete implementation of the system using OOP concepts. Learn from the solution code and gain insights into building a comprehensive system using Python classes.","title":"Exercise 6 Solution - Library Management Software in Python | Python Tutorial - Day #67","embed":"https://www.youtube.com/embed/uRIEjf2vCIg","duration":574},{"description":"This lecture challenges you to create a program that helps users clear clutter by organizing items into categories. This exercise involves applying your knowledge of lists, dictionaries, and user input to build a simple organization tool.","title":"Exercise 7 - Clear the Clutter | Python Tutorial - Day #68","embed":"https://www.youtube.com/embed/6KvnP13TnhY","duration":214},{"description":"Explore class methods in Python, which are methods that are associated with the class itself rather than specific instances. Learn how to define and use class methods, particularly as alternative constructors for creating objects.","title":"Class Methods in Python | Python Tutorial - Day #69","embed":"https://www.youtube.com/embed/9ynmDLc5FYo","duration":385},{"description":"This lecture delves into the use of class methods as alternative constructors in Python. Learn how to define class methods that can create objects with different initial states, providing flexibility in object creation.","title":"Class Methods as Alternative Constructors in Python | Python Tutorial - Day #70","embed":"https://www.youtube.com/embed/FGlKJdy--p8","duration":786},{"description":"Discover the 'dir()', '__dict__', and 'help()' methods in Python, which provide information about objects and classes. Learn how to use these methods to inspect object attributes, methods, and documentation.","title":"dir, __dict__ and help method in Python | Python Tutorial - Day #71","embed":"https://www.youtube.com/embed/Wgo9TaBcuJ4","duration":443},{"description":"This lecture introduces the 'super()' keyword in Python, a tool for accessing methods and attributes of parent classes within child classes. Learn how to use 'super()' to extend parent class functionality in a clear and concise manner.","title":"super keyword in Python | Python Tutorial - Day #72","embed":"https://www.youtube.com/embed/P648reefNh0","duration":548},{"description":"Explore the concept of magic or dunder methods in Python, special methods that begin and end with double underscores. Learn how to use dunder methods to customize object behavior, such as defining custom string representations or operators.","title":"Magic/Dunder Methods in Python | Python Tutorial - Day #73","embed":"https://www.youtube.com/embed/DmgQVJXhuLQ","duration":732},{"description":"This lecture covers method overriding in Python, a technique for providing different implementations of methods in child classes. Learn how method overriding allows you to customize behavior inherited from parent classes.","title":"Method Overriding in Python | Python Tutorial - Day #74","embed":"https://www.youtube.com/embed/46_yfYC36JY","duration":387},{"description":"This lecture provides the solution to the Clear the Clutter exercise, along with shoutouts to participants for their contributions. Learn from the solution code and gain insights into different approaches to solving the exercise.","title":"Exercise 7 Solution + Shoutouts | Python Tutorial - Day #75","embed":"https://www.youtube.com/embed/Wt9Shnzv_Yg","duration":732},{"description":"This lecture challenges you to create a program that merges multiple PDF documents into a single PDF file. This exercise involves utilizing external libraries and file handling techniques to manipulate PDF files.","title":"Exercise 8 - Merge the PDF | Python Tutorial - Day #76","embed":"https://www.youtube.com/embed/uUbvJ7ZEhPE","duration":194},{"description":"Explore the concept of operator overloading in Python, which allows you to customize how operators work with your custom objects. Learn how to define special methods to handle operations like addition, subtraction, and comparison when used with your classes.","title":"Operator Overloading in Python | Python Tutorial - Day #77","embed":"https://www.youtube.com/embed/D67-b2t-y4k","duration":444},{"description":"This lecture introduces single inheritance in Python, a fundamental OOP concept where a child class inherits attributes and methods from a single parent class. Learn how to create child classes and leverage the inheritance mechanism.","title":"Single Inheritance in Python | Python Tutorial - Day #78","embed":"https://www.youtube.com/embed/U53_Gw55NI8","duration":279},{"description":"Expand your understanding of inheritance with multiple inheritance in Python. Learn how a child class can inherit from multiple parent classes, combining their functionalities and creating more complex class hierarchies.","title":"Multiple Inheritance in Python | Python Tutorial - Day #79","embed":"https://www.youtube.com/embed/4o7xSHgKlvI","duration":371},{"description":"This lecture explores multilevel inheritance in Python, where a child class inherits from a parent class, which in turn inherits from another parent class. Learn how to create multilevel hierarchies and access attributes and methods from multiple levels.","title":"Multilevel Inheritance in Python | Python Tutorial - Day #80","embed":"https://www.youtube.com/embed/Il7XMJJeXiA","duration":474},{"description":"This lecture covers hybrid and hierarchical inheritance in Python, advanced forms of inheritance that combine multiple inheritance patterns. Learn how to implement these patterns to create flexible and powerful class relationships.","title":"Hybrid and Hierarchical Inheritance in Python | Python Tutorial - Day #81","embed":"https://www.youtube.com/embed/B4Q8zxRkm_I","duration":534},{"description":"This lecture provides the solution to the Merge the PDF exercise, demonstrating how to merge multiple PDF files into a single file using external libraries and Python code. Learn from the solution code and gain insights into working with PDFs in Python.","title":"Exercise 8 - Merge the Pdf Solution in Python | Python Tutorial - Day #82","embed":"https://www.youtube.com/embed/qKKGemhBRVM","duration":471},{"description":"This lecture is dedicated to giving shoutouts to all participants for their contributions and active engagement throughout the course. Learn from the community spirit and stay motivated for future learning.","title":"Exercise 9 - Shoutouts to Everyone | Python Tutorial - Day #83","embed":"https://www.youtube.com/embed/1WjwnlRXfHc","duration":228},{"description":"Explore the 'time' module in Python, a powerful tool for working with dates and times. Learn how to get current time, format dates and times, calculate time intervals, and manage time-related operations in your Python programs.","title":"Time Module in Python | Python Tutorial - Day #84","embed":"https://www.youtube.com/embed/oTtIvV-Q1FY","duration":697},{"description":"This lecture guides you on how to create a command-line utility in Python. Learn how to define command-line arguments, interact with the user through the terminal, and develop scripts that can be executed from the command line.","title":"Creating command line utility in python | Python Tutorial - Day #85","embed":"https://www.youtube.com/embed/3IAu6-pgw7I","duration":1112},{"description":"Discover the Walrus operator (':=') in Python, a new operator introduced in Python 3.8. Learn how to assign a value to a variable within an expression, simplifying code and reducing redundancy.","title":"Walrus Operator in Python | Python Tutorial - Day #86","embed":"https://www.youtube.com/embed/NCmMEEyzLT8","duration":576},{"description":"This lecture introduces the 'shutil' module in Python, a powerful tool for high-level file operations. Learn how to use 'shutil' to copy, move, delete, and rename files and directories, making file management tasks easier.","title":"Shutil Module in Python | Python Tutorial - Day #87","embed":"https://www.youtube.com/embed/wII2JhNACJE","duration":762},{"description":"This lecture provides the solution to the Shoutouts exercise, offering a concluding message of appreciation and encouragement to all participants. Learn from the community spirit and continue your Python journey.","title":"Exercise 9: Solution - Shoutouts to Everyone | Python Tutorial - Day #88","embed":"https://www.youtube.com/embed/C9VP-56RXNM","duration":734},{"description":"Discover the 'requests' module in Python, a widely used library for making HTTP requests. Learn how to send GET and POST requests, retrieve data from websites, and interact with APIs using 'requests'.","title":"Requests Module in Python | Python Tutorial - Day #89","embed":"https://www.youtube.com/embed/Nsb3bLIlO4w","duration":526},{"description":"This lecture challenges you to create a News App in Python that fetches and displays news headlines from various sources. This exercise involves utilizing the 'requests' module and web scraping techniques to gather and present news content.","title":"Exercise 10: News App in Python | Python Tutorial - Day #90","embed":"https://www.youtube.com/embed/BGzFp9mwFQ4","duration":274},{"description":"This lecture introduces generators in Python, a powerful technique for creating iterators that generate values on demand. Learn how to define generators using the 'yield' keyword, optimizing memory usage and simplifying iterative processes.","title":"Generators in Python | Python Tutorial - Day #91","embed":"https://www.youtube.com/embed/ixd-u3pmsUc","duration":527},{"description":"This lecture explores the concept of function caching in Python, a technique for storing the results of function calls to improve performance. Learn how to use decorators and caching techniques to optimize function execution and avoid redundant calculations.","title":"Function Caching in Python | Python Tutorial - Day #92","embed":"https://www.youtube.com/embed/K8gjSwc3Rlo","duration":674},{"description":"This lecture provides the solution to the News App exercise, demonstrating how to build a news app that fetches and displays news headlines from various sources. Learn from the solution code and gain insights into using 'requests' and web scraping for news retrieval.","title":"Exercise 10 - News App Solution & Shoutout | Python Tutorial - Day #93","embed":"https://www.youtube.com/embed/bnAz7Kb2efE","duration":691},{"description":"This lecture challenges you to create a Drink Water Reminder program in Python that prompts users to drink water at regular intervals. This exercise involves using the 'time' module and potentially desktop notifications to create a health-focused application.","title":"Exercise 11 - Drink Water Reminder | Python Tutorial - Day #94","embed":"https://www.youtube.com/embed/1i4piFhpnm8","duration":260},{"description":"Discover regular expressions (regex) in Python, a powerful tool for pattern matching in text. Learn how to use regex to search, validate, and manipulate text based on specific patterns, making text processing tasks more efficient.","title":"Regular Expressions in Python | Python Tutorial - Day #95","embed":"https://www.youtube.com/embed/TCWOwavqFrw","duration":783},{"description":"This lecture introduces the 'asyncio' library in Python, a powerful tool for asynchronous programming. Learn how to use 'asyncio' to handle multiple tasks concurrently, improving program responsiveness and utilizing resources efficiently.","title":"AsyncIO in Python | Python Tutorial - Day #96","embed":"https://www.youtube.com/embed/lgoB3_-ejnI","duration":629},{"description":"This lecture explores multithreading in Python, a technique for running multiple threads of execution concurrently within a single process. Learn how to create and manage threads, enabling you to handle tasks in parallel and improve program performance.","title":"Multithreading in Python | Python Tutorial - Day #97","embed":"https://www.youtube.com/embed/ICbU6zAKtqQ","duration":1069},{"description":"This lecture covers multiprocessing in Python, a technique for running multiple processes concurrently, utilizing multiple CPU cores for better performance. Learn how to create and manage processes, enabling you to take advantage of multiple processors in your programs.","title":"MultiProcessing in Python | Python Tutorial - Day #98","embed":"https://www.youtube.com/embed/zGe-9LfnAaA","duration":1204},{"description":"This lecture provides the solution to the Drink Water Reminder exercise, demonstrating how to implement a reminder system using the 'time' module and potentially desktop notifications. Learn from the solution code and gain insights into building a health-focused application.","title":"Exercise 11: Solution + Shoutouts - Desktop Notification System | Python Tutorial - Day #99","embed":"https://www.youtube.com/embed/18vZnLqXMoM","duration":606},{"description":"This concluding lecture summarizes the key concepts covered throughout the course and provides guidance on where to go next in your Python learning journey. Explore resources for further learning and delve into specific areas of interest.","title":"Conclusion and Where to go from here | Python Tutorial - Day #100","embed":"https://www.youtube.com/embed/5Pz8WGiMJ_c","duration":999}],"name":"Python Programming Bootcamp","overview":"This comprehensive bootcamp provides a solid foundation in Python programming, covering fundamental concepts, essential libraries, and practical applications.  From basic syntax to object-oriented programming, you'll gain the skills needed to build various Python applications.","category":"programming","level":"beginner"},"author":"CodeWithHarry","channel":"https://www.youtube.com/channel/UCeVMnSShP_Iviwkknt83cww","duration":64632}
+{
+  "course": {
+    "lectures": [
+      {
+        "description": "This lecture introduces the fundamental concepts of programming and provides an overview of the Python programming language. We'll cover key elements such as variables, data types, and basic operations, laying the groundwork for future lessons.",
+        "title": "Introduction to Programming & Python | Python Tutorial - Day #1",
+        "embed": "https://www.youtube.com/embed/7wnove7K-ZQ",
+        "duration": 710
+      },
+      {
+        "description": "Dive deeper into the world of Python programming with this lecture. We'll explore various interesting Python programs, showcasing the versatility and power of this language. Learn how to write code for tasks like generating random numbers, working with strings, and more.",
+        "title": "Some Amazing Python Programs - The Power of Python | Python Tutorial - Day #2",
+        "embed": "https://www.youtube.com/embed/Tto8TS-fJQU",
+        "duration": 518
+      },
+      {
+        "description": "This lecture delves into the concept of modules in Python, which are reusable blocks of code that extend the functionality of your programs. Discover the importance of pip, the package installer for Python, and learn how to use it to install and manage modules.",
+        "title": "Modules and Pip | Python Tutorial - Day #3",
+        "embed": "https://www.youtube.com/embed/xwKO_y2gHxQ",
+        "duration": 761
+      },
+      {
+        "description": "Get your hands dirty and write your very first Python program! We'll guide you through the process of setting up a simple program, from writing the code to running it and observing the output. This practical exercise solidifies your understanding of basic Python concepts.",
+        "title": "Our First Python Program | Python Tutorial - Day #4",
+        "embed": "https://www.youtube.com/embed/7IWOYhfAcVg",
+        "duration": 444
+      },
+      {
+        "description": "Learn to add clarity and organization to your Python code through the use of comments. We'll explore how to use comments effectively to explain your code, make it easier to understand, and improve its maintainability. We'll also discuss escape sequences and the 'print' statement, essential tools for interacting with the user.",
+        "title": "Comments, Escape Sequences & Print Statement | Python Tutorial - Day #5",
+        "embed": "https://www.youtube.com/embed/qxPMmW93eDs",
+        "duration": 1122
+      },
+      {
+        "description": "This lecture introduces the concept of variables in Python, which act as containers to store data. Learn about different data types, such as integers, floats, strings, and booleans, and how to work with them in your Python programs.",
+        "title": "Variables and Data Types | Python Tutorial - Day #6",
+        "embed": "https://www.youtube.com/embed/ORCuz7s5cCY",
+        "duration": 1005
+      },
+      {
+        "description": "Put your newfound Python skills to the test by building a basic calculator. This hands-on exercise allows you to apply concepts like user input, arithmetic operations, and conditional statements to create a functional calculator program.",
+        "title": "Exercise 1: Calculator using Python | Python Tutorial - Day #7",
+        "embed": "https://www.youtube.com/embed/FLVqcxnJP_E",
+        "duration": 410
+      },
+      {
+        "description": "This lecture provides a step-by-step solution to the calculator exercise, breaking down the code and explaining each part in detail. You'll learn how to implement the functionality of a calculator using Python programming concepts.",
+        "title": "Exercise 1: Calculator using Python (Solution) | Python Tutorial - Day #8",
+        "embed": "https://www.youtube.com/embed/dohaSBCKCr0",
+        "duration": 622
+      },
+      {
+        "description": "Explore the concept of type casting in Python, which allows you to convert data from one type to another. Understand how to change data types like integers to floats or strings to numbers, and the implications of these conversions.",
+        "title": "Typecasting in Python | Python Tutorial - Day #9",
+        "embed": "https://www.youtube.com/embed/Pu5bqySSSS0",
+        "duration": 565
+      },
+      {
+        "description": "This lecture covers how to take user input in Python, making your programs interactive and allowing them to respond to user actions. Learn how to use the 'input()' function to prompt users for data and then use that data in your programs.",
+        "title": "Taking User Input in Python | Python Tutorial - Day #10",
+        "embed": "https://www.youtube.com/embed/WvG-R-xXouA",
+        "duration": 616
+      },
+      {
+        "description": "Dive into the world of strings in Python, a data type used to represent text. Learn how to create, manipulate, and work with strings, including operations like concatenation, slicing, and finding substrings.",
+        "title": "Strings in Python | Python Tutorial - Day #11",
+        "embed": "https://www.youtube.com/embed/kMNFQYArrLg",
+        "duration": 695
+      },
+      {
+        "description": "Expand your understanding of strings in Python by learning about string slicing and common string operations. Explore how to extract parts of strings, perform comparisons, and manipulate their contents.",
+        "title": "Strings Slicing and Operations on Strings in Python | Python Tutorial - Day #12",
+        "embed": "https://www.youtube.com/embed/8jW7lpT8HW8",
+        "duration": 708
+      },
+      {
+        "description": "This lecture focuses on the various built-in methods available for strings in Python. Discover a wide range of string methods that can be used to modify, analyze, and manipulate strings in efficient ways.",
+        "title": "String Methods in Python | Python Tutorial - Day #13",
+        "embed": "https://www.youtube.com/embed/0INvoK_T0cE",
+        "duration": 1352
+      },
+      {
+        "description": "Introduce decision-making into your Python programs with conditional statements. Learn how to use 'if', 'else', and 'elif' to execute different blocks of code based on specific conditions. This lecture enables you to write programs that respond to different situations.",
+        "title": "If Else Conditional Statements in Python | Python Tutorial - Day #14",
+        "embed": "https://www.youtube.com/embed/ceiuLR2ysas",
+        "duration": 1167
+      },
+      {
+        "description": "Put your understanding of conditional statements into practice with this exercise. You'll build a program that greets the user with a personalized message based on the time of day. This exercise reinforces your grasp of conditional logic in Python.",
+        "title": "Exercise 2: Good Morning Sir | Python Tutorial - Day #15",
+        "embed": "https://www.youtube.com/embed/d7ng_aV4qdI",
+        "duration": 319
+      },
+      {
+        "description": "This lecture introduces the 'match-case' statement, a powerful feature in Python for pattern matching. Learn how to use 'match-case' to simplify conditional logic and handle multiple patterns in a concise and efficient way.",
+        "title": "Match Case Statements in Python | Python Tutorial - Day #16",
+        "embed": "https://www.youtube.com/embed/bthQCK1QAmQ",
+        "duration": 491
+      },
+      {
+        "description": "Learn how to use 'for' loops in Python to iterate over sequences of data. Explore the different ways to use for loops, including iterating over lists, strings, and other data structures, to perform repetitive actions.",
+        "title": "For Loops in Python | Python Tutorial - Day #17",
+        "embed": "https://www.youtube.com/embed/fIYVzKp0q5w",
+        "duration": 781
+      },
+      {
+        "description": "Expand your loop repertoire with 'while' loops in Python. Discover how to use while loops to repeat code blocks until a specific condition is met. Learn how to control loop execution and avoid infinite loops.",
+        "title": "While Loops in Python | Python Tutorial - Day #18",
+        "embed": "https://www.youtube.com/embed/-tCFyIyKVx0",
+        "duration": 850
+      },
+      {
+        "description": "Master control flow within loops using the 'break' and 'continue' keywords. Explore how to break out of loops prematurely and skip certain iterations based on specific conditions. Learn to use these keywords effectively to customize loop behavior.",
+        "title": "break and continue in Python | Python Tutorial - Day #19",
+        "embed": "https://www.youtube.com/embed/RkwJnjdrm70",
+        "duration": 734
+      },
+      {
+        "description": "Learn about functions in Python, which are reusable blocks of code that perform specific tasks. Discover how to define functions, pass arguments, and return values. This lecture sets the foundation for modular and organized programming.",
+        "title": "Functions in Python | Python Tutorial - Day #20",
+        "embed": "https://www.youtube.com/embed/dyvxxJSGUsE",
+        "duration": 978
+      },
+      {
+        "description": "Explore the concept of function arguments in Python. Learn how to pass data to functions, including positional arguments, keyword arguments, and default arguments. Understand how to handle different types of arguments effectively.",
+        "title": "Function Arguments in Python | Python Tutorial - Day #21",
+        "embed": "https://www.youtube.com/embed/0d6b6fFuCkE",
+        "duration": 830
+      },
+      {
+        "description": "Dive into the world of lists in Python, which are ordered collections of items. Learn how to create, access, modify, and manipulate lists, including methods like appending, inserting, and removing elements.",
+        "title": "Introduction to Lists in Python | Python Tutorial - Day #22",
+        "embed": "https://www.youtube.com/embed/eF6nK5bSlmg",
+        "duration": 1207
+      },
+      {
+        "description": "This lecture delves into various methods associated with lists in Python. Discover powerful methods for sorting, reversing, extending, and manipulating lists efficiently, enhancing your ability to work with collections of data.",
+        "title": "List Methods in Python | Python Tutorial - Day #23",
+        "embed": "https://www.youtube.com/embed/scWc3F8LbOo",
+        "duration": 572
+      },
+      {
+        "description": "Learn about tuples in Python, which are immutable sequences of items. Understand the differences between tuples and lists, and explore the benefits of using tuples when data needs to remain unchanged.",
+        "title": "Tuples in Python | Python Tutorial - Day #24",
+        "embed": "https://www.youtube.com/embed/PipsOUDKrVk",
+        "duration": 495
+      },
+      {
+        "description": "This lecture focuses on operations you can perform on tuples in Python. Learn how to access, concatenate, and unpack tuples. Explore the limitations of working with tuples due to their immutable nature.",
+        "title": "Operations on Tuples in Python | Python Tutorial - Day #25",
+        "embed": "https://www.youtube.com/embed/XblLSduioJI",
+        "duration": 419
+      },
+      {
+        "description": "This lecture provides the solution to the previous exercise, the calculator program, and gives shoutouts to participants who have been actively contributing. Learn from the solution code and get inspired by the community engagement.",
+        "title": "Exercise 2: Solution & Shoutouts | Python Tutorial - Day #26",
+        "embed": "https://www.youtube.com/embed/IZBKXWrbqBM",
+        "duration": 462
+      },
+      {
+        "description": "This lecture challenges you to create a 'Kaun Banega Crorepati' (KBC) game in Python. This exercise involves using your knowledge of user input, conditional statements, and loops to create a fun and interactive quiz game.",
+        "title": "Exercise 3: Kaun Banega Crorepati (KBC) | Python Tutorial - Day #27",
+        "embed": "https://www.youtube.com/embed/Vs1Z7K70Mvw",
+        "duration": 167
+      },
+      {
+        "description": "Discover the power of f-strings in Python, a modern way to format strings. Learn how to embed variables and expressions directly within strings using f-strings, making string formatting cleaner and more efficient.",
+        "title": "f-strings in Python | Python Tutorial - Day #28",
+        "embed": "https://www.youtube.com/embed/ixmxgUf8yIg",
+        "duration": 532
+      },
+      {
+        "description": "Explore the concept of docstrings in Python, which are multiline strings used to document your code. Learn how to write effective docstrings to explain the purpose, parameters, and return values of functions and classes.",
+        "title": "Docstrings in Python | Python Tutorial - Day #29",
+        "embed": "https://www.youtube.com/embed/SJzsNd7SM0g",
+        "duration": 512
+      },
+      {
+        "description": "This lecture introduces the concept of recursion in Python. Learn how to write functions that call themselves, creating recursive solutions for problems that can be broken down into smaller, similar subproblems.",
+        "title": "Recursion in Python | Python Tutorial - Day #30",
+        "embed": "https://www.youtube.com/embed/XYwJKFB8DUk",
+        "duration": 601
+      },
+      {
+        "description": "Learn about sets in Python, which are unordered collections of unique elements. Discover how to create, modify, and perform operations on sets, including intersection, union, and difference.",
+        "title": "Sets in Python | Python Tutorial - Day #31",
+        "embed": "https://www.youtube.com/embed/l3kCO8cVA6o",
+        "duration": 472
+      },
+      {
+        "description": "This lecture focuses on the various methods associated with sets in Python. Explore powerful methods for adding, removing, and manipulating elements within sets, enhancing your ability to work with collections of unique values.",
+        "title": "Set Methods in Python | Python Tutorial - Day #32",
+        "embed": "https://www.youtube.com/embed/HOrutCnp2zo",
+        "duration": 958
+      },
+      {
+        "description": "Discover dictionaries in Python, which are unordered collections of key-value pairs. Learn how to create, access, modify, and delete items in dictionaries, providing a versatile way to store and retrieve data.",
+        "title": "Dictionaries in Python | Python Tutorial - Day #33",
+        "embed": "https://www.youtube.com/embed/j2G68uQtOwM",
+        "duration": 620
+      },
+      {
+        "description": "This lecture delves into the methods available for dictionaries in Python. Explore methods for accessing keys, values, and items, along with methods for updating, clearing, and merging dictionaries.",
+        "title": "Dictionary Methods in Python | Python Tutorial - Day #34",
+        "embed": "https://www.youtube.com/embed/LmbFwaLjT9k",
+        "duration": 507
+      },
+      {
+        "description": "This lecture introduces the use of 'else' with 'for' loops in Python. Learn how to execute code if the loop completes without encountering a 'break' statement. Explore the use of this construct for conditional actions after loop iteration.",
+        "title": "for Loop with else in Python | Python Tutorial - Day #35",
+        "embed": "https://www.youtube.com/embed/qUkcIgErZzc",
+        "duration": 393
+      },
+      {
+        "description": "This lecture covers exception handling in Python, a mechanism for dealing with errors that occur during program execution. Learn how to use 'try', 'except', and 'else' blocks to handle exceptions gracefully and prevent program crashes.",
+        "title": "Exception Handling in Python | Python Tutorial - Day #36",
+        "embed": "https://www.youtube.com/embed/4LKo6dlku7M",
+        "duration": 653
+      },
+      {
+        "description": "Explore the 'finally' keyword in Python, which allows you to execute code regardless of whether an exception is raised or not. Understand how to use 'finally' to ensure that certain actions are always performed, even in case of errors.",
+        "title": "Finally keyword in Python | Python Tutorial - Day #37",
+        "embed": "https://www.youtube.com/embed/r_iuC-IDpPM",
+        "duration": 485
+      },
+      {
+        "description": "Learn how to raise custom exceptions in Python, allowing you to define your own error types and handle them specifically. Explore the process of creating custom exceptions and using them to signal specific errors within your code.",
+        "title": "Raising custom errors in Python | Python Tutorial - Day #38",
+        "embed": "https://www.youtube.com/embed/Phr4CNppYoM",
+        "duration": 642
+      },
+      {
+        "description": "This lecture provides the solution to the KBC game exercise, along with shoutouts to participants for their contributions. Learn from the solution code and gain insights into different approaches to solving the exercise.",
+        "title": "Kaun Banega Crorepati: Exercise 3 - Solution & Shoutouts | Python Tutorial - Day #39",
+        "embed": "https://www.youtube.com/embed/nyfeYAxP-EM",
+        "duration": 1396
+      },
+      {
+        "description": "This lecture challenges you to create a program that translates text into a secret code language. This exercise involves using your knowledge of string manipulation, loops, and dictionaries to implement a simple encryption and decryption system.",
+        "title": "Exercise 4: Secret Code Language | Python Tutorial - Day #40",
+        "embed": "https://www.youtube.com/embed/pOWJ6WgVRIU",
+        "duration": 365
+      },
+      {
+        "description": "Learn about shorthand 'if-else' statements in Python, a concise way to write conditional expressions. Explore the use of the ternary operator to simplify conditional logic and make your code more readable.",
+        "title": "Short hand if else statements | Python Tutorial - Day #41",
+        "embed": "https://www.youtube.com/embed/Qqx_zNmQVGI",
+        "duration": 463
+      },
+      {
+        "description": "Discover the 'enumerate' function in Python, a powerful tool for iterating over sequences while keeping track of the index of each element. Explore its use for tasks like displaying numbered lists or accessing elements by their positions.",
+        "title": "Enumerate Function in Python | Python Tutorial - Day #42",
+        "embed": "https://www.youtube.com/embed/kGnYc_h1geM",
+        "duration": 457
+      },
+      {
+        "description": "This lecture introduces the concept of virtual environments in Python, a crucial tool for managing dependencies and creating isolated environments for your projects. Learn how to create, activate, and manage virtual environments to avoid conflicts between different projects.",
+        "title": "Virtual Environment in Python | Python Tutorial - Day #43",
+        "embed": "https://www.youtube.com/embed/nt6LlFTWOkg",
+        "duration": 1298
+      },
+      {
+        "description": "This lecture delves into the mechanics of how the 'import' statement works in Python. Understand the search path for modules, the concept of packages, and the different ways to import modules and functions into your code.",
+        "title": "How import works in Python | Python Tutorial - Day #44",
+        "embed": "https://www.youtube.com/embed/Pr7UOr35NcI",
+        "duration": 762
+      },
+      {
+        "description": "Explore the use of the '__name__' variable and its role in running Python scripts. Learn how to use the 'if __name__ == \"__main__\"' block to control the execution of code within a script, separating it from functions and classes.",
+        "title": "if __name__ == \"__main__\" in Python | Python Tutorial - Day #45",
+        "embed": "https://www.youtube.com/embed/y_CX2Rvitk8",
+        "duration": 564
+      },
+      {
+        "description": "This lecture introduces the 'os' module in Python, a powerful tool for interacting with the operating system. Learn how to use 'os' to perform tasks like creating and deleting files, changing directories, and interacting with the file system.",
+        "title": "os Module in Python | Python Tutorial - Day #46",
+        "embed": "https://www.youtube.com/embed/dkVYSsL90Oo",
+        "duration": 924
+      },
+      {
+        "description": "This lecture provides the solution to the Secret Code Language exercise, along with shoutouts to participants who have been actively contributing. Learn from the solution code and get inspired by the community engagement.",
+        "title": "Exercise 4: Solutions and Shoutouts | Python Tutorial - Day #47",
+        "embed": "https://www.youtube.com/embed/4lSQfOJKn7U",
+        "duration": 1171
+      },
+      {
+        "description": "This lecture explores the differences between local and global variables in Python. Understand the scope of variables and how they are accessed within different parts of a program. Learn how to define and access variables effectively in various contexts.",
+        "title": "Local vs Global Variables in Python| Python Tutorial - Day #48",
+        "embed": "https://www.youtube.com/embed/RaG6GgcDt54",
+        "duration": 637
+      },
+      {
+        "description": "This lecture introduces file I/O operations in Python, allowing you to read from and write to files. Explore methods like 'open()', 'read()', 'write()', and 'close()', and learn how to work with files in Python.",
+        "title": "File IO in Python | Python Tutorial - Day #49",
+        "embed": "https://www.youtube.com/embed/eDBPlcWYses",
+        "duration": 773
+      },
+      {
+        "description": "This lecture delves deeper into file I/O methods in Python, focusing on functions like 'read()', 'readlines()', and 'writelines()'. Learn how to read and write data from and to files in various formats and manage file operations effectively.",
+        "title": "read(), readlines() and other methods | Python Tutorial - Day #50",
+        "embed": "https://www.youtube.com/embed/l1FsnQxET9U",
+        "duration": 647
+      },
+      {
+        "description": "Explore additional file I/O functions in Python, including 'seek()', 'tell()', and 'truncate()'. Learn how to navigate within files, determine file positions, and modify file contents based on specific requirements.",
+        "title": "seek(), tell() and other functions | Python Tutorial - Day #51",
+        "embed": "https://www.youtube.com/embed/PByYX-2l5Us",
+        "duration": 467
+      },
+      {
+        "description": "Discover lambda functions in Python, also known as anonymous functions. Learn how to create concise, single-line functions without the need for formal definition. Explore the use of lambda functions for simplifying code and enhancing readability.",
+        "title": "Lambda functions in Python | Python Tutorial - Day #52",
+        "embed": "https://www.youtube.com/embed/UfFWf-PXUqE",
+        "duration": 558
+      },
+      {
+        "description": "This lecture covers three powerful functional programming tools in Python: 'map()', 'filter()', and 'reduce()'. Learn how to apply these functions to transform, filter, and aggregate data in efficient and expressive ways.",
+        "title": "Map, Filter and Reduce in Python | Python Tutorial - Day #53",
+        "embed": "https://www.youtube.com/embed/OErhjT4f5Cs",
+        "duration": 781
+      },
+      {
+        "description": "This lecture explores the difference between the 'is' and '==' operators in Python. Understand how each operator compares objects, and learn when to use 'is' to check for object identity and '==' to compare values.",
+        "title": "is' vs '==' in Python | Python Tutorial - Day #54",
+        "embed": "https://www.youtube.com/embed/TOemdfX_0xc",
+        "duration": 481
+      },
+      {
+        "description": "This lecture challenges you to create a 'Snake Water Gun' game in Python, a classic game of chance. This exercise involves using your knowledge of user input, conditional statements, and random number generation to create a fun and interactive game.",
+        "title": "Exercise 5 - Snake Water Gun | Python Tutorial - Day #55",
+        "embed": "https://www.youtube.com/embed/dDsh7FT6-0I",
+        "duration": 355
+      },
+      {
+        "description": "This lecture introduces the fundamental concepts of Object-Oriented Programming (OOP) in Python, a paradigm that allows you to structure code using objects and classes. Learn the basics of OOP and its benefits for building robust and modular programs.",
+        "title": "Introduction to OOPs in Python | Python Tutorial - Day #56",
+        "embed": "https://www.youtube.com/embed/HQnoYzxOHMw",
+        "duration": 954
+      },
+      {
+        "description": "This lecture dives into the core concepts of classes and objects in Python. Learn how to define classes, create instances of those classes (objects), and use objects to encapsulate data and behavior.",
+        "title": "Classes and Objects in Python | Python Tutorial - Day #57",
+        "embed": "https://www.youtube.com/embed/a7baAGCBA9U",
+        "duration": 572
+      },
+      {
+        "description": "Explore the concept of constructors in Python, special methods used to initialize objects when they are created. Learn how to define constructors and use them to set initial values for object attributes.",
+        "title": "Constructors in Python | Python Tutorial - Day #58",
+        "embed": "https://www.youtube.com/embed/12HRkYld22c",
+        "duration": 677
+      },
+      {
+        "description": "This lecture introduces decorators in Python, a powerful way to modify the behavior of functions without directly altering their code. Learn how to define and apply decorators, extending the functionality of functions in a flexible and concise way.",
+        "title": "Decorators in Python | Python Tutorial - Day #59",
+        "embed": "https://www.youtube.com/embed/PTBZ674EsvI",
+        "duration": 785
+      },
+      {
+        "description": "This lecture explores the concept of getters and setters in Python, which are used to control access to object attributes. Learn how to define getters and setters to enforce data validation, encapsulate access to attributes, and maintain data integrity.",
+        "title": "Getters and Setters in Python | Python Tutorial - Day #60",
+        "embed": "https://www.youtube.com/embed/2gbCT8h9uyk",
+        "duration": 637
+      },
+      {
+        "description": "This lecture covers inheritance in Python, a key OOP concept that allows you to create new classes based on existing ones. Learn how to inherit attributes and methods from parent classes and extend their functionality, promoting code reusability.",
+        "title": "Inheritance in Python | Python Tutorial - Day #61",
+        "embed": "https://www.youtube.com/embed/-KsfUaQEY9Y",
+        "duration": 454
+      },
+      {
+        "description": "Explore the concept of access modifiers in Python, which control the visibility of attributes and methods within a class. Learn about public, protected, and private access modifiers and how they affect attribute and method accessibility.",
+        "title": "Access Modifiers in Python | Python Tutorial - Day #62",
+        "embed": "https://www.youtube.com/embed/43FK20rWvKQ",
+        "duration": 703
+      },
+      {
+        "description": "This lecture provides the solution to the Snake Water Gun game exercise, along with shoutouts to participants for their contributions. Learn from the solution code and gain insights into different approaches to solving the exercise.",
+        "title": "Snake Water Gun Game in Python - Exercise 5 - Solution | Python Tutorial - Day #63",
+        "embed": "https://www.youtube.com/embed/GkfBpm6MN9A",
+        "duration": 928
+      },
+      {
+        "description": "This lecture challenges you to build a Library Management System in Python. This exercise involves applying your OOP knowledge to create classes for books, members, and the library itself, managing operations like borrowing and returning books.",
+        "title": "Exercise 6 - Library Management System in Python | Python Tutorial - Day #64",
+        "embed": "https://www.youtube.com/embed/mlDZTSH2FFc",
+        "duration": 195
+      },
+      {
+        "description": "Discover static methods in Python, which are class-level methods that are not associated with specific instances. Learn how to define and use static methods to perform actions that are independent of individual objects.",
+        "title": "Static Methods in Python | Python Tutorial - Day #65",
+        "embed": "https://www.youtube.com/embed/GcSVYNSsJxo",
+        "duration": 457
+      },
+      {
+        "description": "This lecture explores the difference between instance variables and class variables in Python. Understand how these variables are defined, accessed, and modified within classes. Learn to differentiate between attributes that belong to individual objects and those shared by all objects of a class.",
+        "title": "Instance variables vs Class variables in Python | Python Tutorial - Day #66",
+        "embed": "https://www.youtube.com/embed/tQdaeiF4j38",
+        "duration": 877
+      },
+      {
+        "description": "This lecture provides the solution to the Library Management System exercise, showcasing a complete implementation of the system using OOP concepts. Learn from the solution code and gain insights into building a comprehensive system using Python classes.",
+        "title": "Exercise 6 Solution - Library Management Software in Python | Python Tutorial - Day #67",
+        "embed": "https://www.youtube.com/embed/uRIEjf2vCIg",
+        "duration": 574
+      },
+      {
+        "description": "This lecture challenges you to create a program that helps users clear clutter by organizing items into categories. This exercise involves applying your knowledge of lists, dictionaries, and user input to build a simple organization tool.",
+        "title": "Exercise 7 - Clear the Clutter | Python Tutorial - Day #68",
+        "embed": "https://www.youtube.com/embed/6KvnP13TnhY",
+        "duration": 214
+      },
+      {
+        "description": "Explore class methods in Python, which are methods that are associated with the class itself rather than specific instances. Learn how to define and use class methods, particularly as alternative constructors for creating objects.",
+        "title": "Class Methods in Python | Python Tutorial - Day #69",
+        "embed": "https://www.youtube.com/embed/9ynmDLc5FYo",
+        "duration": 385
+      },
+      {
+        "description": "This lecture delves into the use of class methods as alternative constructors in Python. Learn how to define class methods that can create objects with different initial states, providing flexibility in object creation.",
+        "title": "Class Methods as Alternative Constructors in Python | Python Tutorial - Day #70",
+        "embed": "https://www.youtube.com/embed/FGlKJdy--p8",
+        "duration": 786
+      },
+      {
+        "description": "Discover the 'dir()', '__dict__', and 'help()' methods in Python, which provide information about objects and classes. Learn how to use these methods to inspect object attributes, methods, and documentation.",
+        "title": "dir, __dict__ and help method in Python | Python Tutorial - Day #71",
+        "embed": "https://www.youtube.com/embed/Wgo9TaBcuJ4",
+        "duration": 443
+      },
+      {
+        "description": "This lecture introduces the 'super()' keyword in Python, a tool for accessing methods and attributes of parent classes within child classes. Learn how to use 'super()' to extend parent class functionality in a clear and concise manner.",
+        "title": "super keyword in Python | Python Tutorial - Day #72",
+        "embed": "https://www.youtube.com/embed/P648reefNh0",
+        "duration": 548
+      },
+      {
+        "description": "Explore the concept of magic or dunder methods in Python, special methods that begin and end with double underscores. Learn how to use dunder methods to customize object behavior, such as defining custom string representations or operators.",
+        "title": "Magic/Dunder Methods in Python | Python Tutorial - Day #73",
+        "embed": "https://www.youtube.com/embed/DmgQVJXhuLQ",
+        "duration": 732
+      },
+      {
+        "description": "This lecture covers method overriding in Python, a technique for providing different implementations of methods in child classes. Learn how method overriding allows you to customize behavior inherited from parent classes.",
+        "title": "Method Overriding in Python | Python Tutorial - Day #74",
+        "embed": "https://www.youtube.com/embed/46_yfYC36JY",
+        "duration": 387
+      },
+      {
+        "description": "This lecture provides the solution to the Clear the Clutter exercise, along with shoutouts to participants for their contributions. Learn from the solution code and gain insights into different approaches to solving the exercise.",
+        "title": "Exercise 7 Solution + Shoutouts | Python Tutorial - Day #75",
+        "embed": "https://www.youtube.com/embed/Wt9Shnzv_Yg",
+        "duration": 732
+      },
+      {
+        "description": "This lecture challenges you to create a program that merges multiple PDF documents into a single PDF file. This exercise involves utilizing external libraries and file handling techniques to manipulate PDF files.",
+        "title": "Exercise 8 - Merge the PDF | Python Tutorial - Day #76",
+        "embed": "https://www.youtube.com/embed/uUbvJ7ZEhPE",
+        "duration": 194
+      },
+      {
+        "description": "Explore the concept of operator overloading in Python, which allows you to customize how operators work with your custom objects. Learn how to define special methods to handle operations like addition, subtraction, and comparison when used with your classes.",
+        "title": "Operator Overloading in Python | Python Tutorial - Day #77",
+        "embed": "https://www.youtube.com/embed/D67-b2t-y4k",
+        "duration": 444
+      },
+      {
+        "description": "This lecture introduces single inheritance in Python, a fundamental OOP concept where a child class inherits attributes and methods from a single parent class. Learn how to create child classes and leverage the inheritance mechanism.",
+        "title": "Single Inheritance in Python | Python Tutorial - Day #78",
+        "embed": "https://www.youtube.com/embed/U53_Gw55NI8",
+        "duration": 279
+      },
+      {
+        "description": "Expand your understanding of inheritance with multiple inheritance in Python. Learn how a child class can inherit from multiple parent classes, combining their functionalities and creating more complex class hierarchies.",
+        "title": "Multiple Inheritance in Python | Python Tutorial - Day #79",
+        "embed": "https://www.youtube.com/embed/4o7xSHgKlvI",
+        "duration": 371
+      },
+      {
+        "description": "This lecture explores multilevel inheritance in Python, where a child class inherits from a parent class, which in turn inherits from another parent class. Learn how to create multilevel hierarchies and access attributes and methods from multiple levels.",
+        "title": "Multilevel Inheritance in Python | Python Tutorial - Day #80",
+        "embed": "https://www.youtube.com/embed/Il7XMJJeXiA",
+        "duration": 474
+      },
+      {
+        "description": "This lecture covers hybrid and hierarchical inheritance in Python, advanced forms of inheritance that combine multiple inheritance patterns. Learn how to implement these patterns to create flexible and powerful class relationships.",
+        "title": "Hybrid and Hierarchical Inheritance in Python | Python Tutorial - Day #81",
+        "embed": "https://www.youtube.com/embed/B4Q8zxRkm_I",
+        "duration": 534
+      },
+      {
+        "description": "This lecture provides the solution to the Merge the PDF exercise, demonstrating how to merge multiple PDF files into a single file using external libraries and Python code. Learn from the solution code and gain insights into working with PDFs in Python.",
+        "title": "Exercise 8 - Merge the Pdf Solution in Python | Python Tutorial - Day #82",
+        "embed": "https://www.youtube.com/embed/qKKGemhBRVM",
+        "duration": 471
+      },
+      {
+        "description": "This lecture is dedicated to giving shoutouts to all participants for their contributions and active engagement throughout the course. Learn from the community spirit and stay motivated for future learning.",
+        "title": "Exercise 9 - Shoutouts to Everyone | Python Tutorial - Day #83",
+        "embed": "https://www.youtube.com/embed/1WjwnlRXfHc",
+        "duration": 228
+      },
+      {
+        "description": "Explore the 'time' module in Python, a powerful tool for working with dates and times. Learn how to get current time, format dates and times, calculate time intervals, and manage time-related operations in your Python programs.",
+        "title": "Time Module in Python | Python Tutorial - Day #84",
+        "embed": "https://www.youtube.com/embed/oTtIvV-Q1FY",
+        "duration": 697
+      },
+      {
+        "description": "This lecture guides you on how to create a command-line utility in Python. Learn how to define command-line arguments, interact with the user through the terminal, and develop scripts that can be executed from the command line.",
+        "title": "Creating command line utility in python | Python Tutorial - Day #85",
+        "embed": "https://www.youtube.com/embed/3IAu6-pgw7I",
+        "duration": 1112
+      },
+      {
+        "description": "Discover the Walrus operator (':=') in Python, a new operator introduced in Python 3.8. Learn how to assign a value to a variable within an expression, simplifying code and reducing redundancy.",
+        "title": "Walrus Operator in Python | Python Tutorial - Day #86",
+        "embed": "https://www.youtube.com/embed/NCmMEEyzLT8",
+        "duration": 576
+      },
+      {
+        "description": "This lecture introduces the 'shutil' module in Python, a powerful tool for high-level file operations. Learn how to use 'shutil' to copy, move, delete, and rename files and directories, making file management tasks easier.",
+        "title": "Shutil Module in Python | Python Tutorial - Day #87",
+        "embed": "https://www.youtube.com/embed/wII2JhNACJE",
+        "duration": 762
+      },
+      {
+        "description": "This lecture provides the solution to the Shoutouts exercise, offering a concluding message of appreciation and encouragement to all participants. Learn from the community spirit and continue your Python journey.",
+        "title": "Exercise 9: Solution - Shoutouts to Everyone | Python Tutorial - Day #88",
+        "embed": "https://www.youtube.com/embed/C9VP-56RXNM",
+        "duration": 734
+      },
+      {
+        "description": "Discover the 'requests' module in Python, a widely used library for making HTTP requests. Learn how to send GET and POST requests, retrieve data from websites, and interact with APIs using 'requests'.",
+        "title": "Requests Module in Python | Python Tutorial - Day #89",
+        "embed": "https://www.youtube.com/embed/Nsb3bLIlO4w",
+        "duration": 526
+      },
+      {
+        "description": "This lecture challenges you to create a News App in Python that fetches and displays news headlines from various sources. This exercise involves utilizing the 'requests' module and web scraping techniques to gather and present news content.",
+        "title": "Exercise 10: News App in Python | Python Tutorial - Day #90",
+        "embed": "https://www.youtube.com/embed/BGzFp9mwFQ4",
+        "duration": 274
+      },
+      {
+        "description": "This lecture introduces generators in Python, a powerful technique for creating iterators that generate values on demand. Learn how to define generators using the 'yield' keyword, optimizing memory usage and simplifying iterative processes.",
+        "title": "Generators in Python | Python Tutorial - Day #91",
+        "embed": "https://www.youtube.com/embed/ixd-u3pmsUc",
+        "duration": 527
+      },
+      {
+        "description": "This lecture explores the concept of function caching in Python, a technique for storing the results of function calls to improve performance. Learn how to use decorators and caching techniques to optimize function execution and avoid redundant calculations.",
+        "title": "Function Caching in Python | Python Tutorial - Day #92",
+        "embed": "https://www.youtube.com/embed/K8gjSwc3Rlo",
+        "duration": 674
+      },
+      {
+        "description": "This lecture provides the solution to the News App exercise, demonstrating how to build a news app that fetches and displays news headlines from various sources. Learn from the solution code and gain insights into using 'requests' and web scraping for news retrieval.",
+        "title": "Exercise 10 - News App Solution & Shoutout | Python Tutorial - Day #93",
+        "embed": "https://www.youtube.com/embed/bnAz7Kb2efE",
+        "duration": 691
+      },
+      {
+        "description": "This lecture challenges you to create a Drink Water Reminder program in Python that prompts users to drink water at regular intervals. This exercise involves using the 'time' module and potentially desktop notifications to create a health-focused application.",
+        "title": "Exercise 11 - Drink Water Reminder | Python Tutorial - Day #94",
+        "embed": "https://www.youtube.com/embed/1i4piFhpnm8",
+        "duration": 260
+      },
+      {
+        "description": "Discover regular expressions (regex) in Python, a powerful tool for pattern matching in text. Learn how to use regex to search, validate, and manipulate text based on specific patterns, making text processing tasks more efficient.",
+        "title": "Regular Expressions in Python | Python Tutorial - Day #95",
+        "embed": "https://www.youtube.com/embed/TCWOwavqFrw",
+        "duration": 783
+      },
+      {
+        "description": "This lecture introduces the 'asyncio' library in Python, a powerful tool for asynchronous programming. Learn how to use 'asyncio' to handle multiple tasks concurrently, improving program responsiveness and utilizing resources efficiently.",
+        "title": "AsyncIO in Python | Python Tutorial - Day #96",
+        "embed": "https://www.youtube.com/embed/lgoB3_-ejnI",
+        "duration": 629
+      },
+      {
+        "description": "This lecture explores multithreading in Python, a technique for running multiple threads of execution concurrently within a single process. Learn how to create and manage threads, enabling you to handle tasks in parallel and improve program performance.",
+        "title": "Multithreading in Python | Python Tutorial - Day #97",
+        "embed": "https://www.youtube.com/embed/ICbU6zAKtqQ",
+        "duration": 1069
+      },
+      {
+        "description": "This lecture covers multiprocessing in Python, a technique for running multiple processes concurrently, utilizing multiple CPU cores for better performance. Learn how to create and manage processes, enabling you to take advantage of multiple processors in your programs.",
+        "title": "MultiProcessing in Python | Python Tutorial - Day #98",
+        "embed": "https://www.youtube.com/embed/zGe-9LfnAaA",
+        "duration": 1204
+      },
+      {
+        "description": "This lecture provides the solution to the Drink Water Reminder exercise, demonstrating how to implement a reminder system using the 'time' module and potentially desktop notifications. Learn from the solution code and gain insights into building a health-focused application.",
+        "title": "Exercise 11: Solution + Shoutouts - Desktop Notification System | Python Tutorial - Day #99",
+        "embed": "https://www.youtube.com/embed/18vZnLqXMoM",
+        "duration": 606
+      },
+      {
+        "description": "This concluding lecture summarizes the key concepts covered throughout the course and provides guidance on where to go next in your Python learning journey. Explore resources for further learning and delve into specific areas of interest.",
+        "title": "Conclusion and Where to go from here | Python Tutorial - Day #100",
+        "embed": "https://www.youtube.com/embed/5Pz8WGiMJ_c",
+        "duration": 999
+      }
+    ],
+    "name": "Python Programming Bootcamp",
+    "overview": "This comprehensive bootcamp provides a solid foundation in Python programming, covering fundamental concepts, essential libraries, and practical applications.  From basic syntax to object-oriented programming, you'll gain the skills needed to build various Python applications.",
+    "category": "programming",
+    "level": "beginner"
+  },
+  "author": "CodeWithHarry",
+  "channel": "https://www.youtube.com/channel/UCeVMnSShP_Iviwkknt83cww",
+  "duration": 64632
+}

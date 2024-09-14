@@ -1,20 +1,20 @@
 <nav class="bg-black/50 rounded-lg text-white"></nav>
     <div class="mx-auto py-4 flex justify-between items-center">
-        <h1 class="text-2xl font-bold text-gray-200">FocusLearn</h1>
+        <h1 class="text-2xl font-bold text-gray-200"><a href="/">FocusLearn</a></h1>
         <!-- Left Menu Items -->
         <div class="flex space-x-8">
-            <a href="#" class="text-gray-300 hover:text-white font-medium">Courses</a>
-            <a href="#" class="text-gray-300 hover:text-white font-medium">Import Course</a>
-            <a href="#" class="text-gray-300 hover:text-white font-medium">Pricing</a>
+            <a href="/courses" class="text-gray-300 hover:text-white font-medium">Courses</a>
+            <a href="/import-course" class="text-gray-300 hover:text-white font-medium">Import Course</a>
+            <a href="/pricing" class="text-gray-300 hover:text-white font-medium">Pricing</a>
         </div>
 
         <!-- Right Menu Items (Login and Sign Up) -->
         <div class="flex space-x-6 items-center">
             <% if (typeof (locals.user) == 'undefined') { %>
-                <a href="#" class="text-gray-300 hover:text-white font-medium">Sign In</button></a>
-                <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded font-medium hover:bg-blue-800">Sign Up</a>
+                <a href="/signin" class="text-gray-300 hover:text-white font-medium">Sign In</button></a>
+                <a href="/signup" class="bg-blue-600 text-white px-4 py-2 rounded font-medium hover:bg-blue-800">Sign Up</a>
             <% } else { %> 
-                <a href="" class="bg-blue-600 text-white px-4 py-2 rounded font-medium hover:bg-blue-800">My Account</a>
+                <a href="/account" class="bg-blue-600 text-white px-4 py-2 rounded font-medium hover:bg-blue-800">My Account</a>
             <% } %>
         </div>
     </div>

@@ -1,44 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FocusLearn</title>
-    <link rel="stylesheet" href="/public/css/styles.css">
-    <script src="https://unpkg.com/feather-icons"></script>
-</head>
-<body class="bg-zinc-50 text-zinc-800 p-10">
+<%- include('./partials/head') %>
+<body class="bg-[url('/public/background.png')] bg-cover bg-no-repeat bg-scroll text-white py-10 px-2 max-w-screen-xl mx-auto">
     
-    <h1>FocusLearn</h1>
-    <p>Master Your Skills, Fuel Your Passion, and Get Certified!</p>
-    <%- include('partials/links') %>
-    
-    <div>
-        <h2><%= course.title %></h2>
-        <p><%= course.overview %></p>
-        <div class="flex gap-4 flex-wrap">
-            <span class="flex justify-center items-center gap-2">
-                <i data-feather="target" class="w-4 h-4"></i>
-                <span><%= course.level %></span>
-            </span>
-            <span class="flex justify-center items-center gap-2">
-                <i data-feather="clock" class="w-4 h-4"></i>
-                <span><%= parseInt(course.duration / 3600) %> hours</span>
-            </span>
-            <span class="flex justify-center items-center gap-2">
-                <i data-feather="airplay" class="w-4 h-4"></i>
-                <span><%= course.lectures %> Lectures</span>
-            </span>
+    <%- include('partials/navigation') %>
+
+    <div class="flex justify-between items-start">
+        <div class="mt-10 w-2/3 bg-gray-800/40 p-6 rounded-lg  space-y-4">
+            <h2 class="text-white"><%= course.title %></h2>
+            <p class="text-gray-300"><%= course.overview %></p>
+            <div class="flex gap-8 flex-wrap">
+                <span class="flex justify-center items-center gap-2">
+                    <i data-feather="target" class="w-4 h-4"></i>
+                    <span class="capitalize"><%= course.level %></span>
+                </span>
+                <span class="flex justify-center items-center gap-2">
+                    <i data-feather="clock" class="w-4 h-4"></i>
+                    <span><%= parseInt(course.duration / 3600) %> hours</span>
+                </span>
+                <span class="flex justify-center items-center gap-2">
+                    <i data-feather="airplay" class="w-4 h-4"></i>
+                    <span><%= course.lectures %> Lectures</span>
+                </span>
+            </div>
+            <div id="lectures" class="w-full"></div>
         </div>
-
-        <div id="lectures" class="w-1/2"></div>
+        <div class="mt-10 sticky top-10 bg-gray-800/40 text-gray-200 p-6 rounded-lg shadow-lg w-80">
+            <h3 class="text-2xl font-bold mb-4 text-gray-100">Enroll in this Course</h3>
+            <p class="mb-4 text-gray-400">Get access to all lectures and materials.</p>
+            <ul class="mb-4">
+            <li class="flex items-center mb-2">
+                <i data-feather="check-circle" class="w-4 h-4 mr-2 text-green-500"></i>
+                <span>Full lifetime access</span>
+            </li>
+            <li class="flex items-center mb-2">
+                <i data-feather="check-circle" class="w-4 h-4 mr-2 text-green-500"></i>
+                <span>Lecture Notes</span>
+            </li>
+            <li class="flex items-center mb-2">
+                <i data-feather="check-circle" class="w-4 h-4 mr-2 text-green-500"></i>
+                <span>Certificate of completion</span>
+            </li>
+            </ul>
+            <form action="/enroll/<%- course.playlistId %>" method="POST">
+                <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full">Enroll Now</button>
+            </form>
+        </div>
     </div>
-    
-    <form action="/enroll/<%- course.playlistId %>" method="POST">
-        <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Enroll</button>
-    </form>
 
-    <%- include('./partials/feedback') %>
+    <%- include('./partials/footer') %>
 
     <script>
 
@@ -49,20 +59,21 @@
 
                 const lecturesElement = document.querySelector('#lectures');
                 lecturesElement.innerHTML = `
-                    <ul class="border-2 border-black">
+                    <ul class="font-medium py-2 text-white">
                         ${courseData.course.lectures.map((lecture, index) => `
-                            <li class="flex items-center justify-between p-2 ${index !== courseData.course.lectures.length - 1 ? 'border-b-2 border-black' : ''} bg-white cursor-pointer hover:bg-gray-100" onclick="changeLecture(${index})">
-                                <div class="flex items-center w-2/3">
-                                    <span class="text-gray-400 mr-3">
-                                        <i data-feather="play-circle" class="h-6 w-6 stroke-1"></i>
-                                    </span>
-                                    <span class="text-gray-800 truncate">${lecture.title}</span>
-                                </div>
-                                <span class="text-sm font-medium text-gray-600">${Math.floor(lecture.duration / 60)} min</span>
-                            </li>
+                        <li class="flex items-center justify-between px-4 py-2 cursor-pointer hover:bg-gray-800/40 rounded" onclick="changeLecture(${index})">
+                        <div class="flex items-center w-2/3">
+                            <span class="text-slate-400 mr-3">
+                            <i data-feather="play-circle" class="h-6 w-6"></i>
+                            </span>
+                            <span class="truncate">${String(index + 1).padStart(2, '0')}. ${lecture.title}</span>
+                        </div>
+                        <span class="text-sm">${Math.floor(lecture.duration / 60)} min</span>
+                        </li>
                         `).join('')}
                     </ul>
                 `;
+
 
             } catch (err) {
                 console.error(err);

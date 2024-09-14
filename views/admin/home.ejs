@@ -56,9 +56,15 @@
                       <p class="text-sm text-gray-500">By <%= element.requestedBy.fullName %></p>
                     </td>
                     <td class="py-4">
-                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                        Pending
-                      </span>
+                        <% if (element.status === 'pending') { %>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                          Pending
+                        </span>
+                        <% } else if (element.status === 'approved') { %>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                          Approved
+                        </span>
+                        <% } %>
                     </td>
                     <td class="py-4 text-right">
                       <button class="p-2 rounded bg-blue-600 text-white hover:bg-blue-700 transition-colors duration-200 mr-2" onclick="window.location = `/admin/request/<%= element._id %>`">

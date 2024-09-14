@@ -6,14 +6,9 @@ const {
   verifyUser,
   signOut,
 } = require("../controllers/auth");
-const {
-  signInValidationRules,
-  signUpValidationRules,
-  validate,
-} = require("../services/validators");
 
-router.post("/signin", signInValidationRules(), validate, postSignIn);
-router.post("/signup", signUpValidationRules(), validate, postSignUp);
+router.post("/signin", postSignIn);
+router.post("/signup", postSignUp);
 router.get("/signout", signOut);
 router.get("/verify", verifyUser);
 

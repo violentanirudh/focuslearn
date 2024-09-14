@@ -129,7 +129,7 @@ const generateContent = async (prompt) => {
   const result = await model.generateContent(prompt, {
     temperature: 1.0,
     top_p: 0.9,
-    max_tokens: 8000000,
+    max_tokens: 200000,
   });
   return result.response.text();
 };
@@ -170,12 +170,23 @@ const processPlaylist = async (id) => {
     duration = videoLength.reduce((a, b) => a + b, 0);
     const generatedContent = {};
 
-    try {
-      generatedContent.data = JSON.parse(await generateContent(generatePrompt(titles)));
-    } catch (error) {
-      console.error(error.message)
-      return false;
+    let requests = 0
+
+    while (requests < 3) {
+      try {
+        generatedContent.data = JSON.parse(await generateContent(generatePrompt(titles)));
+        break
+      } catch (error) {
+        requests++
+        console.error(error.message)
+        continue
+      }
     }
+
+    if (requests === 3) {
+      return false
+    }
+
     const content = {
       course: generatedContent.data.course,
       author,

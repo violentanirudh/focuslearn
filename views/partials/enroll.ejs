@@ -1,0 +1,23 @@
+<div class="bg-gray-800/40 rounded-lg w-72 overflow-hidden flex flex-col justify-between p-4">
+    <div class="space-y-4">
+        <div class="flex gap-2">
+            <span class="text-gray-200 bg-blue-700/60 py-1 px-2 rounded-full text-sm">
+                <%= element.category %>
+            </span>
+            <span class="text-gray-200 bg-blue-700/60 py-1 px-2 rounded-full text-sm">
+                <%= element.level %>
+            </span>
+        </div>
+        <h2 class="text-2xl font-bold text-white"><%= element.title %></h2>
+        <div class="flex items-center gap-2">
+            <i data-feather="user" class="w-4 h-4"></i><span class="truncate"><%= element.instructor %></span>
+        </div>
+        <div class="flex gap-4 items-center">
+            <p class="text-gray-300 flex gap-2 items-center text-sm"><i data-feather="airplay"  class="h-4 w-4"></i><%= element.lectures %> Lectures</p>
+            <p class="text-gray-300 flex gap-2 items-center text-sm"><i data-feather="clock" class="h-4 w-4"></i><%= Math.round(element.duration / 3600) %> hours</p>
+        </div>
+    </div>
+    <div class="flex items-center justify-between w-full">
+        <button onclick="window.location.href = `/course/<%= element.slug %>`" class="bg-blue-700 text-white w-full px-4 py-2 rounded hover:bg-blue-600 transition duration-300">Course Outline</button>
+    </div>
+</div>

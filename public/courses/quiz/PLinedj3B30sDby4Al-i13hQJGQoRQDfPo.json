@@ -1,1 +1,486 @@
-{}
+{
+  "quiz": {
+    "questions": [
+      {
+        "correctAnswer": "A runtime environment built on Chrome's V8 JavaScript engine.",
+        "options": [
+          "A runtime environment built on Chrome's V8 JavaScript engine.",
+          "A programming language for building web applications.",
+          "A framework for building mobile applications.",
+          "A database system for storing data."
+        ],
+        "question": "What is Node.js?"
+      },
+      {
+        "correctAnswer": "Download and install the Node.js installer from the official website.",
+        "options": [
+          "Download and install the Node.js installer from the official website.",
+          "Use a package manager like npm or yarn.",
+          "Use a cloud platform like AWS or Azure.",
+          "Use a web browser like Chrome or Firefox."
+        ],
+        "question": "How do you install Node.js?"
+      },
+      {
+        "correctAnswer": "It prints 'Hello World!' to the console.",
+        "options": [
+          "It prints 'Hello World!' to the console.",
+          "It opens a web page with the text 'Hello World!'.",
+          "It creates a new file named 'Hello World!'.",
+          "It starts a server that listens for requests."
+        ],
+        "question": "What does the code 'console.log('Hello World!');' do in Node.js?"
+      },
+      {
+        "correctAnswer": "Modules are reusable blocks of code that can be imported and used in other parts of your application.",
+        "options": [
+          "Modules are reusable blocks of code that can be imported and used in other parts of your application.",
+          "Modules are files that contain data structures.",
+          "Modules are functions that perform specific tasks.",
+          "Modules are classes that define objects."
+        ],
+        "question": "What are modules in Node.js?"
+      },
+      {
+        "correctAnswer": "Use built-in modules like 'fs' to interact with files.",
+        "options": [
+          "Use built-in modules like 'fs' to interact with files.",
+          "Use third-party libraries like 'express'.",
+          "Use databases like MongoDB.",
+          "Use web APIs like Google Maps."
+        ],
+        "question": "How do you handle files in Node.js?"
+      },
+      {
+        "correctAnswer": "Node.js is single-threaded, but uses an event loop to handle multiple requests concurrently.",
+        "options": [
+          "Node.js is single-threaded, but uses an event loop to handle multiple requests concurrently.",
+          "Node.js is multi-threaded and can handle multiple requests simultaneously.",
+          "Node.js uses a web server to handle requests.",
+          "Node.js uses a database to store data."
+        ],
+        "question": "How does Node.js work?"
+      },
+      {
+        "correctAnswer": "Create a server using the 'http' module and listen for incoming requests.",
+        "options": [
+          "Create a server using the 'http' module and listen for incoming requests.",
+          "Use a third-party framework like Express.",
+          "Use a cloud service like AWS.",
+          "Use a web browser like Chrome."
+        ],
+        "question": "How do you build an HTTP server in Node.js?"
+      },
+      {
+        "correctAnswer": "Use the 'url' module to parse the URL and extract the path, query parameters, and other information.",
+        "options": [
+          "Use the 'url' module to parse the URL and extract the path, query parameters, and other information.",
+          "Use a third-party library like 'express'.",
+          "Use a database like MongoDB.",
+          "Use a web API like Google Maps."
+        ],
+        "question": "How do you handle URLs in Node.js?"
+      },
+      {
+        "correctAnswer": "HTTP methods are actions that a client can perform on a resource, such as GET, POST, PUT, DELETE, and PATCH.",
+        "options": [
+          "HTTP methods are actions that a client can perform on a resource, such as GET, POST, PUT, DELETE, and PATCH.",
+          "HTTP methods are data formats used to exchange information between client and server.",
+          "HTTP methods are rules that define how websites should be structured.",
+          "HTTP methods are security protocols used to protect data."
+        ],
+        "question": "What are HTTP methods?"
+      },
+      {
+        "correctAnswer": "Express.js is a popular web framework for Node.js that provides a robust and flexible foundation for building web applications.",
+        "options": [
+          "Express.js is a popular web framework for Node.js that provides a robust and flexible foundation for building web applications.",
+          "Express.js is a database system for storing data.",
+          "Express.js is a cloud service for hosting web applications.",
+          "Express.js is a web browser extension for developers."
+        ],
+        "question": "What is Express.js and how do you use it with Node.js?"
+      },
+      {
+        "correctAnswer": "Versioning helps track changes in your API and ensure compatibility with different clients.",
+        "options": [
+          "Versioning helps track changes in your API and ensure compatibility with different clients.",
+          "Versioning is used to create backups of your application.",
+          "Versioning is used to improve security by encrypting data.",
+          "Versioning is used to optimize performance by caching data."
+        ],
+        "question": "How does versioning work in Node.js?"
+      },
+      {
+        "correctAnswer": "REST API is a software architectural style that uses HTTP methods and standards to access and manipulate data.",
+        "options": [
+          "REST API is a software architectural style that uses HTTP methods and standards to access and manipulate data.",
+          "REST API is a programming language for building web applications.",
+          "REST API is a framework for building mobile applications.",
+          "REST API is a database system for storing data."
+        ],
+        "question": "What is a REST API?"
+      },
+      {
+        "correctAnswer": "Use Express.js to define routes and controllers for each resource and implement the corresponding HTTP methods.",
+        "options": [
+          "Use Express.js to define routes and controllers for each resource and implement the corresponding HTTP methods.",
+          "Use a third-party library like 'axios'.",
+          "Use a database like MongoDB.",
+          "Use a web API like Google Maps."
+        ],
+        "question": "How do you build REST APIs using Node.js and Express.js?"
+      },
+      {
+        "correctAnswer": "Postman is a tool for testing and documenting REST APIs.",
+        "options": [
+          "Postman is a tool for testing and documenting REST APIs.",
+          "Postman is a web browser for accessing websites.",
+          "Postman is a code editor for writing JavaScript code.",
+          "Postman is a database system for storing data."
+        ],
+        "question": "What is Postman and how do you use it for REST APIs?"
+      },
+      {
+        "correctAnswer": "Middleware functions are executed in between requests and responses, allowing you to perform actions like authentication, authorization, and logging.",
+        "options": [
+          "Middleware functions are executed in between requests and responses, allowing you to perform actions like authentication, authorization, and logging.",
+          "Middleware functions are used to create new routes in your application.",
+          "Middleware functions are used to store data in a database.",
+          "Middleware functions are used to send emails to users."
+        ],
+        "question": "What is middleware in Express.js?"
+      },
+      {
+        "correctAnswer": "HTTP headers are key-value pairs that provide additional information about a request or response, such as content type, authorization, and cookies.",
+        "options": [
+          "HTTP headers are key-value pairs that provide additional information about a request or response, such as content type, authorization, and cookies.",
+          "HTTP headers are used to format data in JSON or XML.",
+          "HTTP headers are used to encrypt data in transit.",
+          "HTTP headers are used to track user activity."
+        ],
+        "question": "What are HTTP headers in APIs?"
+      },
+      {
+        "correctAnswer": "HTTP status codes indicate the status of a request, such as 200 for success, 404 for not found, and 500 for server error.",
+        "options": [
+          "HTTP status codes indicate the status of a request, such as 200 for success, 404 for not found, and 500 for server error.",
+          "HTTP status codes are used to store data in a database.",
+          "HTTP status codes are used to send emails to users.",
+          "HTTP status codes are used to track user activity."
+        ],
+        "question": "What are HTTP status codes?"
+      },
+      {
+        "correctAnswer": "MongoDB is a NoSQL database that stores data in JSON-like documents.",
+        "options": [
+          "MongoDB is a NoSQL database that stores data in JSON-like documents.",
+          "MongoDB is a programming language for building web applications.",
+          "MongoDB is a framework for building mobile applications.",
+          "MongoDB is a cloud service for hosting web applications."
+        ],
+        "question": "What is MongoDB?"
+      },
+      {
+        "correctAnswer": "Use Mongoose to interact with MongoDB in a more object-oriented way.",
+        "options": [
+          "Use Mongoose to interact with MongoDB in a more object-oriented way.",
+          "Use a third-party library like 'express'.",
+          "Use a web API like Google Maps.",
+          "Use a database like MySQL."
+        ],
+        "question": "How do you connect Node.js with MongoDB using Mongoose and Express.js?"
+      },
+      {
+        "correctAnswer": "MVC stands for Model-View-Controller, which is a design pattern that separates concerns into three components: model (data), view (presentation), and controller (logic).",
+        "options": [
+          "MVC stands for Model-View-Controller, which is a design pattern that separates concerns into three components: model (data), view (presentation), and controller (logic).",
+          "MVC is a type of database system.",
+          "MVC is a web browser extension for developers.",
+          "MVC is a cloud service for hosting web applications."
+        ],
+        "question": "What is the MVC pattern in Node.js?"
+      },
+      {
+        "correctAnswer": "Use Node.js and MongoDB to create a database for storing URLs and their short codes.",
+        "options": [
+          "Use Node.js and MongoDB to create a database for storing URLs and their short codes.",
+          "Use a third-party service like Bitly.",
+          "Use a web browser extension like 'Shorten URL'.",
+          "Use a cloud service like AWS."
+        ],
+        "question": "How do you create a custom URL shortener using Node.js and MongoDB?"
+      },
+      {
+        "correctAnswer": "Use EJS templating engine to render dynamic content on the server side and send it to the client.",
+        "options": [
+          "Use EJS templating engine to render dynamic content on the server side and send it to the client.",
+          "Use a client-side framework like React.",
+          "Use a database like MongoDB.",
+          "Use a web API like Google Maps."
+        ],
+        "question": "How do you implement server-side rendering with EJS and Node.js?"
+      },
+      {
+        "correctAnswer": "Create a login and registration system using Node.js and store user data securely in MongoDB.",
+        "options": [
+          "Create a login and registration system using Node.js and store user data securely in MongoDB.",
+          "Use a third-party authentication service like Google Sign-In.",
+          "Use a cloud service like AWS.",
+          "Use a web browser extension for security."
+        ],
+        "question": "How do you build authentication from scratch in Node.js?"
+      },
+      {
+        "correctAnswer": "JWT is a standard for creating JSON Web Tokens, which are compact and self-contained ways to securely transmit information between parties.",
+        "options": [
+          "JWT is a standard for creating JSON Web Tokens, which are compact and self-contained ways to securely transmit information between parties.",
+          "JWT is a type of database system.",
+          "JWT is a web browser extension for developers.",
+          "JWT is a cloud service for hosting web applications."
+        ],
+        "question": "How do you use JWT authentication in Node.js?"
+      },
+      {
+        "correctAnswer": "Cookies are small pieces of data stored on a user's computer that can be used to track user sessions and preferences.",
+        "options": [
+          "Cookies are small pieces of data stored on a user's computer that can be used to track user sessions and preferences.",
+          "Cookies are used to store user login credentials.",
+          "Cookies are used to encrypt data in transit.",
+          "Cookies are used to track user activity."
+        ],
+        "question": "What are cookies in Node.js?"
+      },
+      {
+        "correctAnswer": "Authorization verifies if a user has permission to access a specific resource based on their roles and privileges.",
+        "options": [
+          "Authorization verifies if a user has permission to access a specific resource based on their roles and privileges.",
+          "Authorization is used to encrypt data in transit.",
+          "Authorization is used to track user activity.",
+          "Authorization is used to send emails to users."
+        ],
+        "question": "How do you implement authorization in Node.js?"
+      },
+      {
+        "correctAnswer": "Use the 'discord.js' library to interact with the Discord API and build a bot that responds to commands and events.",
+        "options": [
+          "Use the 'discord.js' library to interact with the Discord API and build a bot that responds to commands and events.",
+          "Use a third-party service like BotFather.",
+          "Use a web browser extension for Discord.",
+          "Use a cloud service like AWS."
+        ],
+        "question": "How do you create a Discord bot in Node.js?"
+      },
+      {
+        "correctAnswer": "Use the 'multer' middleware to handle file uploads and store them in a secure location.",
+        "options": [
+          "Use the 'multer' middleware to handle file uploads and store them in a secure location.",
+          "Use a cloud service like AWS S3.",
+          "Use a web browser extension for file uploads.",
+          "Use a database like MongoDB."
+        ],
+        "question": "How do you upload files with Node.js and Multer?"
+      },
+      {
+        "correctAnswer": "Create a basic project structure, set up database connection, and implement basic routing and controllers.",
+        "options": [
+          "Create a basic project structure, set up database connection, and implement basic routing and controllers.",
+          "Design the user interface using a front-end framework.",
+          "Write unit tests for your code.",
+          "Deploy your application to a server."
+        ],
+        "question": "What are the steps involved in setting up a Node.js blogging application with MongoDB?"
+      },
+      {
+        "correctAnswer": "Implement user registration, login, and session management to secure the application.",
+        "options": [
+          "Implement user registration, login, and session management to secure the application.",
+          "Create a database schema for blog posts and users.",
+          "Design the user interface using a front-end framework.",
+          "Deploy your application to a server."
+        ],
+        "question": "How do you set up authentication for a Node.js blogging application with MongoDB?"
+      },
+      {
+        "correctAnswer": "Develop the full functionality of the blogging application, including creating, editing, deleting, and displaying blog posts.",
+        "options": [
+          "Develop the full functionality of the blogging application, including creating, editing, deleting, and displaying blog posts.",
+          "Implement search functionality.",
+          "Add social media integration.",
+          "Deploy your application to a server."
+        ],
+        "question": "How do you complete a Node.js blogging application using MongoDB and EJS?"
+      },
+      {
+        "correctAnswer": "Deploy your Node.js application to AWS EC2 instances and configure security and load balancing.",
+        "options": [
+          "Deploy your Node.js application to AWS EC2 instances and configure security and load balancing.",
+          "Deploy your application to a cloud service like Heroku.",
+          "Deploy your application to a local server.",
+          "Deploy your application to a mobile app store."
+        ],
+        "question": "How do you deploy a Node.js application on AWS (Amazon Web Services)?"
+      },
+      {
+        "correctAnswer": "WebSocket is a communication protocol that enables real-time two-way communication between a client and server.",
+        "options": [
+          "WebSocket is a communication protocol that enables real-time two-way communication between a client and server.",
+          "WebSocket is a type of database system.",
+          "WebSocket is a web browser extension for developers.",
+          "WebSocket is a cloud service for hosting web applications."
+        ],
+        "question": "What is WebSocket and how do you use it with Node.js?"
+      },
+      {
+        "correctAnswer": "Node.js streams provide a way to read and write data in chunks, allowing you to handle large files and data efficiently.",
+        "options": [
+          "Node.js streams provide a way to read and write data in chunks, allowing you to handle large files and data efficiently.",
+          "Node.js streams are used to encrypt data in transit.",
+          "Node.js streams are used to track user activity.",
+          "Node.js streams are used to send emails to users."
+        ],
+        "question": "What are Node.js streams?"
+      },
+      {
+        "correctAnswer": "The cluster module in Node.js allows you to create multiple worker processes that can share the same port and load balance requests across them.",
+        "options": [
+          "The cluster module in Node.js allows you to create multiple worker processes that can share the same port and load balance requests across them.",
+          "The cluster module is used to store data in a database.",
+          "The cluster module is used to send emails to users.",
+          "The cluster module is used to track user activity."
+        ],
+        "question": "How do you scale Node.js applications using the cluster module?"
+      },
+      {
+        "correctAnswer": "Nginx is a high-performance web server and reverse proxy that can handle a large number of requests efficiently.",
+        "options": [
+          "Nginx is a high-performance web server and reverse proxy that can handle a large number of requests efficiently.",
+          "Nginx is a type of database system.",
+          "Nginx is a web browser extension for developers.",
+          "Nginx is a cloud service for hosting web applications."
+        ],
+        "question": "What is Nginx?"
+      },
+      {
+        "correctAnswer": "Download and install Nginx from the official website and configure it based on your requirements.",
+        "options": [
+          "Download and install Nginx from the official website and configure it based on your requirements.",
+          "Use a package manager like apt or yum.",
+          "Use a cloud service like AWS.",
+          "Use a web browser like Chrome."
+        ],
+        "question": "How do you install and set up Nginx?"
+      },
+      {
+        "correctAnswer": "Use Nginx to serve static files like images, CSS, and JavaScript from your Node.js application.",
+        "options": [
+          "Use Nginx to serve static files like images, CSS, and JavaScript from your Node.js application.",
+          "Use a cloud service like AWS S3.",
+          "Use a database like MongoDB.",
+          "Use a web API like Google Maps."
+        ],
+        "question": "How do you serve static content with Nginx?"
+      },
+      {
+        "correctAnswer": "Combine Nginx, Node.js, and Lets Encrypt to secure your application with SSL certificates.",
+        "options": [
+          "Combine Nginx, Node.js, and Lets Encrypt to secure your application with SSL certificates.",
+          "Use a cloud service like AWS Certificate Manager.",
+          "Use a web browser extension for security.",
+          "Use a database like MongoDB."
+        ],
+        "question": "How do you implement a full Node.js deployment using Nginx, SSL with Lets Encrypt?"
+      },
+      {
+        "correctAnswer": "Serverless framework is a tool that helps you build, deploy, and manage serverless applications on cloud platforms.",
+        "options": [
+          "Serverless framework is a tool that helps you build, deploy, and manage serverless applications on cloud platforms.",
+          "Serverless framework is a type of database system.",
+          "Serverless framework is a web browser extension for developers.",
+          "Serverless framework is a cloud service for hosting web applications."
+        ],
+        "question": "What is Serverless Framework and how do you use it with Node.js?"
+      },
+      {
+        "correctAnswer": "Serverless architecture involves running your code in small, independent units (functions) that are triggered by events and managed by a cloud provider.",
+        "options": [
+          "Serverless architecture involves running your code in small, independent units (functions) that are triggered by events and managed by a cloud provider.",
+          "Serverless architecture is a type of database system.",
+          "Serverless architecture is a web browser extension for developers.",
+          "Serverless architecture is a cloud service for hosting web applications."
+        ],
+        "question": "What is serverless architecture and how does it differ from monolithic architecture?"
+      },
+      {
+        "correctAnswer": "GraphQL is a query language and runtime for APIs that provides a flexible and powerful way to fetch data from your backend.",
+        "options": [
+          "GraphQL is a query language and runtime for APIs that provides a flexible and powerful way to fetch data from your backend.",
+          "GraphQL is a type of database system.",
+          "GraphQL is a web browser extension for developers.",
+          "GraphQL is a cloud service for hosting web applications."
+        ],
+        "question": "What is GraphQL and how do you use it with Node.js?"
+      },
+      {
+        "correctAnswer": "Design and implement the backend architecture for a social media application using GraphQL and Node.js.",
+        "options": [
+          "Design and implement the backend architecture for a social media application using GraphQL and Node.js.",
+          "Design and implement the front-end of the application using a client-side framework.",
+          "Deploy your application to a server.",
+          "Test your application thoroughly."
+        ],
+        "question": "How do you build a Threads app GraphQL clone backend?"
+      },
+      {
+        "correctAnswer": "Set up a GraphQL server using the 'graphql' library in Node.js and define the schema for your data.",
+        "options": [
+          "Set up a GraphQL server using the 'graphql' library in Node.js and define the schema for your data.",
+          "Create a database to store your data.",
+          "Implement resolvers to handle queries and mutations.",
+          "Deploy your application to a server."
+        ],
+        "question": "How do you set up a GraphQL server in Node.js?"
+      },
+      {
+        "correctAnswer": "Use Prisma to connect your GraphQL server to a PostgreSQL database and generate data models and resolvers.",
+        "options": [
+          "Use Prisma to connect your GraphQL server to a PostgreSQL database and generate data models and resolvers.",
+          "Use a different database like MongoDB.",
+          "Use a different ORM like Sequelize.",
+          "Deploy your application to a server."
+        ],
+        "question": "How do you set up a GraphQL server with Prisma and PostgreSQL?"
+      },
+      {
+        "correctAnswer": "Refactor your GraphQL code to improve its organization, readability, and performance by applying best practices and patterns.",
+        "options": [
+          "Refactor your GraphQL code to improve its organization, readability, and performance by applying best practices and patterns.",
+          "Implement unit tests for your code.",
+          "Deploy your application to a server.",
+          "Test your application thoroughly."
+        ],
+        "question": "How do you refactor GraphQL code for better performance and readability?"
+      },
+      {
+        "correctAnswer": "Implement authentication and authorization using JWT tokens in your GraphQL server to protect your data and resources.",
+        "options": [
+          "Implement authentication and authorization using JWT tokens in your GraphQL server to protect your data and resources.",
+          "Use a third-party authentication service.",
+          "Deploy your application to a server.",
+          "Test your application thoroughly."
+        ],
+        "question": "How do you implement authentication with a GraphQL server?"
+      },
+      {
+        "correctAnswer": "Use JWT authentication and create a context object in your GraphQL server to pass user information and other relevant data to your resolvers.",
+        "options": [
+          "Use JWT authentication and create a context object in your GraphQL server to pass user information and other relevant data to your resolvers.",
+          "Use a different authentication method like OAuth.",
+          "Deploy your application to a server.",
+          "Test your application thoroughly."
+        ],
+        "question": "How do you use JWT authentication and context in a GraphQL server?"
+      }
+    ]
+  }
+}

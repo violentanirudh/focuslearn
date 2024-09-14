@@ -62,7 +62,7 @@ const handleFeedback = async (req, res) => {
 }
 
 const handleCourseEnroll = async (req, res) => {
-    const playlistId = req.params.id;
+    const slug = req.params.id;
 
     if (!playlistId || req.user === undefined) {
         req.flash('error', 'Invalid Request');
@@ -71,7 +71,7 @@ const handleCourseEnroll = async (req, res) => {
 
     try {
         const user = await User.findById(req.user._id);
-        const course = await Course.findOne({ playlistId });
+        const course = await Course.findOne({ slug });
 
         if (!course || user.courses.includes(course._id) || user.courses.length >= 5) {
             req.flash('error', 'Invalid Request');

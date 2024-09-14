@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head') %>
+<body class="bg-[url('/public/background.png')] bg-cover bg-no-repeat bg-scroll text-white py-10 px-2 max-w-screen-xl mx-auto">
+    
+    <%- include('partials/navigation') %>
+
+    <!-- Profile Section -->
+    <section class="max-w-2xl mx-auto mt-10">
+        <div class="bg-gray-800/40 rounded-lg p-8">
+            <h2 class="text-2xl text-gray-200 font-semibold mb-6">Account Setting</h2>
+            
+            <form action="" class="space-y-4">
+            <!--
+            <div class="flex items-center space-x-4">
+                <img id="profile-picture" src="https://via.placeholder.com/100" alt="Profile Picture" class="rounded-full w-24 h-24">
+                <div class="space-y-2">
+                    Hidden file input for selecting a picture
+                    <input type="file" id="file-input" class="hidden" accept="image/*">
+                    
+                    <button id="change-picture-btn" class="bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700">Change picture</button>
+                    <button id="delete-picture-btn" class="border border-gray-600 px-4 py-2 rounded-lg text-gray-300 hover:bg-gray-700">Delete picture</button>
+                </div>
+            </div> -->
+
+            <!-- User Info -->
+            <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                <div>
+                    <label class="block text-gray-400">First name</label>
+                    <input type="text" id="text" placeholder="Enter your First Name" class="w-full p-2 bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
+                </div>
+                <div>
+                    <label class="block text-gray-400">Last name</label>
+                    <input type="text" id="text" placeholder="Enter your Last Name" class="w-full p-2 bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600">
+                </div>
+            </div> -->
+                <div>
+                    <label for="name" class="block text-gray-300 text-sm font-medium mb-2">Name</label>
+                    <input type="text" id="name" name="fullName" class="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-800 text-white" placeholder="Enter your name" required>
+                </div>
+
+                <!-- Location (Optional) -->
+                <div>
+                    <label for="name" class="block text-gray-300 text-sm font-medium mb-2">Name</label>
+                    <input type="text" id="name" name="fullName" class="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-800 text-white" placeholder="Enter your name" required>
+                </div>
+
+                <div>
+                    <label for="name" class="block text-gray-300 text-sm font-medium mb-2">Name</label>
+                    <input type="text" id="name" name="fullName" class="w-full px-3 py-2 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-800 text-white" placeholder="Enter your name" required>
+                </div>
+
+                <!-- Save Button -->
+                <div class="mt-8 flex justify-left">
+                    <button id="save-btn" class="bg-blue-600 px-6 py-2 rounded-lg hover:bg-blue-700 focus:outline-none">Save</button>
+                </div>
+
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // Get the file input, profile picture, and buttons
+        const fileInput = document.getElementById('file-input');
+        const changePictureBtn = document.getElementById('change-picture-btn');
+        const deletePictureBtn = document.getElementById('delete-picture-btn');
+        const profilePicture = document.getElementById('profile-picture');
+        const saveBtn = document.getElementById('save-btn');
+        const firstName = document.getElementById('first-name');
+        const lastName = document.getElementById('last-name');
+        const locationInput = document.getElementById('location');
+
+        // Placeholder image in case the user deletes the picture
+        const placeholderImage = "https://via.placeholder.com/100";
+
+        // When the 'Change picture' button is clicked, trigger the file input click event
+        changePictureBtn.addEventListener('click', function() {
+            fileInput.click();
+        });
+
+        // When a file is selected, update the profile picture
+        fileInput.addEventListener('change', function() {
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    profilePicture.src = e.target.result;  // Update profile picture
+                }
+                reader.readAsDataURL(file);  // Read the image file as a data URL
+            }
+        });
+
+        // When the 'Delete picture' button is clicked, set the profile picture to the placeholder
+        deletePictureBtn.addEventListener('click', function() {
+            profilePicture.src = placeholderImage;  // Reset profile picture to placeholder
+        });
+
+        // Handle the 'Save' button click with validation
+        saveBtn.addEventListener('click', function() {
+            const firstNameValue = firstName.value.trim();
+            const lastNameValue = lastName.value.trim();
+            const locationValue = locationInput.value.trim();
+
+            // Check if any of the fields are empty
+            if (!firstNameValue || !lastNameValue || !locationValue) {
+                alert("Please fill out all fields before saving.");
+            } else {
+                alert("Profile changes saved!");
+            }
+        });
+    </script>
+</body>
+</html>

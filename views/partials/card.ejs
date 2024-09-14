@@ -1,15 +1,15 @@
-<div class="bg-gray-800/40 backdrop-blur-sm rounded-lg flex w-2/3 overflow-hidden">
-    <div class="bg-gray-950/60 text-white p-5 w-2/5 flex flex-col justify-between">
-        <h2 class="text-2xl text-white font-bold mb-2">Javascript Fundamentals</h2>
+<div class="bg-gray-800/40 backdrop-blur-sm rounded-lg flex w-full overflow-hidden">
+    <div class="bg-gray-950/60 text-white p-5 w-[30%] flex flex-col justify-between">
+        <h2 class="text-2xl text-white font-bold mb-2"><%= element.title %></h2>
         <a href="" class="flex items-center gap-2 text-blue-400">View Lectures <i data-feather="arrow-right" class="h-4 w-4"></i></a>
     </div>
-    <div class="p-5 flex-grow">
-        <div class="text-gray-400 text-sm mb-1">CHAPTER 4</div>
-        <h3 class="text-xl font-bold mb-4 text-white">Callbacks & Closures</h3>
+    <div class="p-5 w-[70%]">
+        <div class="text-gray-400 text-sm mb-1">Lecture <%= element.nextLectureIndex + 1 %></div>
+        <h3 class="text-lg font-medium mb-4 text-gray-200 truncate"><%= element.nextTitle %></h3>
         <div class="bg-gray-700 h-1 w-full rounded">
-            <div class="bg-blue-600 h-full w-[70%] rounded"></div>
+            <div class="bg-blue-600 h-full rounded" style="width: <%= Math.round(element.percentComplete) %>%"></div>
         </div>
-        <div class="text-gray-400 text-sm text-right mt-2">6/9 Challenges</div>
-        <button class="bg-blue-600 text-white rounded-full px-5 py-2 text-base float-right mt-5">Continue</button>
+        <div class="text-gray-400 text-sm text-right mt-2"><%= Math.round(element.percentComplete) %>% Completed</div>
+        <button class="bg-blue-600 text-white rounded px-5 py-2 text-base float-right mt-5" onclick="window.location.href=`/learn/<%= element.slug %>?lecture=<%= element.nextLectureIndex %>`">Continue</button>
     </div>
 </div>

@@ -51,6 +51,11 @@ app.use("/auth", AuthRouter);
 app.use("/", checkAuthorization(["USER", "ADMIN"]), ProtectedRouter);
 app.use("/admin", checkAuthorization(["ADMIN"]), AdminRouter);
 
+// not found
+app.use((req, res, next) => {
+  res.status(404).render("notfound");
+});
+
 // Server
 
 app.listen(3000, () => {

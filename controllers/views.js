@@ -2,15 +2,80 @@ const Request = require("../models/request");
 const User = require("../models/user");
 const { Course, Progress } = require("../models/course");
 const axios = require("axios");
+const fs = require("fs");
+const path = require("path");
 
 // USER DASHBOARD VIEWS
 
-const renderHome = (req, res) => {
-  //  Get courses form user
-  //  Get the users course progress
-  //  Compute the results 
-  //  Render the home page with the results
-  return res.render("home", { flash: req.flash("flash") });
+const renderLanding = (req, res) => {
+  return res.render("landing");
+};
+
+const renderHome = async (req, res) => {
+  try {
+    const userId = req.user._id; // Assuming user ID is set by authMiddleware
+
+    // Fetch user with populated courses
+    const user = await User.findById(userId).populate('courses');
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found.' });
+    }
+
+    // Get the user's progress for all courses
+    const userProgress = await Progress.find({ userId });
+
+    // Compute the results and find next lecture for each course
+    const results = await Promise.all(user.courses.map(async (course) => {
+      const progress = userProgress.find(p => p.playlistId === course.playlistId);
+      
+      let nextLectureIndex = 0;
+      let completedLectures = 0;
+      
+      if (progress) {
+        completedLectures = progress.lectureStatus.filter(status => status).length;
+        
+        // Find the last completed lecture
+        const lastCompletedIndex = progress.lectureStatus.lastIndexOf(true);
+        
+        // Set next lecture index
+        nextLectureIndex = lastCompletedIndex + 1;
+        
+        // If all lectures are completed, set to last lecture
+        if (nextLectureIndex >= course.lectures) {
+          nextLectureIndex = course.lectures - 1;
+        }
+      }
+
+      const filename = path.join(__dirname, '..', `/public/courses/content/${course.playlistId}.json`);
+      const file = await JSON.parse(fs.readFileSync(filename))
+
+      return {
+        playlistId: course.playlistId,
+        title: course.title,
+        slug: course.slug,
+        instructor: course.instructor,
+        category: course.category,
+        level: course.level,
+        totalLectures: course.lectures,
+        completedLectures,
+        percentComplete: ((completedLectures / course.lectures) * 100).toFixed(2),
+        nextLectureIndex,
+        duration: course.duration,
+        rating: course.rating,
+        students: course.students,
+        nextTitle: file.course.lectures[nextLectureIndex].title,
+      };
+    }));
+    // Render the home page with the results
+    res.render('home', {
+      courses: results
+    });
+
+  } catch (error) {
+    console.error('Error in getHomePage:', error);
+    res.status(500).json({ message: error.message });
+  }
 };
 
 const renderSignIn = (req, res) => {
@@ -25,9 +90,13 @@ const renderImport = (req, res) => {
   return res.render("import");
 };
 
+const renderProfile = (req, res) => {
+  return res.render("profile");
+};
+
 const renderCourse = async (req, res) => {
   const id = req.params.id;
-  let course = await Course.findOne({ playlistId: id });
+  let course = await Course.findOne({ slug: id });
 
   if (!course) {
     return res.status(404).redirect("/notfound")
@@ -37,13 +106,13 @@ const renderCourse = async (req, res) => {
 };
 
 const renderLearn = async (req, res) => {
-  const id = req.params.id;
+  const slug = req.params.id;
   let course = null;
 
   const user = await User.findById(req.user._id);
 
   try {
-    course = await Course.findOne({ playlistId: id });
+    course = await Course.findOne({ slug });
     if (user.courses.includes(course._id)) 
       return res.render("learn", { course })
   } catch (error) {
@@ -53,6 +122,15 @@ const renderLearn = async (req, res) => {
 
   return res.render("learn", { course });
 };
+
+const renderCoursesList = async (req, res) => {
+  const courses = await Course.find({});
+  return res.render("courses", { courses });
+}
+
+const renderPricing = async (req, res) => {
+  return res.render("pricing");
+}
 
 // ADMIN DASHBOARD VIEWS
 
@@ -176,12 +254,16 @@ const searchCourses = async (req, res) => {
 };
 
 module.exports = {
+  renderLanding,
   renderHome,
   renderSignIn,
   renderSignUp,
   renderImport,
   renderCourse,
   renderLearn,
+  renderCoursesList,
+  renderProfile,
+  renderPricing,
   renderAdminHome,
   renderAdminCourse,
   renderAdminRequest,

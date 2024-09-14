@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusLearn - Your Learning Partner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/css/splide.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+    
+        * {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        /* Custom Styles */
+        .hero-bg {
+            background-image: url('https://source.unsplash.com/random/1920x1080?education');
+            background-size: cover;
+            background-position: center;
+        }
+        .service-icon {
+            font-size: 3rem;
+        }
+    </style>
+</head>
+<body class="font-sans">
+
+    <header class="bg-white shadow-md">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="text-2xl font-extrabold text-blue-700">Focus<span class="text-blue-500">Learn</span></div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#" class="text-gray-600 hover:text-blue-700">Home</a>
+                <a href="#" class="text-gray-600 hover:text-blue-700">About</a>
+                <a href="#" class="text-gray-600 hover:text-blue-700">Courses</a>
+                <a href="#" class="text-gray-600 hover:text-blue-700">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-bg py-20 text-white bg-blue-800 bg-opacity-60">
+            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Concentrate your learning with FocusLearn</h1>
+                    <p class="text-xl mb-6">Master Your Skills, Fuel Your Passion, and Get Certified!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-8">Our Services</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <div class="text-blue-600 service-icon mb-4"><i class="fas fa-chalkboard-teacher"></i></div>
+                        <h3 class="text-xl font-semibold mb-2">Lectures</h3>
+                        <p>Our platform provides simple and intuitive tools for embedding and managing video lectures.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <div class="text-red-600 service-icon mb-4"><i class="fas fa-question-circle"></i></div>
+                        <h3 class="text-xl font-semibold mb-2">Quizzes</h3>
+                        <p>Test your knowledge with quizzes designed to reinforce learning and track progress.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <div class="text-green-600 service-icon mb-4"><i class="fas fa-file-alt"></i></div>
+                        <h3 class="text-xl font-semibold mb-2">Notes</h3>
+                        <p>Access comprehensive notes and study materials to aid your learning journey.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                        <div class="text-yellow-600 service-icon mb-4"><i class="fas fa-trophy"></i></div>
+                        <h3 class="text-xl font-semibold mb-2">Leaderboard</h3>
+                        <p>Compete with peers and track your progress on our leaderboard.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-8">What Our Students Say</h2>
+                <div class="splide" id="student-slider">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <li class="splide__slide bg-white p-6 rounded-lg shadow-md">
+                                <p class="mb-4">"FocusLearn has transformed my learning experience. The courses are well-structured and the support is outstanding."</p>
+                                <div class="flex items-center">
+                                    <div>
+                                        <h4 class="font-semibold">John Doe</h4>
+                                        <p class="text-gray-600">Student</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide bg-white p-6 rounded-lg shadow-md">
+                                <p class="mb-4">"An incredible platform with top-notch resources. Highly recommended for anyone looking to upskill."</p>
+                                <div class="flex items-center">
+                                    <div>
+                                        <h4 class="font-semibold">Jane Smith</h4>
+                                        <p class="text-gray-600">Graduate</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="splide__slide bg-white p-6 rounded-lg shadow-md">
+                                <p class="mb-4">"The interactive elements and user-friendly interface make learning enjoyable and effective."</p>
+                                <div class="flex items-center">
+                                    <div>
+                                        <h4 class="font-semibold">Alice Johnson</h4>
+                                        <p class="text-gray-600">Professional</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white">
+        <div class="container mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-16">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-300">Explore</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-blue-400">New uploads</a></li>
+                        <li><a href="#" class="hover:text-blue-400">Popular designs</a></li>
+                        <li><a href="#" class="hover:text-blue-400">Contributors</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-300">Site</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-blue-400">License</a></li>
+                        <li><a href="#" class="hover:text-blue-400">Articles</a></li>
+                        <li><a href="#" class="hover:text-blue-400">About</a></li>
+                        <li><a href="#" class="hover:text-blue-400">Support</a></li>
+                        <li><a href="#" class="hover:text-blue-400">Sponsors</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-300">Other Products</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-blue-400">Boardme</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-300">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-blue-400"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="hover:text-blue-400"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 border-t border-gray-700 pt-4 flex justify-between items-center text-gray-400">
+                <p>Legal</p>
+                <p>&copy; 2024 FocusLearn. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/js/splide.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Splide('#student-slider', {
+                type       : 'loop',
+                perPage    : 1,
+                autoplay   : true,
+                pagination : false,
+                arrows     : false,
+            }).mount();
+        });
+    </script>
+</body>

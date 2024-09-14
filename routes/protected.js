@@ -1,11 +1,13 @@
 const express = require("express")
 const router = express.Router()
 
-const { renderImport, renderLearn } = require("../controllers/views")
+const { renderImport, renderLearn, renderHome, renderProfile } = require("../controllers/views")
 const { handleImport, handleFeedback, handleProgress, handleCourseEnroll } = require("../controllers/user")
 
+router.get("/", renderHome);
 router.get('/import-course', renderImport)
 router.get('/learn/:id', renderLearn)
+router.get('/profile', renderProfile)
 
 router.post('/import', handleImport)
 router.post('/feedback', handleFeedback)
