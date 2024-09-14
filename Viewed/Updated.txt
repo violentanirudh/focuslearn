@@ -1,0 +1,215 @@
+// File: models/Course.js
+const mongoose = require('mongoose');
+
+const CourseSchema = new mongoose.Schema({
+  courseId: { type: String, required: true, unique: true },
+  lectureCount: { type: Number, required: true },
+  lectureDurations: [{ type: Number, required: true }]
+});
+
+module.exports = mongoose.model('Course', CourseSchema);
+
+// File: models/StudentProgress.js
+const mongoose = require('mongoose');
+
+const StudentProgressSchema = new mongoose.Schema({
+  courseId: { type: String, required: true },
+  studentId: { type: String, required: true },
+  lectureStatus: [{ type: Boolean, default: false }]
+});
+
+StudentProgressSchema.index({ courseId: 1, studentId: 1 }, { unique: true });
+
+module.exports = mongoose.model('StudentProgress', StudentProgressSchema);
+
+// File: controllers/courseController.js
+const Course = require('../models/Course');
+
+exports.createCourse = async (req, res) => {
+  try {
+    const { courseId, lectureCount, lectureDurations } = req.body;
+    if (lectureCount !== lectureDurations.length) {
+      return res.status(400).json({ error: 'Lecture count must match the number of durations provided' });
+    }
+    const course = new Course({ courseId, lectureCount, lectureDurations });
+    await course.save();
+    res.status(201).json(course);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+exports.getCourse = async (req, res) => {
+  try {
+    const course = await Course.findOne({ courseId: req.params.courseId });
+    if (!course) {
+      return res.status(404).json({ error: 'Course not found' });
+    }
+    res.json(course);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// File: controllers/progressController.js
+const StudentProgress = require('../models/StudentProgress');
+const Course = require('../models/Course');
+
+exports.updateProgress = async (req, res) => {
+  try {
+    const { courseId, lectureIndex, watchTime } = req.body;
+    const studentId = req.user.id; // Assuming user ID is set by authMiddleware
+
+    const course = await Course.findOne({ courseId });
+    if (!course) {
+      return res.status(404).json({ error: 'Course not found' });
+    }
+
+    if (lectureIndex >= course.lectureCount) {
+      return res.status(400).json({ error: 'Invalid lecture index' });
+    }
+
+    let progress = await StudentProgress.findOne({ courseId, studentId });
+    if (!progress) {
+      progress = new StudentProgress({
+        courseId,
+        studentId,
+        lectureStatus: new Array(course.lectureCount).fill(false)
+      });
+    }
+
+    const lectureDuration = course.lectureDurations[lectureIndex];
+    if (watchTime >= lectureDuration * 0.9) {
+      progress.lectureStatus[lectureIndex] = true;
+    }
+
+    await progress.save();
+    res.json(progress);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+exports.getProgress = async (req, res) => {
+  try {
+    const { courseId } = req.params;
+    const studentId = req.user.id; // Assuming user ID is set by authMiddleware
+
+    const progress = await StudentProgress.findOne({ courseId, studentId });
+    if (!progress) {
+      return res.status(404).json({ error: 'Progress not found' });
+    }
+
+    res.json(progress);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// File: routes/index.js
+const express = require('express');
+const router = express.Router();
+const courseController = require('../controllers/courseController');
+const progressController = require('../controllers/progressController');
+const authMiddleware = require('../middleware/authMiddleware');
+
+router.post('/courses', courseController.createCourse);
+router.get('/courses/:courseId', courseController.getCourse);
+router.post('/progress', authMiddleware, progressController.updateProgress);
+router.get('/progress/:courseId', authMiddleware, progressController.getProgress);
+
+module.exports = router;
+
+// File: public/js/videoTracker.js
+let player;
+let courseId = 'YOUR_COURSE_ID'; // Replace with actual course ID
+let currentLectureIndex = 0; // Current lecture index, update this when changing lectures
+let lectureDurations = []; // This should be populated with the durations of all lectures
+let watchTime = 0;
+
+function onYouTubeIframeAPIReady() {
+    // Initialize player with the first video in the playlist
+    initializePlayer();
+}
+
+function initializePlayer() {
+    player = new YT.Player('player', {
+        height: '360',
+        width: '640',
+        videoId: getVideoIdForLecture(currentLectureIndex), // You need to implement this function
+        events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+        }
+    });
+}
+
+function onPlayerReady(event) {
+    // You might want to start the video automatically or let the user start it
+}
+
+function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.PLAYING) {
+        startTracking();
+    } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
+        stopTracking();
+        updateProgress();
+    }
+}
+
+let trackingInterval;
+
+function startTracking() {
+    trackingInterval = setInterval(() => {
+        watchTime++;
+        checkViewStatus();
+    }, 1000);
+}
+
+function stopTracking() {
+    clearInterval(trackingInterval);
+}
+
+function checkViewStatus() {
+    const currentDuration = lectureDurations[currentLectureIndex];
+    if (watchTime >= currentDuration * 0.9) {
+        updateProgress();
+    }
+}
+
+function updateProgress() {
+    fetch('/api/progress', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+            courseId: courseId, 
+            lectureIndex: currentLectureIndex, 
+            watchTime: watchTime 
+        })
+    });
+}
+
+function loadNextLecture() {
+    currentLectureIndex++;
+    if (currentLectureIndex < lectureDurations.length) {
+        watchTime = 0;
+        player.loadVideoById(getVideoIdForLecture(currentLectureIndex));
+    } else {
+        console.log("Course completed!");
+    }
+}
+
+// You need to implement this function to return the correct YouTube video ID for each lecture
+function getVideoIdForLecture(index) {
+    // This should return the YouTube video ID for the lecture at the given index
+    // You might want to store this information along with the course data
+    return 'VIDEO_ID_FOR_LECTURE_' + index;
+}
+
+// Initialize the course data
+fetch('/api/courses/' + courseId)
+    .then(response => response.json())
+    .then(course => {
+        lectureDurations = course.lectureDurations;
+        initializePlayer();
+    });

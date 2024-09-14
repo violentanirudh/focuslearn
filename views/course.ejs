@@ -44,7 +44,7 @@
 
         async function fetchCourseDetails() {
             try {
-                const response = await fetch('http://localhost:3000/public/courses/<%= course.playlistId %>.json');
+                const response = await fetch('http://127.0.0.1:3000/public/courses/content/<%= course.playlistId %>.json');
                 courseData = await response.json();
 
                 const lecturesElement = document.querySelector('#lectures');

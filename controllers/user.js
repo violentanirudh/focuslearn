@@ -2,6 +2,8 @@ const axios = require('axios')
 const Request = require('../models/request')
 const Feedback = require('../models/feedback')
 const User = require('../models/user')
+const { Course, Progress } = require('../models/course')
+
 
 async function handleImport(req, res) {
     const { course } = req.body;
@@ -60,28 +62,39 @@ const handleFeedback = async (req, res) => {
 }
 
 const handleCourseEnroll = async (req, res) => {
-    const { courseId } = req.body;
-    if (!courseId) {
-        req.flash('error', 'Course ID is required');
-        return res.redirect('/');
-    }
+    const playlistId = req.params.id;
 
-    if (req.user === undefined) {
-        req.flash('error', 'Unauthorized');
+    if (!playlistId || req.user === undefined) {
+        req.flash('error', 'Invalid Request');
         return res.redirect('/');
     }
 
     try {
         const user = await User.findById(req.user._id);
-        if (user.courses.includes(courseId)) {
-            req.flash('error', 'Course already enrolled');
+        const course = await Course.findOne({ playlistId });
+
+        if (!course || user.courses.includes(course._id) || user.courses.length >= 5) {
+            req.flash('error', 'Invalid Request');
             return res.redirect('/');
         }
+        
+        await User.findByIdAndUpdate(
+            user._id,
+            { $push: { courses: course._id } },
+            { new: true }
+        );
 
-        user.courses.push(courseId);
-        await user.save();
+        const progress = new Progress({
+            playlistId,
+            userId: req.user._id,
+            lectureStatus: new Array(course.lectures).fill(false),
+        });
+
+        await progress.save();
+
         req.flash('success', 'Course enrolled');
-        return res.redirect(`/course/${courseId}`);
+        return res.redirect(`/learn/${playlistId}`);
+
     } catch (error) {
         console.log(error.message);
         req.flash('error', 'Internal server error');
@@ -89,8 +102,34 @@ const handleCourseEnroll = async (req, res) => {
     }
 }
 
+const handleProgress = async (req, res) => {
+    try {
+        const { playlistId, lectureIndex } = req.body;
+        const userId = req.user._id;
+    
+        const course = await Course.findOne({ playlistId });
+
+        if (!course) {
+            return res.status(404).json({ error: "Course not found" });
+        }
+  
+        if (lectureIndex < 0 || lectureIndex >= course.lectureCount) {
+            return res.status(400).json({ error: "Invalid lecture index" });
+        }
+  
+        let progress = await Progress.findOne({ playlistId, userId });
+        progress.lectureStatus[lectureIndex] = true;
+        await progress.save();
+  
+        res.json(progress);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};
+
 module.exports = {
     handleImport,
     handleFeedback,
-    handleCourseEnroll
+    handleCourseEnroll,
+    handleProgress,
 }

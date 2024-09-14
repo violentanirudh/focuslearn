@@ -1,6 +1,6 @@
 const Request = require("../models/request");
 const User = require("../models/user");
-const Course = require("../models/course");
+const { Course, Progress } = require("../models/course");
 const axios = require("axios");
 
 // USER DASHBOARD VIEWS
@@ -23,11 +23,9 @@ const renderImport = (req, res) => {
 
 const renderCourse = async (req, res) => {
   const id = req.params.id;
-  let course = null;
+  let course = await Course.findOne({ playlistId: id });
 
-  try {
-    course = await Course.findOne({ playlistId: id });
-  } catch (error) {
+  if (!course) {
     return res.status(404).redirect("/notfound")
   }
 
@@ -38,8 +36,12 @@ const renderLearn = async (req, res) => {
   const id = req.params.id;
   let course = null;
 
+  const user = await User.findById(req.user._id);
+
   try {
     course = await Course.findOne({ playlistId: id });
+    if (user.courses.includes(course._id)) 
+      return res.render("learn", { course })
   } catch (error) {
     req.flash("error", "Invalid Course Request");
     return res.redirect("/dashboard");
@@ -126,9 +128,9 @@ const renderAdminCourse = async (req, res) => {
   const id = req.params.id;
   let course = null;
 
-  try {
-    course = await Course.findOne({ playlistId: id });
-  } catch (error) {
+  course = await Course.findOne({ playlistId: id });
+  
+  if (!course) {
     req.flash("error", "Invalid Course Request");
     return res.redirect("/admin/dashboard");
   }
@@ -168,7 +170,6 @@ const searchCourses = async (req, res) => {
       .render("search", { courses: [], query: "", error: "An error occurred" });
   }
 };
-
 
 module.exports = {
   renderHome,

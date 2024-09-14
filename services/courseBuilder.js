@@ -1,4 +1,4 @@
-const Course = require('../models/course');
+const { Course } = require('../models/course');
 const { processPlaylist } = require('../serverless/courses');
 const { generateSlug } = require('./helpers');
 

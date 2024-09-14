@@ -92,8 +92,6 @@
           </ul>
         `;
 
-
-        // Set the first lecture as current
         changeLecture(0);
 
       } catch (err) {
@@ -118,13 +116,48 @@
 
     function updateLectureContent() {
       if (currentLecture) {
-        const url = currentLecture.embed.replace('https://www.youtube.com/', 'https://www.youtube-nocookie.com/');
-        console.log(url)
-        document.getElementById('lecture-video').src = url +  '?autoplay=0&mute=0&controls=1&playsinline=1&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1&widgetid=1';
-        document.getElementById('lecture-title').textContent = currentLecture.title;
+      const url = currentLecture.embed.replace('https://www.youtube.com/', 'https://www.youtube-nocookie.com/');
+      console.log(url);
+      document.getElementById('lecture-video').src = url + '?autoplay=0&mute=0&controls=1&playsinline=1&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1&widgetid=1';
+      document.getElementById('lecture-title').textContent = currentLecture.title;
+
+      // Add event listener to track video progress
+      const iframe = document.getElementById('lecture-video');
+      iframe.onload = function() {
+        const player = new YT.Player(iframe, {
+        events: {
+          'onStateChange': onPlayerStateChange
+        }
+        });
+      };
       }
     }
 
+    function onPlayerStateChange(event) {
+      if (event.data == YT.PlayerState.PLAYING) {
+      const duration = event.target.getDuration();
+      const watchTime = duration * 0.9;
+
+      setTimeout(() => {
+        if (event.target.getPlayerState() == YT.PlayerState.PLAYING) {
+        sendProgressUpdate();
+        }
+      }, watchTime * 1000);
+      }
+    }
+
+    function sendProgressUpdate() {
+      fetch('/progress', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ currentLectureIndex: courseData.course.lectures.indexOf(currentLecture) })
+      })
+      .then(response => response.json())
+      .then(data => console.log('Progress updated:', data))
+      .catch(error => console.error('Error updating progress:', error));
+    }
 
     fetchCourseDetails();
   </script>
