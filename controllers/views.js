@@ -92,8 +92,9 @@ const renderImport = (req, res) => {
   return res.render("import", { flash: req.flash("flash") });
 };
 
-const renderProfile = (req, res) => {
-  return res.render("profile");
+const renderAccount = async (req, res) => {
+  const user = await User.findById(req.user._id).populate('courses');
+  return res.render("account", { user });
 };
 
 const renderCourse = async (req, res) => {
@@ -264,7 +265,7 @@ module.exports = {
   renderCourse,
   renderLearn,
   renderCoursesList,
-  renderProfile,
+  renderAccount,
   renderPricing,
   renderAdminHome,
   renderAdminCourse,

@@ -1,9 +1,10 @@
 const axios = require('axios')
+const fs = require('fs')
 const Request = require('../models/request')
 const Feedback = require('../models/feedback')
 const User = require('../models/user')
 const { Course, Progress } = require('../models/course')
-
+const path = require('path')
 
 async function handleImport(req, res) {
     const { course } = req.body;
@@ -66,7 +67,7 @@ const handleFeedback = async (req, res) => {
 const handleCourseEnroll = async (req, res) => {
     const slug = req.params.id;
 
-    if (!playlistId || req.user === undefined) {
+    if (!slug || req.user === undefined) {
         req.flash('error', 'Invalid Request');
         return res.redirect('/');
     }
@@ -74,6 +75,8 @@ const handleCourseEnroll = async (req, res) => {
     try {
         const user = await User.findById(req.user._id);
         const course = await Course.findOne({ slug });
+
+        console.log(slug)
 
         if (!course || user.courses.includes(course._id) || user.courses.length >= 5) {
             req.flash('error', 'Invalid Request');
@@ -87,7 +90,7 @@ const handleCourseEnroll = async (req, res) => {
         );
 
         const progress = new Progress({
-            playlistId,
+            playlistId: course.playlistId,
             userId: req.user._id,
             lectureStatus: new Array(course.lectures).fill(false),
         });
@@ -129,9 +132,61 @@ const handleProgress = async (req, res) => {
     }
 };
 
+const handleQuiz = async (req, res) => {
+    const { id: playlistId } = req.params;
+    const { lecture, answer } = req.body;
+    
+    if (!playlistId || !lecture || !answer) {
+        return res.status(400).json({ error: "Invalid request" });
+    }
+
+    let correctAnswer
+
+    try {
+        const quizFile = JSON.parse(fs.readFileSync(path.join(__dirname, `../public/courses/quiz/${playlistId}.json`)));
+        correctAnswer = quizFile.quiz.questions[parseInt(lecture)].correctAnswer;
+    } catch (error) {
+        return res.status(400).json({ error: "Invalid request" });
+    }
+
+    if (correctAnswer == answer) {
+        await Progress.findOneAndUpdate(
+            { playlistId, userId: req.user._id },
+            { $set: { [`lectureStatus.${parseInt(lecture)}`]: true } },
+            { new: true }
+        );
+        return res.json({ correct: true });
+    } else {
+        return res.json({ correct: false });
+    }
+
+}
+
+
+const handleQuizCreation = async (req, res) => {
+
+    const { id: playlistId } = req.params;
+    try {
+        const quizFile = JSON.parse(fs.readFileSync(path.join(__dirname, `../public/courses/quiz/${playlistId}.json`)));
+
+        quizFile.quiz.questions.forEach(question => {
+            delete question.correctAnswer;
+        });
+
+        return res.json({ quiz: quizFile.quiz });
+
+    } catch (error) {
+        console.log(error.message)
+        return res.status(400).json({ error: "Invalid request" });
+    }
+
+}
+
 module.exports = {
     handleImport,
     handleFeedback,
     handleCourseEnroll,
     handleProgress,
+    handleQuiz,
+    handleQuizCreation
 }

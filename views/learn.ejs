@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('./partials/head') %>
-<body class="bg-[url('/public/background.png')] bg-cover bg-no-repeat bg-scroll text-white py-10 px-2 max-w-screen-xl mx-auto">
+<body class="bg-[url('/public/background.png')] bg-cover bg-no-repeat bg-fixed text-white py-10 px-2 max-w-screen-xl mx-auto">
     
     <%- include('partials/navigation') %>
     <div class="fixed inset-0 flex justify-center items-center p-10 grow bg-black/10 hidden" id="lectures">
@@ -45,8 +45,23 @@
       </div>
     </div>
     
-    
-  
+
+    <div class="fixed inset-0 flex justify-center items-center p-10 grow bg-black/10 hidden" id="quiz">
+      <div class="bg-gray-950/90  backdrop-blur-xl rounded-lg h-full self-start shadow-lg max-w-screen-xl w-full flex flex-col py-6">
+        <div class="flex px-6 justify-between text-white mb-6">
+          <h2 class="text-2xl text-white">Questions</h2>
+          <button class="" onclick="document.querySelector('#quiz').classList.toggle('hidden')">
+          <i data-feather="x"></i>
+          </button>
+        </div>
+        
+        <!-- Lectures content with top and bottom inset shadow -->
+        <div id="quiz-content" class="p-6 flex-1 flex flex-col justify-center pt-10">
+          <!-- Lectures will be dynamically inserted here -->
+        </div>
+      </div>
+    </div>
+
   <!-- Main Content -->
   <div class="space-y-4">
       <!-- Video Player and Description -->
@@ -62,6 +77,10 @@
       <p class="text-xl font-medium truncate w-3/4 text-white" id="lecture-title"></p>
 
       <div class="flex gap-4">
+
+        <button class="py-2 px-6 font-medium border-2 bg-blue-600 border-black rounded" onclick="document.querySelector('#quiz').classList.toggle('hidden')">
+          Quiz
+        </button>
 
         <button class="py-2 px-6 font-medium border-2 bg-blue-600 border-black rounded" onclick="document.querySelector('#notes').classList.toggle('hidden')">
           Notes
@@ -115,6 +134,7 @@
         const urlParams = new URLSearchParams(window.location.search);
         const lectureIndex = urlParams.has('lecture') ? parseInt(urlParams.get('lecture')) : 0;
         changeLecture(lectureIndex, false);
+        updateQuizContent()
 
       } catch (err) {
         console.error(err);
@@ -135,14 +155,14 @@
       currentLectureNavigation = index
       if (close) document.getElementById('lectures').classList.toggle('hidden')
       updateLectureContent();
+      updateQuizContent();
     }
 
     function updateLectureContent() {
       if (currentLecture) {
-      const url = currentLecture.embed.replace('https://www.youtube.com/', 'https://www.youtube-nocookie.com/');
-      document.getElementById('lecture-video').src = url + '?autoplay=0&mute=0&controls=1&playsinline=1&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1&widgetid=1';
-      document.getElementById('lecture-title').textContent = currentLecture.title;
-
+        const url = currentLecture.embed.replace('https://www.youtube.com/', 'https://www.youtube-nocookie.com/');
+        document.getElementById('lecture-video').src = url + '?autoplay=0&mute=0&controls=1&playsinline=1&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1&widgetid=1';
+        document.getElementById('lecture-title').textContent = currentLecture.title;
       }
     }
 
@@ -186,6 +206,74 @@
       }
     }
 
+    let quizData = null;
+
+    async function fetchQuizQuestions() {
+      try {
+      const response = await fetch(`/generate/quiz/<%= course.playlistId %>`);
+      quizData = await response.json();
+      quizData = quizData.quiz;
+      } catch (err) {
+      console.error(err);
+      const quizElement = document.querySelector('#quiz-content');
+      quizElement.innerHTML = `
+        <div class="text-center text-red-600">
+        <p>Failed to load quiz questions. Please try again later.</p>
+        </div>
+      `;
+      }
+    }
+
+    function updateQuizContent() {
+      if (quizData && currentLectureNavigation !== null) {
+      const question = quizData.questions[currentLectureNavigation];
+      const shuffledOptions = question.options.sort(() => 0.5 - Math.random());
+      const quizElement = document.querySelector('#quiz-content');
+      quizElement.innerHTML = `
+        <form id="quiz-form-${currentLectureNavigation}" class="quiz-form w-fit h-fit space-y-4" onsubmit="submitQuiz(event, ${currentLectureNavigation})">
+        <p class="font-medium text-2xl text-white">${question.question}</p>
+        ${shuffledOptions.map(option => `
+          <label class="block text-lg text-white flex items-center gap-2">
+          <input type="radio" name="option" value="${option}" class="w-4 h-4" required>
+          ${option}
+          </label>
+        `).join('')}
+        <button type="submit" class="py-2 px-6 font-medium border-2 bg-blue-600 border-black rounded mt-4">Submit</button>
+        </form>
+        <div id="quiz-result-${currentLectureNavigation}" class="text-white mt-2"></div>
+      `;
+      }
+    }
+
+    async function submitQuiz(event, index) {
+      event.preventDefault();
+      const form = document.getElementById(`quiz-form-${index}`);
+      const formData = new FormData(form);
+      const selectedOption = formData.get('option');
+
+      try {
+        const response = await fetch(`/quiz/<%= course.playlistId %>`, {
+          method: 'POST',
+          body: new URLSearchParams({ answer: selectedOption, lecture: currentLectureNavigation })
+        });
+        const result = await response.json();
+        const resultElement = document.getElementById(`quiz-result-${index}`);
+        if (result.correct) {
+          resultElement.textContent = 'Correct!';
+          resultElement.classList.add('text-green-700');
+        } else {
+          resultElement.textContent = 'Incorrect. Try again!';
+          resultElement.classList.add('text-red-700');
+        }
+      } catch (err) {
+        console.error(err);
+        const resultElement = document.getElementById(`quiz-result-${index}`);
+        resultElement.textContent = 'Failed to submit answer. Please try again later.';
+        resultElement.classList.add('text-red-500');
+      }
+    }
+
+    fetchQuizQuestions();
     fetchCourseNotes();
     fetchCourseDetails();
   </script>

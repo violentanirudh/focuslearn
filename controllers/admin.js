@@ -11,7 +11,7 @@ handleAdminRequest = async (req, res) => {
     try {
         if (req.body.approve !== undefined) {
             const request = await Request.findByIdAndUpdate(id, { $set: { status: 'approved' } });
-            const course = await generateCourse(request.playlistId, true);
+            const course = await generateCourse(request.playlistId);
             req.flash('success', 'Course Request Approved');
             return res.redirect('/admin/course/' + request.playlistId);
         } else if (req.body.reject !== undefined) {
@@ -36,7 +36,7 @@ handleAdminCourseActions = async (req, res) => {
             const playlistId = req.params.id;
             const course = await Course.findOne({ playlistId })
             if (course) {
-                await generateCourse(course.playlistId);
+                await generateCourse(course.playlistId, true);
                 req.flash('success', 'Course Updated');
                 return res.redirect('/admin/course/' + playlistId);
             }

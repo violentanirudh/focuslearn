@@ -20,7 +20,7 @@ const postSignUp = async (req, res) => {
 
   req.flash("flash", {
     type: "success",
-    text: "Please verify your email address!",
+    text: "Please verify your email address! For this tutorial, Email Verification is removed!",
   });
   res.redirect("/signup");
 };

@@ -6,9 +6,10 @@ const {
   verifyUser,
   signOut,
 } = require("../controllers/auth");
+const { validateSignup, validateSignin } = require("../middlewares/validators")
 
-router.post("/signin", postSignIn);
-router.post("/signup", postSignUp);
+router.post("/signin", validateSignin, postSignIn);
+router.post("/signup", validateSignup, postSignUp);
 router.get("/signout", signOut);
 router.get("/verify", verifyUser);
 
