@@ -14,6 +14,16 @@ $ npm run dev
 $ npm run tailwind
 ```
 
+DUE TO LIMITATION OF VERCEL, WE FACE REQUEST TIMEOUT ERROR BEFORE GETIING GEMINI API RESPONSE.
+I INCLUDED MY .env FILE. DO USE IT
+
+```
+ADMIN LOGIN DETAILS
+url       : /signin
+email     : master@example.com or admin@example.com
+password  : Master@123 or Admin@123
+dashboard : /admin/dashboard
+
 ## LOGS
 
 01. Anirudh : Initital Commit
@@ -47,3 +57,4 @@ $ npm run tailwind
 29. Tanmay : Added filter for search
 30. Tanmay : Created Viewed folder which contains logic for the viewed function, viewed and detailed is part of one thing and another is another logic
 31. Tanmay : Viewed functionality
+

@@ -1,0 +1,340 @@
+## HTML Lecture Notes from W3Schools.com
+
+**1. HTML - Introduction - W3Schools.com**
+
+* **What is HTML?** Hyper Text Markup Language is the standard markup language for creating web pages and applications. 
+* **HTML Structure:**
+    * **<!DOCTYPE html>:** Declares the document type as HTML5.
+    * **<html lang="en">:** Root element of the page, defines the document's language (e.g., English).
+    * **<head>:** Contains metadata about the document, such as the title, links to stylesheets, etc.
+    * **<title>:** Defines the title of the page, displayed in the browser tab.
+    * **<body>:** Contains the visible content of the page, including text, images, etc.
+* **Example:**
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My First HTML Page</title>
+</head>
+<body>
+    <h1>Welcome to my website!</h1>
+</body>
+</html>
+```
+
+**2. HTML - Editors - W3Schools.com**
+
+* **Text Editors:** Simple programs for writing code, like Notepad (Windows) or TextEdit (Mac).
+* **Code Editors:** Offer advanced features like syntax highlighting, code completion, and debugging:
+    * **Visual Studio Code:** Free and open-source, popular for web development.
+    * **Sublime Text:** Powerful and fast, with a wide range of plugins.
+    * **Atom:** Open-source and highly customizable, built by GitHub.
+* **Integrated Development Environments (IDEs):** Comprehensive tools that include editors, debuggers, and build tools:
+    * **Visual Studio:** Microsoft's powerful IDE, especially for .NET development.
+    * **IntelliJ IDEA:** Java IDE with excellent features for web development.
+* **Online Editors:** Allow coding directly in the browser, useful for learning or quick prototyping:
+    * **JSFiddle:** Popular for experimenting with HTML, CSS, and JavaScript.
+    * **CodePen:** Provides a platform for sharing and collaborating on code snippets.
+
+**3. HTML - Elements - W3Schools.com**
+
+* **HTML Elements:** Building blocks of an HTML document, enclosed within opening and closing tags.
+    * **Example:** `<p>This is a paragraph.</p>`
+* **Types of Elements:**
+    * **Heading Elements:** `<h1>` to `<h6>` for different levels of headings.
+    * **Paragraph Elements:** `<p>` for creating paragraphs of text.
+    * **Line Break Element:** `<br>` for inserting a line break.
+    * **Image Element:** `<img>` for displaying images.
+    * **Link Element:** `<a>` for creating hyperlinks.
+* **Example:**
+```html
+<h1>Welcome to my website</h1>
+<p>This is a paragraph of text.</p>
+<br>
+<img src="image.jpg" alt="My Image">
+```
+
+**4. HTML - Attributes - W3Schools.com**
+
+* **Attributes:** Provide additional information about an HTML element.
+* **Syntax:** `elementName attributeName="attributeValue"`
+* **Common Attributes:**
+    * **src:** Specifies the source of an image or external resource.
+    * **href:** Specifies the target URL of a link.
+    * **alt:** Provides alternative text for an image (used by screen readers).
+    * **title:** Provides a tooltip for an element.
+* **Example:**
+```html
+<img src="image.jpg" alt="A beautiful landscape" title="Click to enlarge">
+<a href="https://www.w3schools.com" title="Visit W3Schools">Learn HTML</a>
+```
+
+**5. HTML - Headings - W3Schools.com**
+
+* **Heading Elements:** Used to structure content and indicate importance.
+* **Levels:** `<h1>` (most important) to `<h6>` (least important).
+* **Example:**
+```html
+<h1>Main Heading</h1>
+<h2>Subheading 1</h2>
+<h3>Subheading 2</h3>
+```
+
+**6. HTML - Paragraphs - W3Schools.com**
+
+* **Paragraph Element:** `<p>` creates a block of text with a line break before and after.
+* **Example:**
+```html
+<p>This is the first paragraph. It will have a line break before and after it.</p>
+<p>This is the second paragraph.</p>
+```
+
+**7. HTML - Styles - W3Schools.com**
+
+* **Inline Styles:** Apply styles directly to an element using the `style` attribute.
+* **Example:**
+```html
+<p style="color: red; font-size: 20px;">This text is red and 20px in size.</p>
+```
+* **Internal Styles:** Define styles within the `<head>` section using the `<style>` tag.
+* **Example:**
+```html
+<head>
+    <style>
+        p {
+            color: blue;
+            font-size: 16px;
+        }
+    </style>
+</head>
+```
+* **External Stylesheets:** Link an external CSS file to the HTML document.
+* **Example:**
+```html
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+```
+
+**8. HTML - Formatting - W3Schools.com**
+
+* **Text Formatting Elements:**
+    * **`<b>`:** Bold text.
+    * **`<strong>`:** Strong emphasis, often styled differently than `<b>`.
+    * **`<i>`:** Italic text.
+    * **`<em>`:** Emphasized text, often styled differently than `<i>`.
+    * **`<mark>`:** Highlights text.
+    * **`<small>`:** Smaller text.
+    * **`<del>`:** Strikethrough text.
+    * **`<ins>`:** Underlined text.
+* **Example:**
+```html
+<p>This is <b>bold</b> and <i>italic</i> text.</p>
+<p>This is <mark>highlighted</mark> text.</p>
+```
+
+**9. HTML - Comments - W3Schools.com**
+
+* **Comments:** Ignored by the browser, used for adding notes and explanations to the code.
+* **Syntax:** `<!-- Comment goes here -->`
+* **Example:**
+```html
+<!-- This is a comment. It will not be displayed on the page. -->
+```
+
+**10. HTML - Colors - W3Schools.com**
+
+* **Color Names:** Use predefined color names like "red," "blue," "green," etc.
+* **Hex Codes:** Represent colors using six hexadecimal digits (e.g., "#FF0000" for red).
+* **RGB Values:** Define colors using red, green, and blue values (e.g., "rgb(255, 0, 0)" for red).
+* **Example:**
+```html
+<p style="color: red;">This text is red.</p>
+<p style="color: #FF0000;">This text is also red (hex code).</p>
+<p style="color: rgb(255, 0, 0);">This text is red (RGB values).</p>
+```
+
+**11. HTML - CSS - W3Schools.com**
+
+* **Cascading Style Sheets (CSS):** Used to define the style and layout of web pages.
+* **Selectors:** Target specific HTML elements to apply styles.
+* **Properties:** Determine the visual attributes of an element, such as color, font, size, etc.
+* **Values:** Specify the actual values for each property.
+* **Example:**
+```css
+p {
+    color: blue;
+    font-size: 16px;
+}
+
+h1 {
+    text-align: center;
+    font-weight: bold;
+}
+```
+
+**12. HTML - Links - W3Schools.com**
+
+* **Anchor Element:** `<a>` creates a hyperlink.
+* **`href` Attribute:** Specifies the target URL.
+* **`target` Attribute:** Controls where the link opens (e.g., "_blank" for a new tab).
+* **Example:**
+```html
+<a href="https://www.w3schools.com">Visit W3Schools</a>
+<a href="https://www.google.com" target="_blank">Open Google in a new tab</a>
+```
+
+**13. HTML - Images - W3Schools.com**
+
+* **Image Element:** `<img>` displays an image.
+* **`src` Attribute:** Specifies the source of the image.
+* **`alt` Attribute:** Provides alternative text for the image.
+* **Example:**
+```html
+<img src="image.jpg" alt="A beautiful landscape">
+```
+
+**14. HTML - Tables - W3Schools.com**
+
+* **Table Element:** `<table>` creates a table.
+* **`<tr>` Element:** Defines a table row.
+* **`<td>` Element:** Defines a table data cell.
+* **`<th>` Element:** Defines a table header cell.
+* **Example:**
+```html
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+    </tr>
+    <tr>
+        <td>John Doe</td>
+        <td>30</td>
+    </tr>
+    <tr>
+        <td>Jane Doe</td>
+        <td>25</td>
+    </tr>
+</table>
+```
+
+**15. HTML - Lists - W3Schools.com**
+
+* **Unordered List:** `<ul>` creates a list with bullet points.
+* **Ordered List:** `<ol>` creates a list with numbers.
+* **List Item:** `<li>` defines an item in the list.
+* **Example:**
+```html
+<ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+</ul>
+
+<ol>
+    <li>Step 1</li>
+    <li>Step 2</li>
+    <li>Step 3</li>
+</ol>
+```
+
+**16. HTML - Block and Inline - W3Schools.com**
+
+* **Block-level Elements:** Take up the full width of the page and create new lines before and after them (e.g., `<p>`, `<h1>`, `<div>`).
+* **Inline Elements:** Only take up the space they need and don't create new lines (e.g., `<span>`, `<b>`, `<i>`).
+* **Example:**
+```html
+<p>This is a paragraph.</p> 
+<span>This is inline text.</span>
+```
+
+**17. HTML - Classes - W3Schools.com**
+
+* **`class` Attribute:** Allows applying styles to multiple elements with the same class name.
+* **Example:**
+```html
+<p class="important">This is an important paragraph.</p>
+<div class="important">This is an important div.</div>
+```
+* **CSS Selector:** `.` followed by the class name (e.g., `.important`).
+
+**18. HTML - Id - W3Schools.com**
+
+* **`id` Attribute:** Uniquely identifies an element within the document.
+* **Example:**
+```html
+<p id="myParagraph">This is a paragraph with a unique ID.</p>
+```
+* **CSS Selector:** `#` followed by the ID name (e.g., `#myParagraph`).
+
+**19. HTML - Iframes - W3Schools.com**
+
+* **`iframe` Element:** Embeds another HTML document within the current one.
+* **`src` Attribute:** Specifies the URL of the embedded document.
+* **Example:**
+```html
+<iframe src="https://www.w3schools.com" height="300" width="400"></iframe>
+```
+
+**20. HTML - JavaScript - W3Schools.com**
+
+* **JavaScript:** A scripting language used for creating interactive web pages.
+* **`script` Element:** Includes JavaScript code within an HTML document.
+* **Example:**
+```html
+<script>
+    alert("Hello, World!");
+</script>
+```
+
+**21. HTML - Head - W3Schools.com**
+
+* **`<head>` Element:** Contains metadata about the HTML document, including:
+    * **`<title>`:** The title of the page.
+    * **`<meta>`:**  Meta tags provide additional information (e.g., description, keywords, charset).
+    * **`<link>`:** Links to external resources like stylesheets.
+    * **`<script>`:** Includes JavaScript code.
+* **Example:**
+```html
+<head>
+    <title>My Website</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+```
+
+**22. HTML - Forms - W3Schools.com**
+
+* **`<form>` Element:** Creates a form for user input.
+* **`action` Attribute:** Specifies the URL to submit the form data.
+* **`method` Attribute:** Defines the HTTP method for submitting the data (e.g., "GET" or "POST").
+* **Form Elements:**
+    * **`<input>`:** Creates input fields like text boxes, checkboxes, radio buttons, etc.
+    * **`<textarea>`:** Creates a multi-line text input area.
+    * **`<select>`:** Creates a dropdown list.
+    * **`<button>`:** Creates a submit button.
+* **Example:**
+```html
+<form action="/submit" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <input type="submit" value="Submit">
+</form>
+```
+
+**23. HTML - Bloopers - W3Schools.com**
+
+* **Common Mistakes:**
+    * **Missing closing tags:** Ensure every opening tag has a corresponding closing tag.
+    * **Incorrect attribute values:** Use quotation marks around attribute values.
+    * **Using reserved keywords as element names:** Avoid using words like "class," "style," etc.
+    * **Nested elements:** Make sure elements are nested correctly.
+* **Debugging Techniques:**
+    * **Inspect element:** Use the browser's developer tools to view HTML structure.
+    * **Console errors:** Check the browser console for error messages.
+    * **Use a validator:** Run the code through an HTML validator to check for errors.
