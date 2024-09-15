@@ -1,6 +1,7 @@
 const Request = require('../models/request');
 const { Course } = require('../models/course');
 const { generateQuiz } = require('../serverless/quiz');
+const { generateNotes } = require('../serverless/notes');
 const { generateCourse } = require('../services/courseBuilder');
 
 handleAdminRequest = async (req, res) => {
@@ -29,23 +30,38 @@ handleAdminRequest = async (req, res) => {
 }
 
 handleAdminCourseActions = async (req, res) => {
+    console.log(req.body)
     try {
         if (req.body.content !== undefined) {
             const playlistId = req.params.id;
             const course = await Course.findOne({ playlistId })
             if (course) {
                 await generateCourse(course.playlistId);
+                req.flash('success', 'Course Updated');
                 return res.redirect('/admin/course/' + playlistId);
             }
+            req.flash('error', 'Unable to update course');
         } else if (req.body.quiz !== undefined) {
 
             const playlistId = req.params.id;
             const course = await Course.findOne({ playlistId: playlistId });
             if (course) {
                 await generateQuiz(playlistId);
+                req.flash('success', 'Quiz generated');
                 return res.redirect('/admin/course/' + playlistId);
             }
-            req.flash('error', 'Course Deleted');
+            req.flash('error', 'Unable to generate quiz');
+
+        } else if (req.body.notes !== undefined) {
+                
+            const playlistId = req.params.id;
+            const course = await Course.findOne({ playlistId: playlistId });
+            if (course) {
+                await generateNotes(playlistId);
+                req.flash('success', 'Notes generated');
+                return res.redirect('/admin/course/' + playlistId);
+            }   
+            req.flash('error', 'Unable to generate notes');
 
         } else if (req.body.delete !== undefined) {
             const playlistId = req.params.id;

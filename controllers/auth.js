@@ -1,5 +1,4 @@
 const User = require("../models/user");
-const { validationResult } = require("express-validator");
 
 // VALIDATION IS REQUIRED
 
@@ -29,12 +28,15 @@ const postSignUp = async (req, res) => {
 const postSignIn = async (req, res) => {
   const { email, password } = req.body;
 
+  console.log(email, password)
+
   if (req.failure) return res.redirect("/signin");
 
   try {
     const token = await User.matchPasswordAndGenerateToken(email, password);
     return res.cookie("user", token).redirect("/");
   } catch (err) {
+    req.flash("flash", { type: "error", text: "Invalid Credentials!" });
     return res.redirect("/signin");
   }
 };

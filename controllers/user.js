@@ -27,14 +27,16 @@ async function handleImport(req, res) {
                 playlistId: list,
                 requestedBy: req.user._id,
             });
+            req.flash('flash', {type: 'success', text: 'Course request submitted!'});
             return res.redirect("/import-course");
-        } else {
-            return res.status(404).json({ error: "Playlist not found" });
         }
     } catch (error) {
         console.log(error.message)
-        return res.status(500).redirect('/import-course')
     }
+
+    req.flash('flash', {type: 'error', text: 'Invalid YouTube URL'});
+    return res.status(500).redirect('/import-course')
+
 }
 
 const handleFeedback = async (req, res) => {

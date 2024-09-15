@@ -39,11 +39,6 @@ app.use("/public", express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
 app.use(checkAuthentication("token"));
 
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send("Something broke!");
-});
-
 // Routes
 
 app.use("/", ViewsRouter);

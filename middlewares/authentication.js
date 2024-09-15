@@ -5,7 +5,7 @@ const checkAuthentication = () => {
       const token = req.cookies?.user
       if ( !token ) return next()
       
-      const user = await validateToken(token)
+      const user = validateToken(token)
       if ( !user) return next()
 
       req.user = user

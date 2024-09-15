@@ -79,7 +79,9 @@ const renderHome = async (req, res) => {
 };
 
 const renderSignIn = (req, res) => {
-  return res.render("signin", { flash: req.flash("flash") });
+  const flash = req.flash("flash")
+  console.log(flash)
+  return res.render("signin", { flash });
 };
 
 const renderSignUp = (req, res) => {
@@ -87,7 +89,7 @@ const renderSignUp = (req, res) => {
 };
 
 const renderImport = (req, res) => {
-  return res.render("import");
+  return res.render("import", { flash: req.flash("flash") });
 };
 
 const renderProfile = (req, res) => {

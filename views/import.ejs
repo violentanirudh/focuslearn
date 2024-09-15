@@ -5,15 +5,21 @@
     
     <%- include('partials/navigation') %>
 
-    <div class="bg-gray-800/40 rounded-lg shadow-2xl p-8 max-w-2xl w-full my-10 mx-auto">
+    <div class="max-w-2xl mx-auto mt-10">
+         <%- include('./partials/flash') %>
+    </div>
+
+    <div class="bg-gray-800/40 rounded-lg shadow-2xl p-8 max-w-2xl w-full my-4 mx-auto">
         <h1 class="text-3xl font-bold text-white mb-2">Import YouTube Course</h1>
-        <p class="text-gray-400 mb-6">Choose from over 300 fully responsive portfolio, blog, and ecommerce templates.</p>
+        <p class="text-gray-400 mb-6">Choose from over 300 already imported courses.</p>
         
         <div class="flex mb-6">
-            <input type="text" id="searchInput" placeholder="Search all templates" class="flex-grow border border-gray-800 bg-gray-900 rounded px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <button id="searchButton" class="ml-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-gray-800 transition duration-300 flex items-center justify-center">
-                Import
-            </button>
+            <form action="/import-course" method="POST" class="flex w-full">
+                <input type="text" id="import" name="course" placeholder="YouTube Playlist URL" class="flex-grow border border-gray-800 bg-gray-900 rounded px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <button type="submit" class="ml-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-gray-800 transition duration-300 flex items-center justify-center">
+                    Import
+                </button>
+            </form>
         </div>
         
         <div>
@@ -22,6 +28,9 @@
     </div>
 
     <%- include('./partials/footer') %>
+    <script>
+        feather.replace();
+    </script>
     
 </body>
 </html>

@@ -4,6 +4,11 @@
 <body class="bg-[url('/public/background.png')] bg-cover bg-no-repeat bg-scroll text-white py-10 px-2 max-w-screen-xl mx-auto">
     
     <%- include('partials/navigation') %>
+
+    <div class="max-w-4xl mx-auto mt-10">
+        <%- include('./partials/flash') %>
+    </div>
+
     <div class="bg-gray-900/40 rounded-lg shadow-xl w-full max-w-4xl flex flex-col lg:flex-row custom-height overflow-auto mx-auto mt-10">
         
         <!-- Right column: Additional information (moved up) -->
@@ -57,6 +62,8 @@
             </p>
         </div>
     </div>
+
+    <%- include('./partials/footer') %>
 
     <script>
         feather.replace();

@@ -9,12 +9,13 @@
         </div>
 
         <!-- Right Menu Items (Login and Sign Up) -->
-        <div class="flex space-x-6 items-center">
+        <div class="flex space-x-4 items-center">
             <% if (typeof (locals.user) == 'undefined') { %>
                 <a href="/signin" class="text-gray-300 hover:text-white font-medium">Sign In</button></a>
                 <a href="/signup" class="bg-blue-600 text-white px-4 py-2 rounded font-medium hover:bg-blue-800">Sign Up</a>
             <% } else { %> 
                 <a href="/account" class="bg-blue-600 text-white px-4 py-2 rounded font-medium hover:bg-blue-800">My Account</a>
+                <a href="/auth/signout" class="bg-blue-600 text-white px-4 py-2 rounded font-medium hover:bg-blue-800">Sign Out</a>
             <% } %>
         </div>
     </div>

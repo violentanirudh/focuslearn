@@ -1,0 +1,609 @@
+## Node.js Lecture Notes
+
+**1. What is NodeJS?**
+
+* **Definition:** Node.js is an open-source, cross-platform, JavaScript runtime environment built on Chrome's V8 JavaScript engine.
+* **Key Features:**
+    * **Asynchronous and Event-driven:** Handles multiple requests concurrently without blocking.
+    * **Non-blocking I/O:** Efficiently handles network and file operations without waiting for responses.
+    * **Single-threaded:** Executes code on a single thread, but uses event loop for efficient I/O management.
+    * **Lightweight:** Low memory footprint, making it suitable for real-time applications.
+* **Use Cases:**
+    * Web applications
+    * Real-time applications (chat, games)
+    * API development
+    * Command-line tools
+    * Server-side scripting
+
+**2. Node JS Installation**
+
+* **Prerequisites:**
+    * Operating system: Windows, macOS, or Linux
+    * Node.js installer: [https://nodejs.org/](https://nodejs.org/)
+* **Steps:**
+    1. Download the Node.js installer from the official website.
+    2. Run the installer and follow the on-screen instructions.
+    3. Verify installation by opening a terminal and typing `node -v` (should display the installed version).
+
+**3. Hello World NodeJS**
+
+* **Creating a Node.js file:** Create a file named `hello.js` with the following code:
+
+```javascript
+console.log("Hello World!");
+```
+1
+* **Running the code:** Open a terminal, navigate to the directory where you saved the file, and run:
+
+```bash
+node hello.js
+```
+
+* **Output:** The terminal will display "Hello World!".
+
+**4. Modules in NodeJS**
+
+* **Built-in Modules:**
+    * `http`: For creating HTTP servers.
+    * `fs`: For file system operations.
+    * `path`: For working with file paths.
+    * `os`: For accessing system information.
+* **External Modules (npm):**
+    * **npm (Node Package Manager):** Used to install and manage external modules.
+    * **Installation:** `npm install <module-name>`
+    * **Example:** `npm install express`
+* **Using Modules:**
+    * **Require:** `const <module-name> = require('<module-name>');`
+    * **Example:** `const express = require('express');`
+
+**5. File Handling in NodeJS**
+
+* **fs Module:**
+    * **Reading files:** `fs.readFile(file_path, callback);`
+    * **Writing files:** `fs.writeFile(file_path, data, callback);`
+    * **Deleting files:** `fs.unlink(file_path, callback);`
+    * **Creating directories:** `fs.mkdir(directory_path, callback);`
+    * **Reading directories:** `fs.readdir(directory_path, callback);`
+
+**Example:**
+
+```javascript
+const fs = require('fs');
+
+// Read a file
+fs.readFile('data.txt', 'utf8', (err, data) => {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log(data);
+  }
+});
+
+// Write to a file
+fs.writeFile('output.txt', 'Hello World!', (err) => {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log('File written successfully!');
+  }
+});
+```
+
+**6. How NodeJS Works?**
+
+* **Event Loop:** 
+    * The heart of Node.js, responsible for handling asynchronous operations.
+    * Monitors the call stack and the event queue.
+    * If the call stack is empty, it picks tasks from the event queue and executes them.
+* **Call Stack:**
+    * Stores the currently executing function and its nested calls.
+    * Operates on a Last-In, First-Out (LIFO) principle.
+* **Event Queue:**
+    * Stores events (callbacks) that are triggered after asynchronous operations are completed.
+    * Events are processed in the order they are added to the queue.
+
+**7. Building HTTP Server in NodeJS**
+
+* **http Module:**
+    * **createServer:** Creates an HTTP server.
+    * **listen:** Starts listening on a specific port.
+    * **request:** Event triggered when a client request is received.
+    * **response:** Object used to send a response to the client.
+
+**Example:**
+
+```javascript
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World!');
+});
+
+server.listen(3000, () => {
+  console.log('Server running on port 3000');
+});
+```
+
+**8. Handling URL's in NodeJS**
+
+* **URL Object:**
+    * **URL module:** Used to parse and manipulate URLs.
+    * **parse:** Parses a URL string into an object.
+    * **format:** Formats a URL object into a string.
+
+**Example:**
+
+```javascript
+const url = require('url');
+
+const myURL = new URL('https://www.example.com/path?param1=value1&param2=value2');
+
+console.log(myURL.protocol); // 'https:'
+console.log(myURL.hostname); // 'www.example.com'
+console.log(myURL.pathname); // '/path'
+console.log(myURL.search); // '?param1=value1&param2=value2'
+
+const query = new URLSearchParams(myURL.search);
+console.log(query.get('param1')); // 'value1'
+```
+
+**9. HTTP METHODS**
+
+* **GET:** Retrieves data from the server.
+* **POST:** Sends data to the server.
+* **PUT:** Updates existing data on the server.
+* **DELETE:** Deletes data from the server.
+* **PATCH:** Partially updates existing data on the server.
+
+**10. Getting Started with Express and NodeJS**
+
+* **Express.js:** A popular web framework for Node.js.
+* **Installation:** `npm install express`
+* **Basic Usage:**
+    * Create an Express app: `const app = express();`
+    * Define routes:
+        * `app.get('/', (req, res) => { ... });`
+        * `app.post('/users', (req, res) => { ... });`
+    * Start the server: `app.listen(3000, () => { ... });`
+
+**Example:**
+
+```javascript
+const express = require('express');
+const app = express();
+
+app.get('/', (req, res) => {
+  res.send('Welcome to the Express app!');
+});
+
+app.listen(3000, () => {
+  console.log('Server listening on port 3000');
+});
+```
+
+**11. How Versioning Works in NodeJS?**
+
+* **Semver (Semantic Versioning):** A standard for versioning software.
+* **Version Format:** `MAJOR.MINOR.PATCH`
+    * **MAJOR:** Indicates incompatible API changes.
+    * **MINOR:** Indicates new functionality added without breaking changes.
+    * **PATCH:** Indicates bug fixes or backwards-compatible improvements.
+* **Updating Packages:**
+    * `npm install <package-name>@<version>`: Install a specific version.
+    * `npm install <package-name>`: Install the latest version.
+    * `npm update <package-name>`: Update to the latest compatible version.
+
+**12. What is REST API?**
+
+* **REST (Representational State Transfer):** An architectural style for building web services.
+* **Key Principles:**
+    * **Stateless:** Each request is independent of previous requests.
+    * **Client-server:** Client requests data from the server.
+    * **Uniform interface:** Standardized methods (GET, POST, PUT, DELETE).
+    * **Resource-oriented:** Data is represented as resources identified by unique URLs.
+
+**13. Building REST API's using Node and Express.js**
+
+* **Express Router:** Used to organize and define API routes.
+* **Example:**
+
+```javascript
+const express = require('express');
+const router = express.Router();
+
+router.get('/users', (req, res) => {
+  // Retrieve users from database
+  res.json(users);
+});
+
+router.post('/users', (req, res) => {
+  // Create a new user
+  res.json({ message: 'User created successfully' });
+});
+
+app.use('/api', router);
+```
+
+**14. Introduction to POSTMAN for REST API's**
+
+* **Postman:** A powerful tool for testing and managing REST APIs.
+* **Key Features:**
+    * Request building and sending.
+    * Response analysis and validation.
+    * Environment variables and collections.
+    * API documentation.
+
+**15. Express Middleware**
+
+* **Middleware:** Functions that execute before or after request handlers.
+* **Purpose:**
+    * Logging requests
+    * Authenticating users
+    * Parsing request bodies
+    * Handling errors
+* **Example:**
+
+```javascript
+app.use((req, res, next) => {
+  console.log(`Request URL: ${req.url}`);
+  next();
+});
+```
+
+**16. What are HTTP Headers in API**
+
+* **HTTP Headers:** Metadata sent with HTTP requests and responses.
+* **Purpose:**
+    * **Request Headers:** Provide information about the client, request type, and desired response format.
+    * **Response Headers:** Provide information about the server, response status, and content type.
+
+**Examples:**
+
+* **Request Headers:**
+    * `Content-Type`: Specifies the data format of the request body.
+    * `Authorization`: Used for authentication.
+    * `Accept`: Specifies the acceptable response content types.
+* **Response Headers:**
+    * `Content-Type`: Specifies the data format of the response body.
+    * `Content-Length`: Specifies the size of the response body.
+    * `Location`: Specifies the URL of the resource that was created or updated.
+
+**17. HTTP Status Codes**
+
+* **Status Codes:** Numbers that indicate the status of an HTTP request.
+* **Categories:**
+    * **1xx:** Informational
+    * **2xx:** Success
+    * **3xx:** Redirection
+    * **4xx:** Client Error
+    * **5xx:** Server Error
+
+**Examples:**
+
+* `200 OK`: Successful request.
+* `404 Not Found`: Resource not found.
+* `500 Internal Server Error`: Server encountered an error.
+
+**18. Getting Started with MongoDB**
+
+* **MongoDB:** A NoSQL document database.
+* **Key Features:**
+    * **Document-oriented:** Stores data in JSON-like documents.
+    * **Schema-less:** Flexible data structure, allowing for easy updates.
+    * **Scalability:** Can handle large datasets and high traffic.
+* **Installation:**
+    * Download and install MongoDB from the official website: [https://www.mongodb.com/](https://www.mongodb.com/)
+    * Start the MongoDB server: `mongod`
+* **Connecting to MongoDB:**
+    * **MongoDB shell:** `mongo`
+    * **Driver:** Use a MongoDB driver for your chosen language (e.g., Mongoose for Node.js).
+
+**19. Connecting NodeJS with MongoDB | Mongoose + Express**
+
+* **Mongoose:** An Object-Data Mapper (ODM) for MongoDB.
+* **Installation:** `npm install mongoose`
+* **Connecting to MongoDB:**
+    * `const mongoose = require('mongoose');`
+    * `mongoose.connect('mongodb://localhost:27017/mydatabase', { useNewUrlParser: true, useUnifiedTopology: true });`
+* **Creating Models:**
+    * Define schemas for your data structures.
+    * Create models based on schemas.
+
+**Example:**
+
+```javascript
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost:27017/mydatabase', { useNewUrlParser: true, useUnifiedTopology: true });
+
+const userSchema = new mongoose.Schema({
+  name: String,
+  email: String
+});
+
+const User = mongoose.model('User', userSchema);
+
+// Create a new user
+const newUser = new User({ name: 'John Doe', email: 'john.doe@example.com' });
+newUser.save((err, user) => {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log('User created:', user);
+  }
+});
+```
+
+**20. Model View Controller in NodeJS | MVC Pattern**
+
+* **MVC (Model-View-Controller):** A software design pattern used to separate concerns.
+* **Components:**
+    * **Model:** Represents data and business logic.
+    * **View:** Displays data to the user.
+    * **Controller:** Handles user interactions, updates the model, and selects the appropriate view.
+
+**21. Create a Custom URL Shortener using Node.JS and MongoDB**
+
+* **Features:**
+    * Generate short URLs for long URLs.
+    * Store short URLs in MongoDB.
+    * Redirect users to the original URL when they visit the short URL.
+* **Implementation:**
+    * Create a model for storing URL mappings.
+    * Use Express routes to:
+        * Create short URLs.
+        * Redirect to original URLs.
+
+**22. Server Side Rendering with EJS and Node.JS**
+
+* **Server-Side Rendering:** Generating HTML on the server before sending it to the client.
+* **EJS (Embedded JavaScript Templates):** A popular template engine for Node.js.
+* **Implementation:**
+    * Install EJS: `npm install ejs`
+    * Use EJS to render HTML templates with dynamic data.
+    * Send rendered HTML to the client.
+
+**Example:**
+
+```javascript
+const express = require('express');
+const app = express();
+const ejs = require('ejs');
+
+app.set('view engine', 'ejs');
+
+app.get('/', (req, res) => {
+  const data = { title: 'My Website', message: 'Welcome!' };
+  res.render('index', data);
+});
+
+app.listen(3000, () => {
+  console.log('Server listening on port 3000');
+});
+```
+
+**23. Building Node.js Authentication from Scratch**
+
+* **Authentication:** Verifying a user's identity.
+* **Implementation:**
+    * **Registration:** Create user accounts and store credentials in MongoDB.
+    * **Login:** Validate user credentials against stored data.
+    * **Session management:** Maintain user login state using cookies or tokens.
+
+**24. JWT Authentication in NodeJS**
+
+* **JWT (JSON Web Token):** A standard for securely transmitting information between parties.
+* **Authentication Process:**
+    * **Generate JWT:** Create a token with user information and a secret key.
+    * **Send JWT:** Send the token to the client.
+    * **Verify JWT:** Validate the token using the secret key.
+* **Benefits:**
+    * **Stateless:** No server-side session management.
+    * **Secure:** Encryption and digital signatures.
+    * **Lightweight:** Compact and easy to transmit.
+
+**25. What are Cookies in NodeJS?**
+
+* **Cookies:** Small pieces of data sent from a server to a client's browser.
+* **Purpose:**
+    * **Session management:** Store user login state.
+    * **Personalization:** Remember user preferences.
+    * **Tracking:** Track user activity.
+* **Setting Cookies:** `res.cookie('name', 'value', { ... });`
+* **Getting Cookies:** `req.cookies.name;`
+
+**26. Authorization in NodeJS**
+
+* **Authorization:** Determining what a user is allowed to do.
+* **Implementation:**
+    * **Role-based access control:** Define roles and assign permissions.
+    * **Permission-based access control:** Assign permissions directly to users.
+    * **Token-based authorization:** Use JWTs with claims to define user permissions.
+
+**27. Creating Discord Bot in NodeJS**
+
+* **Discord Bot:** A program that can interact with Discord servers.
+* **Implementation:**
+    * Create a Discord application and bot user.
+    * Use a Discord API library for Node.js (e.g., discord.js).
+    * Handle bot events and respond to commands.
+
+**28. Uploading Files with NodeJS and Multer**
+
+* **Multer:** A Node.js middleware for handling file uploads.
+* **Installation:** `npm install multer`
+* **Configuration:**
+    * Set up storage options (e.g., disk storage or cloud storage).
+    * Define file upload limits.
+* **Handling Uploads:**
+    * Use Multer's middleware to process file uploads.
+    * Access file data and metadata.
+
+**29. Setting Up Project - NodeJS Blogging Application with MongoDB**
+
+* **Project Structure:** Organize files and folders for a modular application.
+* **Dependencies:** Install necessary packages (e.g., Express, Mongoose).
+* **Database Setup:** Create a MongoDB database and define models for blog posts, users, and other data.
+
+**30. Setting up Authentication  - NodeJS Blogging Application with MongoDB**
+
+* **Implement Authentication:**
+    * Use JWTs or session management to authenticate users.
+    * Protect routes that require authentication.
+    * Provide registration and login functionality.
+
+**31. Complete Blog App - NodeJS, MongoDB and EJS**
+
+* **Complete Application:**
+    * Create a fully functional blog application with features such as:
+        * Post creation, editing, and deletion.
+        * User registration and login.
+        * Commenting on posts.
+        * Pagination and search functionality.
+
+**32. Deploy NodeJS Application on AWS - Amazon Web Services | NodeJS**
+
+* **AWS (Amazon Web Services):** A cloud computing platform.
+* **Deployment Options:**
+    * **EC2 (Elastic Compute Cloud):** Virtual servers.
+    * **AWS Lambda:** Serverless computing.
+    * **Elastic Beanstalk:** Automated deployments.
+* **Steps:**
+    * Create an AWS account.
+    * Configure your application for deployment.
+    * Deploy using the chosen deployment method.
+
+**33. WebSocket in NodeJS | Socket.IO - Real Time Messaging**
+
+* **WebSocket:** A communication protocol for real-time bidirectional communication.
+* **Socket.IO:** A library for real-time communication in Node.js.
+* **Implementation:**
+    * Install Socket.IO: `npm install socket.io`
+    * Create a Socket.IO server and connect to clients.
+    * Handle real-time events and send data back and forth.
+
+**34. NodeJS Streams**
+
+* **Streams:** Objects that represent a sequence of data.
+* **Types:**
+    * **Readable streams:** Read data from a source.
+    * **Writable streams:** Write data to a destination.
+    * **Duplex streams:** Can both read and write data.
+* **Use Cases:**
+    * Efficiently handle large files.
+    * Process data in chunks.
+    * Implement real-time data processing.
+
+**35. How to scale NodeJs applications using the cluster module.**
+
+* **Cluster Module:** Allows Node.js to utilize multiple CPU cores for increased performance.
+* **Implementation:**
+    * Use the `cluster` module to create worker processes.
+    * Distribute workload across worker processes.
+    * Handle communication between worker processes.
+
+**36. What is Nginx?**
+
+* **Nginx:** A high-performance web server and reverse proxy.
+* **Key Features:**
+    * **Load balancing:** Distributes traffic across multiple servers.
+    * **Reverse proxy:** Acts as a gateway between clients and servers.
+    * **Static content serving:** Efficiently serves static files.
+    * **Caching:** Improves performance by caching content.
+
+**37. Install and Setup Nginx**
+
+* **Installation:**
+    * Download and install Nginx from the official website: [https://nginx.org/](https://nginx.org/)
+* **Configuration:**
+    * Edit the Nginx configuration file (`nginx.conf`).
+    * Define server blocks for different websites or applications.
+
+**38. Serve Static Content with Nginx**
+
+* **Static Content:** Files that are not dynamically generated (e.g., images, CSS, JavaScript).
+* **Configuration:**
+    * Create a server block for serving static content.
+    * Configure the `location` directive to specify the root directory for static files.
+
+**39. Full Node.js Deployment - NGINX, SSL With Lets Encrypt**
+
+* **Deployment:**
+    * **Nginx:** Set up Nginx as a reverse proxy to forward requests to your Node.js application.
+    * **SSL:** Secure your website using SSL certificates.
+    * **Let's Encrypt:** A free and automated certificate authority.
+
+**40. Serverless Framework with NodeJS**
+
+* **Serverless Framework:** A tool for deploying and managing serverless applications.
+* **Benefits:**
+    * **Scalability:** Automatically scales based on demand.
+    * **Cost-effectiveness:** Pay only for resources used.
+    * **Simplified deployment:** Automated deployment and management.
+
+**41. What is Serverless? | Serverless Vs Monolith | AWS Lambda**
+
+* **Serverless:** A deployment model where applications are executed in response to events without managing servers.
+* **Serverless vs Monolith:**
+    * **Monolith:** All application code is deployed as a single unit.
+    * **Serverless:** Code is deployed as functions that are triggered by events.
+* **AWS Lambda:** A serverless compute service provided by AWS.
+
+**42. GraphQL Crash Course - GraphQL NodeJS**
+
+* **GraphQL:** A query language for APIs.
+* **Key Features:**
+    * **Type system:** Defines the structure of data.
+    * **Schema:** Defines the available queries and mutations.
+    * **Resolvers:** Functions that fetch data for queries and mutations.
+
+**43. Threads App GraphQL Clone | Backend Architecture**
+
+* **Backend Architecture:** Design and implement the GraphQL backend for a Threads clone.
+* **Components:**
+    * **GraphQL server:** Uses a GraphQL library (e.g., Apollo Server).
+    * **Data sources:** Databases (e.g., MongoDB, PostgreSQL).
+    * **Resolvers:** Fetch data from databases and process requests.
+
+**44. Setting up Graphql Server | Complete GraphQL Series**
+
+* **Setting up a GraphQL Server:**
+    * Install a GraphQL library.
+    * Define the GraphQL schema.
+    * Implement resolvers for queries and mutations.
+    * Start the GraphQL server.
+
+**45. Graphql Prisma Postgresql Setup | Complete GraphQL Series**
+
+* **Prisma:** An ORM for database access.
+* **PostgreSQL:** A relational database management system.
+* **Setup:**
+    * Install Prisma and connect to a PostgreSQL database.
+    * Define Prisma schemas for data models.
+    * Use Prisma to fetch and manipulate data in resolvers.
+
+**46. Refactoring GraphQL Code | Complete GraphQL Series**
+
+* **Code Refactoring:** Improve the structure and organization of GraphQL code.
+* **Techniques:**
+    * Use GraphQL directives for code reuse.
+    * Create helper functions for common tasks.
+    * Implement data loaders for efficient data fetching.
+
+**47. Authentication with GraphQL Server | Complete GraphQL Series**
+
+* **Authentication with GraphQL:**
+    * Implement JWT authentication for GraphQL requests.
+    * Use a context object to store user information.
+    * Authorize users based on their roles or permissions.
+
+**48. JWT Authentication and Context in GraphQL**
+
+* **JWT Authentication:** 
+    * Use JWTs to authenticate users and store user information.
+    * Validate and decode JWTs in resolvers.
+* **Context:** 
+    * Pass user information and other context data to resolvers via a context object.
+    * Use the context object to perform authorization checks.
